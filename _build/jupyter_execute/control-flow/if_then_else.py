@@ -29,7 +29,7 @@ And in open code
 
 ````{margin}
 ```{tip}
-`%sysfunc` lets you evaluate `DATA` step functions in open code. Here we use it to call the SAS modul0 function `mod`
+`%sysfunc` lets you evaluate `DATA` step functions in open code. Here we use it to call the SAS modulo function `mod`
 ```
 ````
 

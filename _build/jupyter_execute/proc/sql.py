@@ -23,9 +23,9 @@ Generally for our purposes, when we want to merge together two datasets in SAS w
 
 Conceptually, SQL joins involve a "left" table and one or more "right" tables to be joined. All joins are *Cartesian products* made on the the specified merge key variables. This means if there are two duplicate matching keys in the left table and two duplicate matching keys in the right table, there will be four duplicate keys in the output dataset. Another way to phrase this is that each observation is assigned all of the rows that it matches to. 
 
-The most common join we use is the `LEFT JOIN` but all types are outlined below, followed by an example of a `LEFT JOIN`.
+The most common join we use is the `LEFT JOIN` but all types are outlined below
 
-### `LEFT JOIN`
+### LEFT JOIN
 
 ![image](left_join.png "LEFT JOIN")
 
@@ -35,7 +35,7 @@ A `LEFT JOIN` selects all the obervations in the left table regardless of their 
 
 In this example, we merge on `state` from `out.kid_geos` using a `LEFT JOIN` onto `in.fake_micro` and save the resulting dataset in `out.left_join_example`. 
 
-Here, we use the `select` statement to only keep certain variables from each dataset, labeled `A` or `B`. These labels are assigne below in the `from` and `left join` statements.
+Here, we use the `select` statement to only keep certain variables from each dataset, labeled `A` or `B`. These labels are assignedbelow in the `from` and `left join` statements.
 
 The merge key here is `pik` and we require that `pik` is not null for the left table (`A`).
 
@@ -62,11 +62,11 @@ import pandas as pd
 df = pd.read_sas("../data/left_join_example.sas7bdat", encoding="latin-1");
 df.head(n=10)
 
-### `RIGHT JOIN`
+### RIGHT JOIN
 
 ![image](right_join.png "RIGHT JOIN")
 
-A `RIGHT JOIN` selects all the observations in the right table and when observations do not match to the left table the key values are set to missing. A `RIGHT JOIN`, like a `LEFT JOIN`, is not commutative and is **not** the same as reversing the datasets in a `LEFT JOIN`.
+A `RIGHT JOIN` selects all the observations in the right table. When observations do not match to the left table the key values are set to missing. A `RIGHT JOIN`, like a `LEFT JOIN`, is not commutative and is **not** the same as reversing the datasets in a `LEFT JOIN`.
 
 #### Example
 
@@ -92,7 +92,7 @@ Unlike in the example above, `state` is never missing because the `RIGHT JOIN` r
 df = pd.read_sas("../data/right_join_example.sas7bdat", encoding="latin-1");
 df.head(n=10)
 
-### `INNER JOIN`
+### INNER JOIN
 
 ![image](inner_join.png "INNER JOIN")
 
@@ -118,7 +118,7 @@ quit;
 df = pd.read_sas("../data/inner_join_example.sas7bdat", encoding="latin-1");
 df.head(n=10)
 
-### `FULL JOIN`
+### FULL JOIN
 
 ![image](full_join.png "FULL JOIN")
 
@@ -128,7 +128,7 @@ set based on the right dataset. We illustrate this below.
 
 #### Example
 
-In the example below, we have the same setup as in the previous examples, except that we use an `FULL JOIN` with `out.kid_geos` as the right dataset.
+In the example below, we have the same setup as in the previous examples, except that we use a `FULL JOIN` with `out.kid_geos` as the right dataset.
 
 ```sas
 proc sql; 
@@ -164,7 +164,7 @@ quit;
 ```
 
 ```{margin} Note 
-We can see that observations 4 and 5 are missing keys (`pik`) because these observations appear in `out.fake_micro` but do not appear in `out.kid_geos`.
+We can see that observations 4 and 5 are missing keys (`pik`) because these observations appear in `out.fake_micro` but do not appear in `out.kid_geos`. These are the same observations that are missing `state` above.
 ```
 
 df = pd.read_sas("../data/full_join_example_reverse.sas7bdat", encoding="latin-1");

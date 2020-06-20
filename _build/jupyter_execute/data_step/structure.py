@@ -9,3 +9,12 @@ data library.out_filename;
 run;
 ```
 
+You can append `in_filename_1` and `in_filename_2` like so
+
+```sas
+data library.out_filename;
+    set library.in_filename_1 library.in_filename_2;
+    /* data step statements */
+run;
+```
+

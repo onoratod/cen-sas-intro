@@ -4,7 +4,7 @@ In some cases we need to import external datasets, maybe a list of tracts or ind
 
 ## Importing Data with PROC IMPORT
 
-To import datasets we use `PROC IMPORT`. The general syntax is below, optional arguments are placed in `()` 
+To import datasets we use `PROC IMPORT`. The general syntax is below, optional arguments are placed in parantheses
 
 ```sas 
 proc import 
@@ -19,6 +19,7 @@ run;
 
 ### Description of Options
 
+| OPTION | DESCRIPTION |
 | :--- | :--- |
 |   DATAFILE  | Specifies the complete path and filename    |
 | OUT | Specifies the output SAS dataset in libname.filename format |
@@ -42,7 +43,7 @@ proc import datafile = "../data/proc_import_example.txt"
 run;
 ```
 
-Note that we can add SAS data step options to the `out` argument. For instance, if we only wanted to people over age 20 in our example
+Note that we can add SAS data step options to the `out` argument. For instance, if we only wanted to keep people over age 20 in our example
 
 ``` sas
 libname out "/XX/output";
@@ -71,10 +72,11 @@ run;
 
 ### Description of Options
 
+|    OPTION  |    DESCRIPTION  |
 | :--- | :--- |
 |   DATA  | The SAS dataset to export, specified as libname.filename |
 | OUTFILE | Specifies the complete path and file name for the output file |
-| DBMS | Specifies the type of data to export. |
+| DBMS | Specifies the type of data to export |
 | REPLACE | Replace output dataset if it already exists |
 
 ### Example

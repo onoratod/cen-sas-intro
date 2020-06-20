@@ -29,6 +29,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.13.0/dist/embed-amd.js"></script>
     <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="shortcut icon" href="../_static/favicon2.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Deleting Data" href="datasets.html" />
@@ -92,12 +93,26 @@
       <a href="../basics/macro_variables.html">Macro Variables</a>
     </li>
     <li class="">
-      <a href="../basics/putting_together.html">Putting it all together</a>
+      <a href="../basics/putting_together.html">Putting It All Together</a>
     </li>
   </ul>
   </li>
   <li class="">
     <a href="../data_step/data_step.html">The DATA Step</a>
+  <ul class="nav sidenav_l2">
+    <li class="">
+      <a href="../data_step/structure.html">DATA Step Structure</a>
+    </li>
+    <li class="">
+      <a href="../data_step/example.html">DATA Step Example</a>
+    </li>
+    <li class="">
+      <a href="../data_step/options.html">DATA Step Options</a>
+    </li>
+    <li class="">
+      <a href="../data_step/length.html">Setting Variable Lengths</a>
+    </li>
+  </ul>
   </li>
   <li class="active">
     <a href="proc.html">SAS Procedures</a>
@@ -118,6 +133,20 @@
   </li>
   <li class="">
     <a href="../control-flow/control_flow.html">Control Flow</a>
+  <ul class="nav sidenav_l2">
+    <li class="">
+      <a href="../control-flow/if_then_else.html">IF-THEN/ELSE Statements</a>
+    </li>
+    <li class="">
+      <a href="../control-flow/do_loops.html">DO Loops</a>
+    </li>
+    <li class="">
+      <a href="../control-flow/exercise.html">Exercise</a>
+    </li>
+  </ul>
+  </li>
+  <li class="">
+    <a href="../example-script/example.html">Example SAS Script</a>
   </li>
 </ul>
 </nav>
@@ -164,7 +193,7 @@
         <div class="dropdown-buttons-trigger">
             <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
             <div class="dropdown-buttons sourcebuttons">
-                <a class="repository-button" href="https://github.com/onoratod/cen-sas-2"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left" title="Source repository"><i class="fab fa-github"></i>repository</button></a>
+                <a class="repository-button" href="https://github.com/onoratod/cen-sas-intro"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left" title="Source repository"><i class="fab fa-github"></i>repository</button></a>
                 
                 
             </div>
@@ -229,7 +258,7 @@
 <p>In some cases we need to import external datasets, maybe a list of tracts or individual identifiers. We frequently export SAS datasets to Stata datasets since we mostly use SAS to clean and subset large datasets into more manageable datasets that we can analyze in Stata.</p>
 <div class="section" id="importing-data-with-proc-import">
 <h2>Importing Data with PROC IMPORT<a class="headerlink" href="#importing-data-with-proc-import" title="Permalink to this headline">¶</a></h2>
-<p>To import datasets we use <code class="docutils literal notranslate"><span class="pre">PROC</span> <span class="pre">IMPORT</span></code>. The general syntax is below, optional arguments are placed in <code class="docutils literal notranslate"><span class="pre">()</span></code></p>
+<p>To import datasets we use <code class="docutils literal notranslate"><span class="pre">PROC</span> <span class="pre">IMPORT</span></code>. The general syntax is below, optional arguments are placed in parantheses</p>
 <div class="highlight-sas notranslate"><div class="highlight"><pre><span></span><span class="kr">proc import </span>
     datafile = 
     <span class="k">out</span> = 
@@ -242,13 +271,33 @@
 </div>
 <div class="section" id="description-of-options">
 <h3>Description of Options<a class="headerlink" href="#description-of-options" title="Permalink to this headline">¶</a></h3>
-<p>| :— | :— |
-|   DATAFILE  | Specifies the complete path and filename    |
-| OUT | Specifies the output SAS dataset in libname.filename format |
-| DBMS | Specifies the type of data to import. One of csv (.csv, default delimiter is comma), dlm (.dat or .txt, default delimiter is blank), jmp (.jmp), or tab (.txt, default delimiter is tab) |
-| DELIMITER | Specify the delimiter (i.e. “,”, “&amp;”, “|”) |
-| REPLACE | Replace output dataset if it already exists |
-| GETNAMES | Generate variable names from first row |</p>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="text-align:left head"><p>OPTION</p></th>
+<th class="text-align:left head"><p>DESCRIPTION</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-align:left"><p>DATAFILE</p></td>
+<td class="text-align:left"><p>Specifies the complete path and filename</p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:left"><p>OUT</p></td>
+<td class="text-align:left"><p>Specifies the output SAS dataset in libname.filename format</p></td>
+</tr>
+<tr class="row-even"><td class="text-align:left"><p>DBMS</p></td>
+<td class="text-align:left"><p>Specifies the type of data to import. One of csv (.csv, default delimiter is comma), dlm (.dat or .txt, default delimiter is blank), jmp (.jmp), or tab (.txt, default delimiter is tab)</p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:left"><p>DELIMITER</p></td>
+<td class="text-align:left"><p>Specify the delimiter (i.e. “,”, “&amp;”, “|”)</p></td>
+</tr>
+<tr class="row-even"><td class="text-align:left"><p>REPLACE</p></td>
+<td class="text-align:left"><p>Replace output dataset if it already exists</p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:left"><p>GETNAMES</p></td>
+<td class="text-align:left"><p>Generate variable names from first row</p></td>
+</tr>
+</tbody>
+</table>
 </div>
 <div class="section" id="example">
 <h3>Example<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h3>
@@ -263,7 +312,7 @@
 <span class="kr">run;</span>
 </pre></div>
 </div>
-<p>Note that we can add SAS data step options to the <code class="docutils literal notranslate"><span class="pre">out</span></code> argument. For instance, if we only wanted to people over age 20 in our example</p>
+<p>Note that we can add SAS data step options to the <code class="docutils literal notranslate"><span class="pre">out</span></code> argument. For instance, if we only wanted to keep people over age 20 in our example</p>
 <div class="highlight-sas notranslate"><div class="highlight"><pre><span></span><span class="k">libname</span> <span class="k">out</span> <span class="s">&quot;/XX/output&quot;</span><span class="kr">;</span>
 
 <span class="kr">proc import </span>datafile = <span class="s">&quot;../data/proc_import_example.txt&quot;</span>
@@ -289,11 +338,27 @@
 </div>
 <div class="section" id="id1">
 <h3>Description of Options<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
-<p>| :— | :— |
-|   DATA  | The SAS dataset to export, specified as libname.filename |
-| OUTFILE | Specifies the complete path and file name for the output file |
-| DBMS | Specifies the type of data to export. |
-| REPLACE | Replace output dataset if it already exists |</p>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="text-align:left head"><p>OPTION</p></th>
+<th class="text-align:left head"><p>DESCRIPTION</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-align:left"><p>DATA</p></td>
+<td class="text-align:left"><p>The SAS dataset to export, specified as libname.filename</p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:left"><p>OUTFILE</p></td>
+<td class="text-align:left"><p>Specifies the complete path and file name for the output file</p></td>
+</tr>
+<tr class="row-even"><td class="text-align:left"><p>DBMS</p></td>
+<td class="text-align:left"><p>Specifies the type of data to export</p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:left"><p>REPLACE</p></td>
+<td class="text-align:left"><p>Replace output dataset if it already exists</p></td>
+</tr>
+</tbody>
+</table>
 </div>
 <div class="section" id="id2">
 <h3>Example<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>

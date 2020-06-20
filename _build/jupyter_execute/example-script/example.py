@@ -4,14 +4,17 @@ Below we created a sample SAS script to illustrate some of the topics we covered
 
 ````{margin}
 ```{tip}
-We use the `in` operator to check where `yob` is between 1978 and 1983 inclusive.
+We use the `in` operator to check whether `yob` is between 1978 and 1983 inclusive.
 ```
 ````
 
-```sas
+```{code-block} sas
+---
+lineno-start: 1
+---
 /***
 Prepare raw tax records for analysis
-Created By: John Doe (2017-02-02)
+Created By: Census Predoc #2 (2017-02-02)
 ***/
 
 options debug='CONNECT=00200000' mlogic mprint replace errorabend obs=max threads cpucount=actual;
@@ -24,7 +27,7 @@ libname geo "/XX/geos";
 * Useful SAS macros;
 %include "/XX/leap_macros.sas";
 
-* Macro to clean data
+* Macro to clean data;
 %macro prep_raw_data(year);
     
     * Clean the raw data, restrict to 1978 to 1983 cohorts;

@@ -29,6 +29,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.13.0/dist/embed-amd.js"></script>
     <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="shortcut icon" href="../_static/favicon2.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Importing and Exporting Data" href="import_export.html" />
@@ -92,12 +93,26 @@
       <a href="../basics/macro_variables.html">Macro Variables</a>
     </li>
     <li class="">
-      <a href="../basics/putting_together.html">Putting it all together</a>
+      <a href="../basics/putting_together.html">Putting It All Together</a>
     </li>
   </ul>
   </li>
   <li class="">
     <a href="../data_step/data_step.html">The DATA Step</a>
+  <ul class="nav sidenav_l2">
+    <li class="">
+      <a href="../data_step/structure.html">DATA Step Structure</a>
+    </li>
+    <li class="">
+      <a href="../data_step/example.html">DATA Step Example</a>
+    </li>
+    <li class="">
+      <a href="../data_step/options.html">DATA Step Options</a>
+    </li>
+    <li class="">
+      <a href="../data_step/length.html">Setting Variable Lengths</a>
+    </li>
+  </ul>
   </li>
   <li class="active">
     <a href="proc.html">SAS Procedures</a>
@@ -118,6 +133,20 @@
   </li>
   <li class="">
     <a href="../control-flow/control_flow.html">Control Flow</a>
+  <ul class="nav sidenav_l2">
+    <li class="">
+      <a href="../control-flow/if_then_else.html">IF-THEN/ELSE Statements</a>
+    </li>
+    <li class="">
+      <a href="../control-flow/do_loops.html">DO Loops</a>
+    </li>
+    <li class="">
+      <a href="../control-flow/exercise.html">Exercise</a>
+    </li>
+  </ul>
+  </li>
+  <li class="">
+    <a href="../example-script/example.html">Example SAS Script</a>
   </li>
 </ul>
 </nav>
@@ -164,7 +193,7 @@
         <div class="dropdown-buttons-trigger">
             <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
             <div class="dropdown-buttons sourcebuttons">
-                <a class="repository-button" href="https://github.com/onoratod/cen-sas-2"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left" title="Source repository"><i class="fab fa-github"></i>repository</button></a>
+                <a class="repository-button" href="https://github.com/onoratod/cen-sas-intro"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left" title="Source repository"><i class="fab fa-github"></i>repository</button></a>
                 
                 
             </div>
@@ -269,15 +298,15 @@
 <h2>Merging data in SAS using <code class="docutils literal notranslate"><span class="pre">PROC</span> <span class="pre">SQL</span></code> <code class="docutils literal notranslate"><span class="pre">JOINS</span></code><a class="headerlink" href="#merging-data-in-sas-using-proc-sql-joins" title="Permalink to this headline">¶</a></h2>
 <p>Generally for our purposes, when we want to merge together two datasets in SAS we use <code class="docutils literal notranslate"><span class="pre">JOIN</span></code> commands in a <code class="docutils literal notranslate"><span class="pre">PROC</span> <span class="pre">SQL</span></code> step. All SQL joins are akin to many-to-many joins implemented by the <code class="docutils literal notranslate"><span class="pre">joinby</span></code> function in Stata — these joins are not on their face equivalent to <code class="docutils literal notranslate"><span class="pre">1:1</span></code>, <code class="docutils literal notranslate"><span class="pre">1:m</span></code>, or <code class="docutils literal notranslate"><span class="pre">m:1</span></code> joins unless you ensure that the tables you are joining are unique on the join variables yourself.</p>
 <p>Conceptually, SQL joins involve a “left” table and one or more “right” tables to be joined. All joins are <em>Cartesian products</em> made on the the specified merge key variables. This means if there are two duplicate matching keys in the left table and two duplicate matching keys in the right table, there will be four duplicate keys in the output dataset. Another way to phrase this is that each observation is assigned all of the rows that it matches to.</p>
-<p>The most common join we use is the <code class="docutils literal notranslate"><span class="pre">LEFT</span> <span class="pre">JOIN</span></code> but all types are outlined below, followed by an example of a <code class="docutils literal notranslate"><span class="pre">LEFT</span> <span class="pre">JOIN</span></code>.</p>
+<p>The most common join we use is the <code class="docutils literal notranslate"><span class="pre">LEFT</span> <span class="pre">JOIN</span></code> but all types are outlined below</p>
 <div class="section" id="left-join">
-<h3><code class="docutils literal notranslate"><span class="pre">LEFT</span> <span class="pre">JOIN</span></code><a class="headerlink" href="#left-join" title="Permalink to this headline">¶</a></h3>
+<h3>LEFT JOIN<a class="headerlink" href="#left-join" title="Permalink to this headline">¶</a></h3>
 <p><img alt="image" src="../_images/left_join.png" /></p>
 <p>A <code class="docutils literal notranslate"><span class="pre">LEFT</span> <span class="pre">JOIN</span></code> selects all the obervations in the left table regardless of their key values but only selects observations with matching key values from the right table. Variables from the right table in rows where there is no match are assigned missing values. A <code class="docutils literal notranslate"><span class="pre">LEFT</span> <span class="pre">JOIN</span></code> is <strong>not</strong> commutative (i.e. reversing the order of the data sets can produce different results).</p>
 <div class="section" id="example">
 <h4>Example<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h4>
 <p>In this example, we merge on <code class="docutils literal notranslate"><span class="pre">state</span></code> from <code class="docutils literal notranslate"><span class="pre">out.kid_geos</span></code> using a <code class="docutils literal notranslate"><span class="pre">LEFT</span> <span class="pre">JOIN</span></code> onto <code class="docutils literal notranslate"><span class="pre">in.fake_micro</span></code> and save the resulting dataset in <code class="docutils literal notranslate"><span class="pre">out.left_join_example</span></code>.</p>
-<p>Here, we use the <code class="docutils literal notranslate"><span class="pre">select</span></code> statement to only keep certain variables from each dataset, labeled <code class="docutils literal notranslate"><span class="pre">A</span></code> or <code class="docutils literal notranslate"><span class="pre">B</span></code>. These labels are assigne below in the <code class="docutils literal notranslate"><span class="pre">from</span></code> and <code class="docutils literal notranslate"><span class="pre">left</span> <span class="pre">join</span></code> statements.</p>
+<p>Here, we use the <code class="docutils literal notranslate"><span class="pre">select</span></code> statement to only keep certain variables from each dataset, labeled <code class="docutils literal notranslate"><span class="pre">A</span></code> or <code class="docutils literal notranslate"><span class="pre">B</span></code>. These labels are assignedbelow in the <code class="docutils literal notranslate"><span class="pre">from</span></code> and <code class="docutils literal notranslate"><span class="pre">left</span> <span class="pre">join</span></code> statements.</p>
 <p>The merge key here is <code class="docutils literal notranslate"><span class="pre">pik</span></code> and we require that <code class="docutils literal notranslate"><span class="pre">pik</span></code> is not null for the left table (<code class="docutils literal notranslate"><span class="pre">A</span></code>).</p>
 <div class="highlight-sas notranslate"><div class="highlight"><pre><span></span><span class="kr">proc sql;</span> 
     <span class="k">create</span> <span class="k">table</span> <span class="k">out</span><span class="m">.</span>fake_micro_with_geo <span class="k">as</span>
@@ -397,9 +426,9 @@
 </div>
 </div>
 <div class="section" id="right-join">
-<h3><code class="docutils literal notranslate"><span class="pre">RIGHT</span> <span class="pre">JOIN</span></code><a class="headerlink" href="#right-join" title="Permalink to this headline">¶</a></h3>
+<h3>RIGHT JOIN<a class="headerlink" href="#right-join" title="Permalink to this headline">¶</a></h3>
 <p><img alt="image" src="../_images/right_join.png" /></p>
-<p>A <code class="docutils literal notranslate"><span class="pre">RIGHT</span> <span class="pre">JOIN</span></code> selects all the observations in the right table and when observations do not match to the left table the key values are set to missing. A <code class="docutils literal notranslate"><span class="pre">RIGHT</span> <span class="pre">JOIN</span></code>, like a <code class="docutils literal notranslate"><span class="pre">LEFT</span> <span class="pre">JOIN</span></code>, is not commutative and is <strong>not</strong> the same as reversing the datasets in a <code class="docutils literal notranslate"><span class="pre">LEFT</span> <span class="pre">JOIN</span></code>.</p>
+<p>A <code class="docutils literal notranslate"><span class="pre">RIGHT</span> <span class="pre">JOIN</span></code> selects all the observations in the right table. When observations do not match to the left table the key values are set to missing. A <code class="docutils literal notranslate"><span class="pre">RIGHT</span> <span class="pre">JOIN</span></code>, like a <code class="docutils literal notranslate"><span class="pre">LEFT</span> <span class="pre">JOIN</span></code>, is not commutative and is <strong>not</strong> the same as reversing the datasets in a <code class="docutils literal notranslate"><span class="pre">LEFT</span> <span class="pre">JOIN</span></code>.</p>
 <div class="section" id="id1">
 <h4>Example<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h4>
 <p>In the example below, we have the same setup as in the <code class="docutils literal notranslate"><span class="pre">LEFT</span> <span class="pre">JOIN</span></code> example, except that we use a <code class="docutils literal notranslate"><span class="pre">RIGHT</span> <span class="pre">JOIN</span></code>.</p>
@@ -521,7 +550,7 @@
 </div>
 </div>
 <div class="section" id="inner-join">
-<h3><code class="docutils literal notranslate"><span class="pre">INNER</span> <span class="pre">JOIN</span></code><a class="headerlink" href="#inner-join" title="Permalink to this headline">¶</a></h3>
+<h3>INNER JOIN<a class="headerlink" href="#inner-join" title="Permalink to this headline">¶</a></h3>
 <p><img alt="image" src="../_images/inner_join.png" /></p>
 <p>An <code class="docutils literal notranslate"><span class="pre">INNER</span> <span class="pre">JOIN</span></code> selects all the observations that have keys in <strong>both</strong> the left and the right data set.
 An <code class="docutils literal notranslate"><span class="pre">INNER</span> <span class="pre">JOIN</span></code> is a logical AND between the two tables. Unlike a <code class="docutils literal notranslate"><span class="pre">RIGHT</span> <span class="pre">JOIN</span></code> or a <code class="docutils literal notranslate"><span class="pre">LEFT</span> <span class="pre">JOIN</span></code>, an <code class="docutils literal notranslate"><span class="pre">INNER</span> <span class="pre">JOIN</span></code> is commutative
@@ -642,14 +671,14 @@ so tables can be joined in either order.</p>
 </div>
 </div>
 <div class="section" id="full-join">
-<h3><code class="docutils literal notranslate"><span class="pre">FULL</span> <span class="pre">JOIN</span></code><a class="headerlink" href="#full-join" title="Permalink to this headline">¶</a></h3>
+<h3>FULL JOIN<a class="headerlink" href="#full-join" title="Permalink to this headline">¶</a></h3>
 <p><img alt="image" src="../_images/full_join.png" /></p>
 <p>A <code class="docutils literal notranslate"><span class="pre">FULL</span> <span class="pre">JOIN</span></code> selects all observations from both datasets and sets missing key values for observations that only appear in the right dataset.
 A <code class="docutils literal notranslate"><span class="pre">FULL</span> <span class="pre">JOIN</span></code> is the logical OR between two datasets, but unlike an <code class="docutils literal notranslate"><span class="pre">INNER</span> <span class="pre">JOIN</span></code> it is not commutative because missing key values are
 set based on the right dataset. We illustrate this below.</p>
 <div class="section" id="id3">
 <h4>Example<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h4>
-<p>In the example below, we have the same setup as in the previous examples, except that we use an <code class="docutils literal notranslate"><span class="pre">FULL</span> <span class="pre">JOIN</span></code> with <code class="docutils literal notranslate"><span class="pre">out.kid_geos</span></code> as the right dataset.</p>
+<p>In the example below, we have the same setup as in the previous examples, except that we use a <code class="docutils literal notranslate"><span class="pre">FULL</span> <span class="pre">JOIN</span></code> with <code class="docutils literal notranslate"><span class="pre">out.kid_geos</span></code> as the right dataset.</p>
 <div class="highlight-sas notranslate"><div class="highlight"><pre><span></span><span class="kr">proc sql;</span> 
     <span class="k">create</span> <span class="k">table</span> <span class="k">out</span><span class="m">.</span>fake_micro_with_geo <span class="k">as</span>
         <span class="k">select</span> A<span class="m">.</span>pik, A<span class="m">.</span>mom_pik, A<span class="m">.</span>dad_pik, B<span class="m">.</span>state
@@ -663,13 +692,7 @@ set based on the right dataset. We illustrate this below.</p>
 <p class="sidebar-title">Note</p>
 <p><code class="docutils literal notranslate"><span class="pre">out.kid_geos</span></code> is a subset of <code class="docutils literal notranslate"><span class="pre">out.fake_micro</span></code> so there will never be missing keys (<code class="docutils literal notranslate"><span class="pre">pik</span></code>). A <code class="docutils literal notranslate"><span class="pre">FULL</span> <span class="pre">JOIN</span></code> where the right dataset is a subset of the left dataset is equivalent to a <code class="docutils literal notranslate"><span class="pre">LEFT</span> <span class="pre">JOIN</span></code>.</p>
 </div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_sas</span><span class="p">(</span><span class="s2">&quot;../data/full_join_example.sas7bdat&quot;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;latin-1&quot;</span><span class="p">);</span>
-<span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="n">n</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
+<div class="cell tag_remove_input docutils container">
 <div class="cell_output docutils container">
 <div class="output text_html"><div>
 <style scoped>
@@ -785,15 +808,9 @@ set based on the right dataset. We illustrate this below.</p>
 </div>
 <div class="margin sidebar">
 <p class="sidebar-title">Note</p>
-<p>We can see that observations 4 and 5 are missing keys (<code class="docutils literal notranslate"><span class="pre">pik</span></code>) because these observations appear in <code class="docutils literal notranslate"><span class="pre">out.fake_micro</span></code> but do not appear in <code class="docutils literal notranslate"><span class="pre">out.kid_geos</span></code>.</p>
+<p>We can see that observations 4 and 5 are missing keys (<code class="docutils literal notranslate"><span class="pre">pik</span></code>) because these observations appear in <code class="docutils literal notranslate"><span class="pre">out.fake_micro</span></code> but do not appear in <code class="docutils literal notranslate"><span class="pre">out.kid_geos</span></code>. These are the same observations that are missing <code class="docutils literal notranslate"><span class="pre">state</span></code> above.</p>
 </div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_sas</span><span class="p">(</span><span class="s2">&quot;../data/full_join_example_reverse.sas7bdat&quot;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;latin-1&quot;</span><span class="p">);</span>
-<span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="n">n</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
+<div class="cell tag_remove_input docutils container">
 <div class="cell_output docutils container">
 <div class="output text_html"><div>
 <style scoped>

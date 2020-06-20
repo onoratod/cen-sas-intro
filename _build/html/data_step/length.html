@@ -29,8 +29,11 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.13.0/dist/embed-amd.js"></script>
     <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="shortcut icon" href="../_static/favicon2.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="SAS Procedures" href="../proc/proc.html" />
+    <link rel="prev" title="DATA Step Options" href="options.html" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="docsearch:language" content="en">
@@ -90,21 +93,60 @@
       <a href="../basics/macro_variables.html">Macro Variables</a>
     </li>
     <li class="">
-      <a href="../basics/putting_together.html">Putting it all together</a>
+      <a href="../basics/putting_together.html">Putting It All Together</a>
+    </li>
+  </ul>
+  </li>
+  <li class="active">
+    <a href="data_step.html">The DATA Step</a>
+  <ul class="nav sidenav_l2">
+    <li class="">
+      <a href="structure.html">DATA Step Structure</a>
+    </li>
+    <li class="">
+      <a href="example.html">DATA Step Example</a>
+    </li>
+    <li class="">
+      <a href="options.html">DATA Step Options</a>
+    </li>
+    <li class="active">
+      <a href="">Setting Variable Lengths</a>
     </li>
   </ul>
   </li>
   <li class="">
-    <a href="data_step.html">The DATA Step</a>
-  </li>
-  <li class="">
     <a href="../proc/proc.html">SAS Procedures</a>
+  <ul class="nav sidenav_l2">
+    <li class="">
+      <a href="../proc/sql.html">Merging Data with PROC SQL</a>
+    </li>
+    <li class="">
+      <a href="../proc/import_export.html">Importing and Exporting Data</a>
+    </li>
+    <li class="">
+      <a href="../proc/datasets.html">Deleting Data</a>
+    </li>
+  </ul>
   </li>
   <li class="">
     <a href="../macros/macros.html">SAS Macros</a>
   </li>
   <li class="">
     <a href="../control-flow/control_flow.html">Control Flow</a>
+  <ul class="nav sidenav_l2">
+    <li class="">
+      <a href="../control-flow/if_then_else.html">IF-THEN/ELSE Statements</a>
+    </li>
+    <li class="">
+      <a href="../control-flow/do_loops.html">DO Loops</a>
+    </li>
+    <li class="">
+      <a href="../control-flow/exercise.html">Exercise</a>
+    </li>
+  </ul>
+  </li>
+  <li class="">
+    <a href="../example-script/example.html">Example SAS Script</a>
   </li>
 </ul>
 </nav>
@@ -151,7 +193,7 @@
         <div class="dropdown-buttons-trigger">
             <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
             <div class="dropdown-buttons sourcebuttons">
-                <a class="repository-button" href="https://github.com/onoratod/cen-sas-2"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left" title="Source repository"><i class="fab fa-github"></i>repository</button></a>
+                <a class="repository-button" href="https://github.com/onoratod/cen-sas-intro"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left" title="Source repository"><i class="fab fa-github"></i>repository</button></a>
                 
                 
             </div>
@@ -182,7 +224,7 @@
                 
   <div class="section" id="setting-variable-lengths">
 <h1>Setting Variable Lengths<a class="headerlink" href="#setting-variable-lengths" title="Permalink to this headline">¶</a></h1>
-<p>In SAS, variables have different lengths. Numeric variables have lengths between 3 and 8 (depending on the size of the number). A character variables length is equivelent to the length of the longest string. SAS automatically sets the length of numeric and character variables to 8. This can sometimes be wasteful and we can save space by carefully setting the lengths of our variables. However, we need to be careful not to set the lengths too short so that we lose information. The SAS guide also warns against shortening variables with fraction values which may result in a loss of precision. You can find a chart of variable lengths and their corresponding numeric ranges <a class="reference external" href="https://documentation.sas.com/?docsetId=hostunx&amp;docsetTarget=p12zsdbylnn6c2n1i48z7djr6uzo.htm&amp;docsetVersion=9.4&amp;locale=en">here</a>.</p>
+<p>In SAS, variables have different lengths. Numeric variables have lengths between 3 and 8 (depending on the size of the number). A character variables length is equivelent to the length of the string (i.e. <code class="docutils literal notranslate"><span class="pre">&quot;Philadelphia&quot;</span></code> would have length 12). SAS automatically sets the length of numeric and character variables to 8. This can sometimes be wasteful and we can save space by carefully setting the lengths of our variables. However, we need to be careful not to set the lengths too short so that we lose information. The SAS guide also warns against shortening variables with fraction values which may result in a loss of precision. You can find a chart of variable lengths and their corresponding numeric ranges <a class="reference external" href="https://documentation.sas.com/?docsetId=hostunx&amp;docsetTarget=p12zsdbylnn6c2n1i48z7djr6uzo.htm&amp;docsetVersion=9.4&amp;locale=en">here</a>.</p>
 <p>You can set the length of a variable with a <code class="docutils literal notranslate"><span class="pre">LENGTH</span></code> statement in the <code class="docutils literal notranslate"><span class="pre">DATA</span></code> step. For numeric variables</p>
 <div class="highlight-sas notranslate"><div class="highlight"><pre><span></span><span class="kr">data </span><span class="k">out</span><span class="m">.</span>outfile;
     <span class="k">set</span> <span class="k">in</span><span class="m">.</span><span class="k">infile</span>;
@@ -224,6 +266,8 @@
     
     <div class='prev-next-bottom'>
         
+    <a class='left-prev' id="prev-link" href="options.html" title="previous page">DATA Step Options</a>
+    <a class='right-next' id="next-link" href="../proc/proc.html" title="next page">SAS Procedures</a>
 
     </div>
     <footer class="footer mt-5 mt-md-0">

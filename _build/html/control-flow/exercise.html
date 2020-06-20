@@ -29,8 +29,10 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.13.0/dist/embed-amd.js"></script>
     <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="shortcut icon" href="../_static/favicon2.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Example SAS Script" href="../example-script/example.html" />
     <link rel="prev" title="DO Loops" href="do_loops.html" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -91,15 +93,40 @@
       <a href="../basics/macro_variables.html">Macro Variables</a>
     </li>
     <li class="">
-      <a href="../basics/putting_together.html">Putting it all together</a>
+      <a href="../basics/putting_together.html">Putting It All Together</a>
     </li>
   </ul>
   </li>
   <li class="">
     <a href="../data_step/data_step.html">The DATA Step</a>
+  <ul class="nav sidenav_l2">
+    <li class="">
+      <a href="../data_step/structure.html">DATA Step Structure</a>
+    </li>
+    <li class="">
+      <a href="../data_step/example.html">DATA Step Example</a>
+    </li>
+    <li class="">
+      <a href="../data_step/options.html">DATA Step Options</a>
+    </li>
+    <li class="">
+      <a href="../data_step/length.html">Setting Variable Lengths</a>
+    </li>
+  </ul>
   </li>
   <li class="">
     <a href="../proc/proc.html">SAS Procedures</a>
+  <ul class="nav sidenav_l2">
+    <li class="">
+      <a href="../proc/sql.html">Merging Data with PROC SQL</a>
+    </li>
+    <li class="">
+      <a href="../proc/import_export.html">Importing and Exporting Data</a>
+    </li>
+    <li class="">
+      <a href="../proc/datasets.html">Deleting Data</a>
+    </li>
+  </ul>
   </li>
   <li class="">
     <a href="../macros/macros.html">SAS Macros</a>
@@ -117,6 +144,9 @@
       <a href="">Exercise</a>
     </li>
   </ul>
+  </li>
+  <li class="">
+    <a href="../example-script/example.html">Example SAS Script</a>
   </li>
 </ul>
 </nav>
@@ -163,7 +193,7 @@
         <div class="dropdown-buttons-trigger">
             <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
             <div class="dropdown-buttons sourcebuttons">
-                <a class="repository-button" href="https://github.com/onoratod/cen-sas-2"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left" title="Source repository"><i class="fab fa-github"></i>repository</button></a>
+                <a class="repository-button" href="https://github.com/onoratod/cen-sas-intro"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left" title="Source repository"><i class="fab fa-github"></i>repository</button></a>
                 
                 
             </div>
@@ -194,7 +224,7 @@
                 
   <div class="section" id="exercise">
 <h1>Exercise<a class="headerlink" href="#exercise" title="Permalink to this headline">¶</a></h1>
-<p>If you’re up for it, test what we discussed about control flow in SAS to write a <code class="docutils literal notranslate"><span class="pre">%macro</span></code> that takes a <code class="docutils literal notranslate"><span class="pre">start_year</span></code>, an <code class="docutils literal notranslate"><span class="pre">end_year</span></code>, and a macro <code class="docutils literal notranslate"><span class="pre">name</span></code> and calls the specified macro for each year in between <code class="docutils literal notranslate"><span class="pre">start_year</span></code> and <code class="docutils literal notranslate"><span class="pre">end_year</span></code>.</p>
+<p>If you’re up for it, test your understanding of what we discussed about control flow in SAS to write a <code class="docutils literal notranslate"><span class="pre">%macro</span></code> that takes a <code class="docutils literal notranslate"><span class="pre">start_year</span></code>, an <code class="docutils literal notranslate"><span class="pre">end_year</span></code>, and a macro <code class="docutils literal notranslate"><span class="pre">name</span></code> and calls the specified macro for each year inbetween <code class="docutils literal notranslate"><span class="pre">start_year</span></code> and <code class="docutils literal notranslate"><span class="pre">end_year</span></code>.</p>
 <div class="dropdown success admonition">
 <p class="admonition-title">Solution</p>
 <div class="highlight-sas notranslate"><div class="highlight"><pre><span></span>    <span class="nb">%macro</span> exercise(start_year, end_year, name);
@@ -219,6 +249,7 @@
     <div class='prev-next-bottom'>
         
     <a class='left-prev' id="prev-link" href="do_loops.html" title="previous page">DO Loops</a>
+    <a class='right-next' id="next-link" href="../example-script/example.html" title="next page">Example SAS Script</a>
 
     </div>
     <footer class="footer mt-5 mt-md-0">

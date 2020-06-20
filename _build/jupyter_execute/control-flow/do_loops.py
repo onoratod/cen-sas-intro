@@ -1,8 +1,16 @@
 # DO Loops
 
-`DO` loops can be used to execute a set of code over a series of items. These can be used in both `DATA` steps and open code inside of a `%macro`, however we tend to use them most often in open code. 
+`DO` loops can be used to execute a set of code over a series of items. These can be used in both `DATA` steps and open code inside of a `%macro`, however, we tend to use them most often in open code. 
 
-The basic `DO` loop syntax begins with `do value = start to stop` and is terminated with and `end` statement. The default value of the counter is 1 but you can modify this with the `by` option. This is similar to a `forval` loop in Stata.
+The basic `DO` loop syntax is
+
+```sas
+do i = /* start */ to /* end */ (by /* by value */);
+    /* SAS statements */
+end;
+```
+
+The default value of the counter is 1 but you can modify this with the `by` option. Also, the index value `i` can be called whatever you want (i.e. `opportunity` would also work). This is similar to a `forval` loop in Stata.
 
 ```sas
 data out.A;
@@ -76,7 +84,7 @@ Or in open code
 Sometimes it is useful to execute a set of commands while a condition is true. In these cases, we can use a `DO-WHILE` loop. 
 
 ```sas
-do while(cond);
+do while (cond);
     /* SAS statements */
 end;
 ```
@@ -223,3 +231,5 @@ emphasize-lines: 0, 13
 ```
 
 We use `%eval` to increment our counter. Recall that in a previous section we used `%sysfunc` combined with `sum` to increment our counter. 
+
+

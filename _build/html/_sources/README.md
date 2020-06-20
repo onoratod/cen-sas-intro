@@ -10,7 +10,7 @@ The Jupyter Book [guide](https://jupyterbook.org/start/overview.html) has a grea
 
 ### Modifying Content
 
-All of the content for our website is stored in the `content` folder. Markdown and Jupyter Notebooks are stored within folders (representing chapters or sections) within the `content` folder. To modify an already existing page, simply edit the corresponding markdown or Jupyter Notebook. 
+All of the content for our website is stored at the top level of this directory. Markdown and Jupyter Notebooks are stored within folders (representing chapters or sections) except for `intro.md`. To modify an already existing page, simply edit the corresponding markdown or Jupyter Notebook. 
 
 ### Adding Content
 
@@ -19,15 +19,15 @@ There are two steps to adding content
 - Create the corresponding markdown file or Jupyter Notebook
 - Add a line in the `_toc.yml` file so Jupyter Books knows where this content should go
 
-The first step is to simply save your markdown file or Jupyter Notebook in the relevent location in the `content` folder. To add `my_new_file.md` to the website, you would add the following line to `_toc.yml`
+The first step is to simply save your markdown file or Jupyter Notebook in the relevent location. To add `my_new_file.md` to the website, you would add the following line to `_toc.yml`
 
 ```
-- file: content/my_new_file.md
+- file: my_new_file.md
 ```
 
 ### Incorporating the Changes
 
-Once you've added your markdown or Jupyter Notebook file to the `content` folder and updated the `_toc.yml` file you need to "re-build" the Jupyter Book to incorporate your changes into the website's html files. To do this simply run 
+Once you've added your markdown or Jupyter Notebook file updated the `_toc.yml` file you need to "re-build" the Jupyter Book to incorporate your changes into the website's html files. To do this simply run 
 
 ```
 jupyter-book build cen-sas-intro

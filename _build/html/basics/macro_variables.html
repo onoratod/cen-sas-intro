@@ -29,9 +29,10 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.13.0/dist/embed-amd.js"></script>
     <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="shortcut icon" href="../_static/favicon2.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Putting it all together" href="putting_together.html" />
+    <link rel="next" title="Putting It All Together" href="putting_together.html" />
     <link rel="prev" title="The LIBNAME Statement" href="libname.html" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -92,21 +93,60 @@
       <a href="">Macro Variables</a>
     </li>
     <li class="">
-      <a href="putting_together.html">Putting it all together</a>
+      <a href="putting_together.html">Putting It All Together</a>
     </li>
   </ul>
   </li>
   <li class="">
     <a href="../data_step/data_step.html">The DATA Step</a>
+  <ul class="nav sidenav_l2">
+    <li class="">
+      <a href="../data_step/structure.html">DATA Step Structure</a>
+    </li>
+    <li class="">
+      <a href="../data_step/example.html">DATA Step Example</a>
+    </li>
+    <li class="">
+      <a href="../data_step/options.html">DATA Step Options</a>
+    </li>
+    <li class="">
+      <a href="../data_step/length.html">Setting Variable Lengths</a>
+    </li>
+  </ul>
   </li>
   <li class="">
     <a href="../proc/proc.html">SAS Procedures</a>
+  <ul class="nav sidenav_l2">
+    <li class="">
+      <a href="../proc/sql.html">Merging Data with PROC SQL</a>
+    </li>
+    <li class="">
+      <a href="../proc/import_export.html">Importing and Exporting Data</a>
+    </li>
+    <li class="">
+      <a href="../proc/datasets.html">Deleting Data</a>
+    </li>
+  </ul>
   </li>
   <li class="">
     <a href="../macros/macros.html">SAS Macros</a>
   </li>
   <li class="">
     <a href="../control-flow/control_flow.html">Control Flow</a>
+  <ul class="nav sidenav_l2">
+    <li class="">
+      <a href="../control-flow/if_then_else.html">IF-THEN/ELSE Statements</a>
+    </li>
+    <li class="">
+      <a href="../control-flow/do_loops.html">DO Loops</a>
+    </li>
+    <li class="">
+      <a href="../control-flow/exercise.html">Exercise</a>
+    </li>
+  </ul>
+  </li>
+  <li class="">
+    <a href="../example-script/example.html">Example SAS Script</a>
   </li>
 </ul>
 </nav>
@@ -153,7 +193,7 @@
         <div class="dropdown-buttons-trigger">
             <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
             <div class="dropdown-buttons sourcebuttons">
-                <a class="repository-button" href="https://github.com/onoratod/cen-sas-2"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left" title="Source repository"><i class="fab fa-github"></i>repository</button></a>
+                <a class="repository-button" href="https://github.com/onoratod/cen-sas-intro"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left" title="Source repository"><i class="fab fa-github"></i>repository</button></a>
                 
                 
             </div>
@@ -213,14 +253,17 @@
 </div>
 <div class="section" id="a-note-on-the-use-of-and-with-macros-and-nested-macros">
 <h2>A note on the use of <code class="docutils literal notranslate"><span class="pre">&amp;</span></code> and <code class="docutils literal notranslate"><span class="pre">.</span></code> with Macros and Nested Macros<a class="headerlink" href="#a-note-on-the-use-of-and-with-macros-and-nested-macros" title="Permalink to this headline">¶</a></h2>
-<p>Here we discuss macro processing in more detail, you should skip this portion for now and come back when useful. In general, there is no need to include the <code class="docutils literal notranslate"><span class="pre">.</span></code> delimiter at the end of the macro name when envoking a SAS macro variable - the <code class="docutils literal notranslate"><span class="pre">&amp;</span></code> will suffice. For example the sampe code above will work without the periods:</p>
+<p>Here we discuss macro processing in more detail, you should skip this portion for now and come back when useful. In general, there is no need to include the <code class="docutils literal notranslate"><span class="pre">.</span></code> delimiter at the end of the macro name when envoking a SAS macro variable - the <code class="docutils literal notranslate"><span class="pre">&amp;</span></code> will suffice. For example, the sample code above will work without the periods:</p>
 <div class="highlight-sas notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> cohort &gt;= <span class="nv">&amp;fcohort</span> <span class="k">and</span> cohort &lt;= <span class="nv">&amp;lcohort</span>;
 </pre></div>
 </div>
-<p>There are times, however, when the <code class="docutils literal notranslate"><span class="pre">.</span></code> is required to delimit the end of a macro variable so it is good practice to include them. For example, when using macro variables nested within text or code, the <code class="docutils literal notranslate"><span class="pre">.</span></code> is needed to signify the end of the macro variable. This is illustrated below:</p>
+<p>There are times, however, when the <code class="docutils literal notranslate"><span class="pre">.</span></code> is required to delimit the end of a macro variable, so it is good practice to include them. For example, when using macro variables nested within text or code, the <code class="docutils literal notranslate"><span class="pre">.</span></code> is needed to signify the end of the macro variable. This is illustrated below:</p>
+<div class="margin sidebar">
+<p class="sidebar-title"></p>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
 <p>The <code class="docutils literal notranslate"><span class="pre">%PUT</span></code> command acts like a <code class="docutils literal notranslate"><span class="pre">print</span></code> (Python) or <code class="docutils literal notranslate"><span class="pre">display</span></code> (Stata) statement, displaying the following text in the SAS log. This can be a useful tool for debugging.</p>
+</div>
 </div>
 <p>First we define our macro <code class="docutils literal notranslate"><span class="pre">suffix</span></code></p>
 <div class="highlight-sas notranslate"><div class="highlight"><pre><span></span><span class="nb">%let</span> suffix = ing;
@@ -248,7 +291,7 @@
 <span class="n">swimming</span>
 </pre></div>
 </div>
-<p>If there were characters following the macro that are not part of the macro then omitting the character would cause an error as below where SAS looks for the macro named <code class="docutils literal notranslate"><span class="pre">suffixly</span></code></p>
+<p>If there were characters following the macro that are not part of the macro then omitting the <code class="docutils literal notranslate"><span class="pre">.</span></code> character would cause an error as below where SAS looks for the macro named <code class="docutils literal notranslate"><span class="pre">suffixly</span></code></p>
 <div class="highlight-sas notranslate"><div class="highlight"><pre><span></span>* This will not work, SAS looks for macro &quot;suffixly&quot;;
 %PUT swimm&amp;suffixly;
 </pre></div>
@@ -269,7 +312,7 @@
 <span class="n">swimmingly</span>
 </pre></div>
 </div>
-<p>It may be hard to understand the SAS log output above, don’t worry we will go over navigating SAS logs later. But above you can see how SAS interprets the different macro variables we defined in the code above. The <code class="docutils literal notranslate"><span class="pre">%PUT</span></code> statement acts like a print statement here and the output can be seen under lines 61, 64, and 67.</p>
+<p>You can see how SAS interprets the different macro variables we defined in the code above. The <code class="docutils literal notranslate"><span class="pre">%PUT</span></code> statement acts like a print statement here and the output can be seen under lines 61, 64, and 67.</p>
 <div class="section" id="nested-macros">
 <h3>Nested Macros<a class="headerlink" href="#nested-macros" title="Permalink to this headline">¶</a></h3>
 <p>We can also nest macro variables inside of each other, although things become a bit more complicated here. If you want to understand how SAS will resolve these macros you need to understand the rules of SAS macro variables</p>
@@ -304,31 +347,37 @@
 <span class="mf">1.05</span>
 </pre></div>
 </div>
-<p>Now lets try something a little more complicated</p>
-<div class="highlight-sas notranslate"><div class="highlight"><pre><span></span><span class="nb">%let</span> pre1 = f;
-<span class="nb">%let</span> pre2 = l;
-<span class="nb">%let</span> fyear = <span class="m">1998</span>;
-<span class="nb">%let</span> lyear = <span class="m">1999</span>;
-<span class="nb">%let</span> mean_cpi_1998_1999 = <span class="m">1.07</span>;
+<p>Now let’s try something a little more complicated</p>
+<div class="highlight-sas notranslate"><div class="highlight"><pre><span></span><span class="nb">%let</span> pre = cpi
+<span class="nb">%let</span> suf = year
+<span class="nb">%let</span> cpiyear = <span class="m">1999</span>
+<span class="nb">%let</span> cpi1999 = <span class="m">1.07</span>
 </pre></div>
 </div>
-<p>Lets try to invoke <code class="docutils literal notranslate"><span class="pre">mean_cpi_1998_1999</span></code> with nested macros. Here, we will have three layers of macros. By that I mean we will first invoke <code class="docutils literal notranslate"><span class="pre">pre1</span></code> and <code class="docutils literal notranslate"><span class="pre">pre2</span></code> to so that we can then invoke <code class="docutils literal notranslate"><span class="pre">fyear</span></code>, <code class="docutils literal notranslate"><span class="pre">lyear</span></code> and finally <code class="docutils literal notranslate"><span class="pre">mean_cpi_1998_1999</span></code>. The easiest way to figure this is out is to start from the end and work backwards (each time we go up we add an ampersand). The last reference we want to be resolved is</p>
-<div class="highlight-sas notranslate"><div class="highlight"><pre><span></span>%PUT &amp;&amp;mean_cpi_1998_1999;
+<p>Let’s try to invoke <code class="docutils literal notranslate"><span class="pre">cpi1999</span></code> using <code class="docutils literal notranslate"><span class="pre">pre</span></code>, <code class="docutils literal notranslate"><span class="pre">suf</span></code>, and <code class="docutils literal notranslate"><span class="pre">cpiyear</span></code>. Let’s start from the final line we want</p>
+<div class="highlight-sas notranslate"><div class="highlight"><pre><span></span>%PUT &amp;cpi1999;
 </pre></div>
 </div>
-<p>One ampersand is not enough because if the macro resolves to <code class="docutils literal notranslate"><span class="pre">&amp;mean_cpi_1998_1999</span></code> since there are no consecutive ampersands it will not do another pass. Now substitute in <code class="docutils literal notranslate"><span class="pre">&amp;fyear.</span></code> and <code class="docutils literal notranslate"><span class="pre">&amp;lyear</span></code> for 1998 and 1999 and add an ampersand</p>
-<div class="highlight-sas notranslate"><div class="highlight"><pre><span></span>%PUT &amp;&amp;&amp;mean_cpi_&amp;fyear._&amp;lyear;
+<p>Now we want <code class="docutils literal notranslate"><span class="pre">&amp;cpiyear</span></code> to resolve to <code class="docutils literal notranslate"><span class="pre">1999</span></code> and we want a singular ampersand in the front. So we sub <code class="docutils literal notranslate"><span class="pre">&amp;cpiyear</span></code> for <code class="docutils literal notranslate"><span class="pre">1999</span></code> and <code class="docutils literal notranslate"><span class="pre">&amp;&amp;</span></code> for <code class="docutils literal notranslate"><span class="pre">&amp;</span></code> (because two ampersands resolve to one)</p>
+<div class="highlight-sas notranslate"><div class="highlight"><pre><span></span>%PUT &amp;&amp;cpi&amp;cpiyear;
 </pre></div>
 </div>
-<p>Lastly, substitute for <code class="docutils literal notranslate"><span class="pre">&amp;pre1.</span></code> and <code class="docutils literal notranslate"><span class="pre">&amp;pre2.</span></code> for <code class="docutils literal notranslate"><span class="pre">f</span></code> and <code class="docutils literal notranslate"><span class="pre">l</span></code> and add an ampersand. Here we need to use <code class="docutils literal notranslate"><span class="pre">.</span></code> so that <code class="docutils literal notranslate"><span class="pre">&amp;pre1</span></code> is resolved instead of <code class="docutils literal notranslate"><span class="pre">&amp;pre1year</span></code> which doesn’t exist.</p>
-<div class="highlight-sas notranslate"><div class="highlight"><pre><span></span>%PUT &amp;&amp;&amp;&amp;mean_cpi_&amp;&amp;&amp;pre1.year._&amp;&amp;&amp;pre2.year;
+<p>Now we need to sub in <code class="docutils literal notranslate"><span class="pre">&amp;pre</span></code> for <code class="docutils literal notranslate"><span class="pre">cpi</span></code> and <code class="docutils literal notranslate"><span class="pre">&amp;suf</span></code> for <code class="docutils literal notranslate"><span class="pre">year</span></code></p>
+<div class="highlight-sas notranslate"><div class="highlight"><pre><span></span>%PUT &amp;&amp;cpi&amp;&amp;pre&amp;suf;
 </pre></div>
 </div>
-<p>This gives</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">205</span>  <span class="o">%</span><span class="n">PUT</span> <span class="o">&amp;&amp;&amp;&amp;</span><span class="n">mean_cpi_</span><span class="o">&amp;&amp;&amp;</span><span class="n">pre1</span><span class="o">.</span><span class="n">year</span><span class="o">.</span><span class="n">_</span><span class="o">&amp;&amp;&amp;</span><span class="n">pre2</span><span class="o">.</span><span class="n">year</span><span class="p">;</span>
-<span class="mf">1.07</span>
+<p>However, this will not work and will resolve to <code class="docutils literal notranslate"><span class="pre">&amp;cpi&amp;preyear</span></code>. This is because we forgot to deal with <code class="docutils literal notranslate"><span class="pre">&amp;&amp;</span></code> and <code class="docutils literal notranslate"><span class="pre">&amp;</span></code>. To retain <code class="docutils literal notranslate"><span class="pre">&amp;&amp;</span></code> we should use <code class="docutils literal notranslate"><span class="pre">&amp;&amp;&amp;&amp;</span></code> and to retain <code class="docutils literal notranslate"><span class="pre">&amp;</span></code> we should use <code class="docutils literal notranslate"><span class="pre">&amp;&amp;</span></code> which gives</p>
+<div class="highlight-sas notranslate"><div class="highlight"><pre><span></span>%PUT &amp;&amp;&amp;&amp;cpi&amp;&amp;&amp;pre&amp;suf;
 </pre></div>
 </div>
+<p>which gives</p>
+<div class="highlight-sas notranslate"><div class="highlight"><pre><span></span><span class="m">54</span> <span class="nb">%PUT</span> &amp;&amp;&amp;<span class="nv">&amp;cpi</span>&amp;&amp;<span class="nv">&amp;pre&amp;suf</span>;
+<span class="m">1.07</span>
+<span class="m">55</span>
+</pre></div>
+</div>
+<p>Let’s step through this. In the first pass, the macro parser first resolves <code class="docutils literal notranslate"><span class="pre">&amp;&amp;&amp;&amp;cpi</span></code> to <code class="docutils literal notranslate"><span class="pre">&amp;&amp;cpi</span></code>, then <code class="docutils literal notranslate"><span class="pre">&amp;&amp;</span></code> to <code class="docutils literal notranslate"><span class="pre">&amp;</span></code>, then <code class="docutils literal notranslate"><span class="pre">&amp;pre</span></code> to <code class="docutils literal notranslate"><span class="pre">cpi</span></code>, then <code class="docutils literal notranslate"><span class="pre">&amp;suf</span></code> to <code class="docutils literal notranslate"><span class="pre">year</span></code> giving <code class="docutils literal notranslate"><span class="pre">&amp;&amp;cpi&amp;cpiyear</span></code>. On the second pass, it resolves <code class="docutils literal notranslate"><span class="pre">&amp;&amp;cpi</span></code> to <code class="docutils literal notranslate"><span class="pre">&amp;cpi</span></code> and <code class="docutils literal notranslate"><span class="pre">&amp;cpiyear</span></code> to <code class="docutils literal notranslate"><span class="pre">1999</span></code> giving <code class="docutils literal notranslate"><span class="pre">&amp;cpi1999</span></code>. Finally, since there was a double ampersand, the macro parser does one final pass and resolves <code class="docutils literal notranslate"><span class="pre">&amp;cpi1999</span></code> to <code class="docutils literal notranslate"><span class="pre">1.07</span></code>.</p>
+<p>This example was needlessly complicated to illustrate some of the macro parser rules. You will rarely have to use something this complicated but it may come in handy at some point.</p>
 </div>
 <div class="section" id="references">
 <h3>References<a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h3>
@@ -347,7 +396,7 @@
     <div class='prev-next-bottom'>
         
     <a class='left-prev' id="prev-link" href="libname.html" title="previous page">The LIBNAME Statement</a>
-    <a class='right-next' id="next-link" href="putting_together.html" title="next page">Putting it all together</a>
+    <a class='right-next' id="next-link" href="putting_together.html" title="next page">Putting It All Together</a>
 
     </div>
     <footer class="footer mt-5 mt-md-0">

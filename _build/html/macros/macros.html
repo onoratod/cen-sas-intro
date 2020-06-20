@@ -29,6 +29,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.13.0/dist/embed-amd.js"></script>
     <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="shortcut icon" href="../_static/favicon2.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Control Flow" href="../control-flow/control_flow.html" />
@@ -92,21 +93,60 @@
       <a href="../basics/macro_variables.html">Macro Variables</a>
     </li>
     <li class="">
-      <a href="../basics/putting_together.html">Putting it all together</a>
+      <a href="../basics/putting_together.html">Putting It All Together</a>
     </li>
   </ul>
   </li>
   <li class="">
     <a href="../data_step/data_step.html">The DATA Step</a>
+  <ul class="nav sidenav_l2">
+    <li class="">
+      <a href="../data_step/structure.html">DATA Step Structure</a>
+    </li>
+    <li class="">
+      <a href="../data_step/example.html">DATA Step Example</a>
+    </li>
+    <li class="">
+      <a href="../data_step/options.html">DATA Step Options</a>
+    </li>
+    <li class="">
+      <a href="../data_step/length.html">Setting Variable Lengths</a>
+    </li>
+  </ul>
   </li>
   <li class="">
     <a href="../proc/proc.html">SAS Procedures</a>
+  <ul class="nav sidenav_l2">
+    <li class="">
+      <a href="../proc/sql.html">Merging Data with PROC SQL</a>
+    </li>
+    <li class="">
+      <a href="../proc/import_export.html">Importing and Exporting Data</a>
+    </li>
+    <li class="">
+      <a href="../proc/datasets.html">Deleting Data</a>
+    </li>
+  </ul>
   </li>
   <li class="active">
     <a href="">SAS Macros</a>
   </li>
   <li class="">
     <a href="../control-flow/control_flow.html">Control Flow</a>
+  <ul class="nav sidenav_l2">
+    <li class="">
+      <a href="../control-flow/if_then_else.html">IF-THEN/ELSE Statements</a>
+    </li>
+    <li class="">
+      <a href="../control-flow/do_loops.html">DO Loops</a>
+    </li>
+    <li class="">
+      <a href="../control-flow/exercise.html">Exercise</a>
+    </li>
+  </ul>
+  </li>
+  <li class="">
+    <a href="../example-script/example.html">Example SAS Script</a>
   </li>
 </ul>
 </nav>
@@ -153,7 +193,7 @@
         <div class="dropdown-buttons-trigger">
             <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
             <div class="dropdown-buttons sourcebuttons">
-                <a class="repository-button" href="https://github.com/onoratod/cen-sas-2"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left" title="Source repository"><i class="fab fa-github"></i>repository</button></a>
+                <a class="repository-button" href="https://github.com/onoratod/cen-sas-intro"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left" title="Source repository"><i class="fab fa-github"></i>repository</button></a>
                 
                 
             </div>
@@ -196,18 +236,36 @@
   <div class="section" id="sas-macros">
 <h1>SAS Macros<a class="headerlink" href="#sas-macros" title="Permalink to this headline">¶</a></h1>
 <p>A SAS <code class="docutils literal notranslate"><span class="pre">%macro</span></code> is a discrete piece of code that can be accessed throughout the SAS script by keyword reference. A SAS <code class="docutils literal notranslate"><span class="pre">%macro</span></code> can take and use arguments. A SAS <code class="docutils literal notranslate"><span class="pre">%macro</span></code> is useful when you need to execute a similar set of tasks over and over again (for instance, over many years). This is similar to a <code class="docutils literal notranslate"><span class="pre">program</span></code> or <code class="docutils literal notranslate"><span class="pre">ado</span></code> in Stata or <code class="docutils literal notranslate"><span class="pre">functions</span></code> in R and Python. The general syntax is:</p>
-<div class="highlight-sas notranslate"><div class="highlight"><pre><span></span><span class="nb">%macro</span> name(arg1, arg2, keyword_arg1 = <span class="m">0</span>, ...);
+<div class="highlight-sas notranslate"><div class="highlight"><pre><span></span><span class="nb">%macro</span> name(<span class="c">/* Arguments go here */</span>);
 
     <span class="c">/* SAS code goes here */</span>
     
 <span class="nb">%mend</span> name;
 </pre></div>
 </div>
-<p>A SAS <code class="docutils literal notranslate"><span class="pre">%macro</span></code> is referenced elsewhere in a SAS script as <code class="docutils literal notranslate"><span class="pre">%name(...)</span></code>. You can think of a SAS <code class="docutils literal notranslate"><span class="pre">%macro</span></code> as inserting the containted text/statements into the SAS script whenever referenced.</p>
+<p>A SAS <code class="docutils literal notranslate"><span class="pre">%macro</span></code> is referenced elsewhere in a SAS script as <code class="docutils literal notranslate"><span class="pre">%name(...)</span></code>. You can think of a SAS <code class="docutils literal notranslate"><span class="pre">%macro</span></code> as inserting the contained text/statements into the SAS script whenever referenced.</p>
 <div class="section" id="arguments">
 <h2>Arguments<a class="headerlink" href="#arguments" title="Permalink to this headline">¶</a></h2>
-<p>A SAS <code class="docutils literal notranslate"><span class="pre">%macro</span></code> has two types of arguments (or none at all): positional and keyword. Keyword arguments are specified with a keyword, equals sign and a default value (which can be null) i.e. <code class="docutils literal notranslate"><span class="pre">%macro</span> <span class="pre">name(keyward_arg</span> <span class="pre">=</span> <span class="pre">1)</span></code>. To supply a custom value we would would write <code class="docutils literal notranslate"><span class="pre">%name(keyword_arg</span> <span class="pre">=</span> <span class="pre">10)</span></code>.</p>
-<p>Positional arguments are just listed and are assigned the value corresponding to their position in the argument list when the macro is defined: <code class="docutils literal notranslate"><span class="pre">%macro</span> <span class="pre">name(a,</span> <span class="pre">b,</span> <span class="pre">c)</span></code>. If I called <code class="docutils literal notranslate"><span class="pre">%name(1,</span> <span class="pre">2,</span> <span class="pre">3)</span></code> then <code class="docutils literal notranslate"><span class="pre">a</span> <span class="pre">=</span> <span class="pre">1,</span> <span class="pre">b</span> <span class="pre">=</span> <span class="pre">2,</span> <span class="pre">c</span> <span class="pre">=</span> <span class="pre">3</span></code>. If no argument is specified in the corresponding position then the positional argument resolves to null.</p>
+<p>A SAS <code class="docutils literal notranslate"><span class="pre">%macro</span></code> has two types of arguments (or none at all): positional and keyword. Keyword arguments are specified with a keyword, equals sign and a default value (which can be null)</p>
+<div class="highlight-sas notranslate"><div class="highlight"><pre><span></span><span class="nb">%macro</span> name(keyward_arg = <span class="m">1</span>); 
+<span class="nb">%mend</span> name;
+</pre></div>
+</div>
+<p>or with a null default value</p>
+<div class="highlight-sas notranslate"><div class="highlight"><pre><span></span><span class="nb">%macro</span> name(keyword_arg = );
+<span class="nb">%mend</span> name;
+</pre></div>
+</div>
+<p>To supply a custom value of <code class="docutils literal notranslate"><span class="pre">10</span></code> we we would would write</p>
+<div class="highlight-sas notranslate"><div class="highlight"><pre><span></span><span class="nf">%name</span>(keyword_arg = <span class="m">10</span>);
+</pre></div>
+</div>
+<p>Positional arguments are just listed and are assigned the value corresponding to their position in the argument list when the macro is defined:</p>
+<div class="highlight-sas notranslate"><div class="highlight"><pre><span></span><span class="nb">%macro</span> name(a, b, c);
+<span class="nb">%mend</span> name;
+</pre></div>
+</div>
+<p>If I called <code class="docutils literal notranslate"><span class="pre">%name(1,</span> <span class="pre">2,</span> <span class="pre">3)</span></code> then <code class="docutils literal notranslate"><span class="pre">a</span> <span class="pre">=</span> <span class="pre">1,</span> <span class="pre">b</span> <span class="pre">=</span> <span class="pre">2,</span> <span class="pre">c</span> <span class="pre">=</span> <span class="pre">3</span></code>. If no argument is specified in the corresponding position then the positional argument resolves to null.</p>
 <p>Arguments are referenced inside of a <code class="docutils literal notranslate"><span class="pre">%macro</span></code> as macro variables. These concepts are illustrated below.</p>
 <div class="highlight-sas notranslate"><div class="highlight"><pre><span></span>%macro hello_world;
 
@@ -238,15 +296,15 @@
 </pre></div>
 </div>
 <p>These macro calls output</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>324  %hello_world;
+<div class="highlight-sas notranslate"><div class="highlight"><pre><span></span><span class="m">324</span>  <span class="nf">%hello_world</span>;
 Hello World!
-325  %hello_place(USA);
+<span class="m">325</span>  <span class="nf">%hello_place</span>(USA);
 Hello USA!
-326  %hello_there(USA);
+<span class="m">326</span>  <span class="nf">%hello_there</span>(USA);
 Hello USA, my name is John!
-327  %hello_there();
+<span class="m">327</span>  <span class="nf">%hello_there</span>();
 Hello , my name is John!
-328  %hello_there(USA, name = Danny);
+<span class="m">328</span>  <span class="nf">%hello_there</span>(USA, name = Danny);
 Hello USA, my name is Danny!
 </pre></div>
 </div>
@@ -254,15 +312,15 @@ Hello USA, my name is Danny!
 <div class="section" id="example">
 <h2>Example<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h2>
 <p>To motivate the use of <code class="docutils literal notranslate"><span class="pre">%macro</span></code> functions, suppose you needed to load in two years of data and generate a few variables. You could do something like:</p>
-<div class="highlight-sas notranslate"><div class="highlight"><pre><span></span><span class="kr">data </span>intergen_1999_clean;
-    <span class="k">set</span> intergen_1999;
+<div class="highlight-sas notranslate"><div class="highlight"><pre><span></span><span class="kr">data </span><span class="k">out</span><span class="m">.</span>intergen_1999_clean;
+    <span class="k">set</span> <span class="k">in</span><span class="m">.</span>intergen_1999;
         
         year = <span class="m">1999</span>;
         par_inc = mom_inc + dad_inc<span class="kr">;</span>
 <span class="kr">run;</span>
 
-<span class="kr">data </span>intergen_2000_clean;
-    <span class="k">set</span> intergen_2000;
+<span class="kr">data </span><span class="k">out</span><span class="m">.</span>intergen_2000_clean;
+    <span class="k">set</span> <span class="k">in</span><span class="m">.</span>intergen_2000;
         
         year = <span class="m">2000</span>;
         gen par_inc = mom_inc + dad_inc<span class="kr">;</span>
@@ -274,9 +332,9 @@ Hello USA, my name is Danny!
 <span class="nb">%macro</span> clean_intergen(year)<span class="kr">;</span>
 
 <span class="kr">    data </span>intergen_<span class="nv">&amp;year.</span>_clean;
-        <span class="k">set</span> intergen_<span class="nv">&amp;year</span>;
+        <span class="k">set</span> intergen_<span class="nv">&amp;year.</span>;
         
-            year = <span class="nv">&amp;year</span>;
+            year = <span class="nv">&amp;year.</span>;
             par_inc = mom_inc + dad+inc<span class="kr">;</span>
 <span class="kr">    run;</span>
     
@@ -287,7 +345,7 @@ Hello USA, my name is Danny!
 <span class="nf">%clean_intergen</span>(<span class="m">2000</span>);
 </pre></div>
 </div>
-<p>This style of coding is preferred as it keeps our scrips concise and also generally reduces errors and makes debugging easier.</p>
+<p>This style of coding is preferred as it keeps our scripts concise, generally reduces errors and makes debugging easier.</p>
 </div>
 </div>
 

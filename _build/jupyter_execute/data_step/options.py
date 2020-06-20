@@ -1,11 +1,11 @@
 # DATA Step Options
 
-`DATA` step options provide a set of tools to interact with input and output datasets. They are declared in parenthese after the filenames in `data` or `set` statements:
+`DATA` step options provide a set of tools to interact with input and output datasets. They are declared in parentheses after the filenames in `data` or `set` statements:
 
 ```sas
 data library.out_filename ( /* data step options */ );
     set library.in_filename ( /* data step options */ );
-        /* data step statements */;
+        /* data step statements */
 run;
 ```
 
@@ -29,7 +29,7 @@ To use the `keep`/`drop` options, write `keep = ` or `drop = ` followed by the l
 
 #### Example
 
-Below we drop the `kid_married_2015` variable from the `in.fake_micro` dataset using the `drop` option. Then we create a `par_inc_2000` in the `data` step and only keep `pik`, `mom_pik`, `dad_pik`, and `par_inc_2000` in the `out.par_income` output dataset using the `keep` option. 
+Below we drop the `kid_married_2015` variable from the `in.fake_micro` dataset using the `drop` option. Then we create `par_inc_2000` in the `data` step and only keep `pik`, `mom_pik`, `dad_pik`, and `par_inc_2000` in the `out.par_income` output dataset using the `keep` option. 
 
 
 ```sas

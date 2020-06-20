@@ -21,3 +21,10 @@ You can also create block comments with `/* */`
 x = 10;
 ```
 
+Block comments can also be used inline
+
+```sas 
+data out.outfile(drop = x /* This is an inline comment */);
+    set in.infile;
+run;
+```

@@ -29,6 +29,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.13.0/dist/embed-amd.js"></script>
     <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="shortcut icon" href="../_static/favicon2.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Exercise" href="exercise.html" />
@@ -92,15 +93,40 @@
       <a href="../basics/macro_variables.html">Macro Variables</a>
     </li>
     <li class="">
-      <a href="../basics/putting_together.html">Putting it all together</a>
+      <a href="../basics/putting_together.html">Putting It All Together</a>
     </li>
   </ul>
   </li>
   <li class="">
     <a href="../data_step/data_step.html">The DATA Step</a>
+  <ul class="nav sidenav_l2">
+    <li class="">
+      <a href="../data_step/structure.html">DATA Step Structure</a>
+    </li>
+    <li class="">
+      <a href="../data_step/example.html">DATA Step Example</a>
+    </li>
+    <li class="">
+      <a href="../data_step/options.html">DATA Step Options</a>
+    </li>
+    <li class="">
+      <a href="../data_step/length.html">Setting Variable Lengths</a>
+    </li>
+  </ul>
   </li>
   <li class="">
     <a href="../proc/proc.html">SAS Procedures</a>
+  <ul class="nav sidenav_l2">
+    <li class="">
+      <a href="../proc/sql.html">Merging Data with PROC SQL</a>
+    </li>
+    <li class="">
+      <a href="../proc/import_export.html">Importing and Exporting Data</a>
+    </li>
+    <li class="">
+      <a href="../proc/datasets.html">Deleting Data</a>
+    </li>
+  </ul>
   </li>
   <li class="">
     <a href="../macros/macros.html">SAS Macros</a>
@@ -118,6 +144,9 @@
       <a href="exercise.html">Exercise</a>
     </li>
   </ul>
+  </li>
+  <li class="">
+    <a href="../example-script/example.html">Example SAS Script</a>
   </li>
 </ul>
 </nav>
@@ -164,7 +193,7 @@
         <div class="dropdown-buttons-trigger">
             <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
             <div class="dropdown-buttons sourcebuttons">
-                <a class="repository-button" href="https://github.com/onoratod/cen-sas-2"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left" title="Source repository"><i class="fab fa-github"></i>repository</button></a>
+                <a class="repository-button" href="https://github.com/onoratod/cen-sas-intro"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left" title="Source repository"><i class="fab fa-github"></i>repository</button></a>
                 
                 
             </div>
@@ -206,8 +235,14 @@
                 
   <div class="section" id="do-loops">
 <h1>DO Loops<a class="headerlink" href="#do-loops" title="Permalink to this headline">¶</a></h1>
-<p><code class="docutils literal notranslate"><span class="pre">DO</span></code> loops can be used to execute a set of code over a series of items. These can be used in both <code class="docutils literal notranslate"><span class="pre">DATA</span></code> steps and open code inside of a <code class="docutils literal notranslate"><span class="pre">%macro</span></code>, however we tend to use them most often in open code.</p>
-<p>The basic <code class="docutils literal notranslate"><span class="pre">DO</span></code> loop syntax begins with <code class="docutils literal notranslate"><span class="pre">do</span> <span class="pre">value</span> <span class="pre">=</span> <span class="pre">start</span> <span class="pre">to</span> <span class="pre">stop</span></code> and is terminated with and <code class="docutils literal notranslate"><span class="pre">end</span></code> statement. The default value of the counter is 1 but you can modify this with the <code class="docutils literal notranslate"><span class="pre">by</span></code> option. This is similar to a <code class="docutils literal notranslate"><span class="pre">forval</span></code> loop in Stata.</p>
+<p><code class="docutils literal notranslate"><span class="pre">DO</span></code> loops can be used to execute a set of code over a series of items. These can be used in both <code class="docutils literal notranslate"><span class="pre">DATA</span></code> steps and open code inside of a <code class="docutils literal notranslate"><span class="pre">%macro</span></code>, however, we tend to use them most often in open code.</p>
+<p>The basic <code class="docutils literal notranslate"><span class="pre">DO</span></code> loop syntax is</p>
+<div class="highlight-sas notranslate"><div class="highlight"><pre><span></span><span class="k">do</span> i = <span class="c">/* start */</span> to <span class="c">/* end */</span> (<span class="k">by</span> <span class="c">/* by value */</span>);
+    <span class="c">/* SAS statements */</span>
+<span class="k">end</span>;
+</pre></div>
+</div>
+<p>The default value of the counter is 1 but you can modify this with the <code class="docutils literal notranslate"><span class="pre">by</span></code> option. Also, the index value <code class="docutils literal notranslate"><span class="pre">i</span></code> can be called whatever you want (i.e. <code class="docutils literal notranslate"><span class="pre">opportunity</span></code> would also work). This is similar to a <code class="docutils literal notranslate"><span class="pre">forval</span></code> loop in Stata.</p>
 <div class="highlight-sas notranslate"><div class="highlight"><pre><span></span><span class="kr">data </span><span class="k">out</span><span class="m">.</span>A;
     <span class="k">do</span> i = <span class="m">1</span> to <span class="m">5</span>;
         y = i*<span class="m">2</span>;
@@ -370,7 +405,7 @@
 <div class="section" id="do-while-loop">
 <h2>DO-WHILE Loop<a class="headerlink" href="#do-while-loop" title="Permalink to this headline">¶</a></h2>
 <p>Sometimes it is useful to execute a set of commands while a condition is true. In these cases, we can use a <code class="docutils literal notranslate"><span class="pre">DO-WHILE</span></code> loop.</p>
-<div class="highlight-sas notranslate"><div class="highlight"><pre><span></span><span class="k">do</span> <span class="k">while</span>(cond);
+<div class="highlight-sas notranslate"><div class="highlight"><pre><span></span><span class="k">do</span> <span class="k">while</span> (cond);
     <span class="c">/* SAS statements */</span>
 <span class="k">end</span>;
 </pre></div>

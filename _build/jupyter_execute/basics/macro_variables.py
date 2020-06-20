@@ -16,17 +16,19 @@ if cohort >= &fcohort. and cohort <= &lcohort.;
 
 ## A note on the use of `&` and `.` with Macros and Nested Macros
 
-Here we discuss macro processing in more detail, you should skip this portion for now and come back when useful. In general, there is no need to include the `.` delimiter at the end of the macro name when envoking a SAS macro variable - the `&` will suffice. For example the sampe code above will work without the periods: 
+Here we discuss macro processing in more detail, you should skip this portion for now and come back when useful. In general, there is no need to include the `.` delimiter at the end of the macro name when envoking a SAS macro variable - the `&` will suffice. For example, the sample code above will work without the periods: 
 
 ```sas
 if cohort >= &fcohort and cohort <= &lcohort;
 ```
 
-There are times, however, when the `.` is required to delimit the end of a macro variable so it is good practice to include them. For example, when using macro variables nested within text or code, the `.` is needed to signify the end of the macro variable. This is illustrated below:
+There are times, however, when the `.` is required to delimit the end of a macro variable, so it is good practice to include them. For example, when using macro variables nested within text or code, the `.` is needed to signify the end of the macro variable. This is illustrated below:
 
+````{margin}
 ```{tip}
 The `%PUT` command acts like a `print` (Python) or `display` (Stata) statement, displaying the following text in the SAS log. This can be a useful tool for debugging.
 ```
+````
 
 First we define our macro `suffix`
 
@@ -64,7 +66,7 @@ which gives
 swimming
 ```
 
-If there were characters following the macro that are not part of the macro then omitting the character would cause an error as below where SAS looks for the macro named `suffixly`
+If there were characters following the macro that are not part of the macro then omitting the `.` character would cause an error as below where SAS looks for the macro named `suffixly`
 
 ```sas
 * This will not work, SAS looks for macro "suffixly";
@@ -90,7 +92,7 @@ Adding the `.` to denote the end of the macro fixes this
 swimmingly
 ```
 
-It may be hard to understand the SAS log output above, don't worry we will go over navigating SAS logs later. But above you can see how SAS interprets the different macro variables we defined in the code above. The `%PUT` statement acts like a print statement here and the output can be seen under lines 61, 64, and 67.
+You can see how SAS interprets the different macro variables we defined in the code above. The `%PUT` statement acts like a print statement here and the output can be seen under lines 61, 64, and 67.
 
 ### Nested Macros
 
@@ -136,41 +138,51 @@ First the macro parser resolves `&&` to `&` then it tries to resolve `&century` 
 1.05
 ```
 
-Now lets try something a little more complicated
+Now let's try something a little more complicated
 
 
 ```sas
-%let pre1 = f;
-%let pre2 = l;
-%let fyear = 1998;
-%let lyear = 1999;
-%let mean_cpi_1998_1999 = 1.07;
+%let pre = cpi
+%let suf = year
+%let cpiyear = 1999
+%let cpi1999 = 1.07
 ```
 
-Lets try to invoke `mean_cpi_1998_1999` with nested macros. Here, we will have three layers of macros. By that I mean we will first invoke `pre1` and `pre2` to so that we can then invoke `fyear`, `lyear` and finally `mean_cpi_1998_1999`. The easiest way to figure this is out is to start from the end and work backwards (each time we go up we add an ampersand). The last reference we want to be resolved is 
+Let's try to invoke `cpi1999` using `pre`, `suf`, and `cpiyear`. Let's start from the final line we want
 
 ```sas
-%PUT &&mean_cpi_1998_1999;
+%PUT &cpi1999;
 ```
 
-One ampersand is not enough because if the macro resolves to `&mean_cpi_1998_1999` since there are no consecutive ampersands it will not do another pass. Now substitute in `&fyear.` and `&lyear` for 1998 and 1999 and add an ampersand
+Now we want `&cpiyear` to resolve to `1999` and we want a singular ampersand in the front. So we sub `&cpiyear` for `1999` and `&&` for `&` (because two ampersands resolve to one)
 
 ```sas
-%PUT &&&mean_cpi_&fyear._&lyear;
+%PUT &&cpi&cpiyear;
 ```
 
-Lastly, substitute for `&pre1.` and `&pre2.` for `f` and `l` and add an ampersand. Here we need to use `.` so that `&pre1` is resolved instead of `&pre1year` which doesn't exist.
+Now we need to sub in `&pre` for `cpi` and `&suf` for `year`
 
 ```sas
-%PUT &&&&mean_cpi_&&&pre1.year._&&&pre2.year;
+%PUT &&cpi&&pre&suf;
 ```
 
-This gives
+However, this will not work and will resolve to `&cpi&preyear`. This is because we forgot to deal with `&&` and `&`. To retain `&&` we should use `&&&&` and to retain `&` we should use `&&` which gives
 
+```sas
+%PUT &&&&cpi&&&pre&suf;
 ```
-205  %PUT &&&&mean_cpi_&&&pre1.year._&&&pre2.year;
+
+which gives
+
+```sas
+54 %PUT &&&&cpi&&&pre&suf;
 1.07
+55
 ```
+
+Let's step through this. In the first pass, the macro parser first resolves `&&&&cpi` to `&&cpi`, then `&&` to `&`, then `&pre` to `cpi`, then `&suf` to `year` giving `&&cpi&cpiyear`. On the second pass, it resolves `&&cpi` to `&cpi` and `&cpiyear` to `1999` giving `&cpi1999`. Finally, since there was a double ampersand, the macro parser does one final pass and resolves `&cpi1999` to `1.07`. 
+
+This example was needlessly complicated to illustrate some of the macro parser rules. You will rarely have to use something this complicated but it may come in handy at some point. 
 
 ### References
 

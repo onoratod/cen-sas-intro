@@ -29,6 +29,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.13.0/dist/embed-amd.js"></script>
     <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="shortcut icon" href="../_static/favicon2.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="DATA Step Options" href="options.html" />
@@ -92,7 +93,7 @@
       <a href="../basics/macro_variables.html">Macro Variables</a>
     </li>
     <li class="">
-      <a href="../basics/putting_together.html">Putting it all together</a>
+      <a href="../basics/putting_together.html">Putting It All Together</a>
     </li>
   </ul>
   </li>
@@ -108,16 +109,44 @@
     <li class="">
       <a href="options.html">DATA Step Options</a>
     </li>
+    <li class="">
+      <a href="length.html">Setting Variable Lengths</a>
+    </li>
   </ul>
   </li>
   <li class="">
     <a href="../proc/proc.html">SAS Procedures</a>
+  <ul class="nav sidenav_l2">
+    <li class="">
+      <a href="../proc/sql.html">Merging Data with PROC SQL</a>
+    </li>
+    <li class="">
+      <a href="../proc/import_export.html">Importing and Exporting Data</a>
+    </li>
+    <li class="">
+      <a href="../proc/datasets.html">Deleting Data</a>
+    </li>
+  </ul>
   </li>
   <li class="">
     <a href="../macros/macros.html">SAS Macros</a>
   </li>
   <li class="">
     <a href="../control-flow/control_flow.html">Control Flow</a>
+  <ul class="nav sidenav_l2">
+    <li class="">
+      <a href="../control-flow/if_then_else.html">IF-THEN/ELSE Statements</a>
+    </li>
+    <li class="">
+      <a href="../control-flow/do_loops.html">DO Loops</a>
+    </li>
+    <li class="">
+      <a href="../control-flow/exercise.html">Exercise</a>
+    </li>
+  </ul>
+  </li>
+  <li class="">
+    <a href="../example-script/example.html">Example SAS Script</a>
   </li>
 </ul>
 </nav>
@@ -164,7 +193,7 @@
         <div class="dropdown-buttons-trigger">
             <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
             <div class="dropdown-buttons sourcebuttons">
-                <a class="repository-button" href="https://github.com/onoratod/cen-sas-2"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left" title="Source repository"><i class="fab fa-github"></i>repository</button></a>
+                <a class="repository-button" href="https://github.com/onoratod/cen-sas-intro"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left" title="Source repository"><i class="fab fa-github"></i>repository</button></a>
                 
                 
             </div>
@@ -195,9 +224,9 @@
                 
   <div class="section" id="data-step-example">
 <h1>DATA Step Example<a class="headerlink" href="#data-step-example" title="Permalink to this headline">¶</a></h1>
-<p>In the below <code class="docutils literal notranslate"><span class="pre">DATA</span></code> step, we read in a file specified by the <code class="docutils literal notranslate"><span class="pre">set</span></code> statement, <code class="docutils literal notranslate"><span class="pre">in.fake_micro</span></code>, retaining only the first 100 observations <code class="docutils literal notranslate"><span class="pre">(obs</span> <span class="pre">=</span> <span class="pre">100)</span></code> using a data step option (we will discuss these in more detail later). We then create several new variables, subset the data, and save the result to the output dataset, <code class="docutils literal notranslate"><span class="pre">in.fake_micro_10</span></code>. The <code class="docutils literal notranslate"><span class="pre">length</span></code> statement sets the length of the new variable <code class="docutils literal notranslate"><span class="pre">married</span></code> to 3 - the shortest numeric length. SAS automatically sets new numeric variables to length 8, the largest possible numeric length. This is wasteful and you can save space by carefully setting all the lengths of your variables to the minimum required to store the data you need (although be careful to not lose information here by setting the variable length to be too small).</p>
-<p>We create a <code class="docutils literal notranslate"><span class="pre">married</span></code> indicator by evaluating whether or not another variable is equal to 1. We then restrict to rows with non-missing <code class="docutils literal notranslate"><span class="pre">mom_pik</span></code> or <code class="docutils literal notranslate"><span class="pre">dad_pik</span></code>. An <code class="docutils literal notranslate"><span class="pre">if</span></code> statement without a subsequent <code class="docutils literal notranslate"><span class="pre">then</span></code> statement drops any observations that do not meet that criteria specified by the <code class="docutils literal notranslate"><span class="pre">if</span></code> condition.</p>
-<p>Then we create two version of a parent income variable. <code class="docutils literal notranslate"><span class="pre">par_inc_2015_miss</span></code> will be missing if <code class="docutils literal notranslate"><span class="pre">mom_inc_2015</span></code> is missing or <code class="docutils literal notranslate"><span class="pre">dad_inc_2015</span></code> is missing or both. <code class="docutils literal notranslate"><span class="pre">par_inc_2012_nomiss</span></code> will never be missing, since the <code class="docutils literal notranslate"><span class="pre">sum()</span></code> function assigns missing arguments to zero. This is similar to the distinction between using <code class="docutils literal notranslate"><span class="pre">+</span></code> and <code class="docutils literal notranslate"><span class="pre">egen,</span> <span class="pre">rowtotal()</span></code> in Stata.</p>
+<p>In the below <code class="docutils literal notranslate"><span class="pre">DATA</span></code> step, we read in a file specified by the <code class="docutils literal notranslate"><span class="pre">set</span></code> statement, <code class="docutils literal notranslate"><span class="pre">in.fake_micro</span></code>, retaining only the first 100 observations <code class="docutils literal notranslate"><span class="pre">(obs</span> <span class="pre">=</span> <span class="pre">100)</span></code> using a data step option (we will discuss these in more detail later). We then create several new variables, subset the data, and save the result to the output dataset, <code class="docutils literal notranslate"><span class="pre">in.fake_micro_10</span></code>. The <code class="docutils literal notranslate"><span class="pre">length</span></code> statement sets the length of the new variable <code class="docutils literal notranslate"><span class="pre">married</span></code> to 3 - the shortest numeric length. SAS automatically sets new numeric variables to length 8, the largest possible numeric length. This is wasteful and you can save space by carefully setting all the lengths of your variables to the minimum required to store the data you need (although be careful to not lose information here by setting the variable length to be too small, more on this later).</p>
+<p>We create a <code class="docutils literal notranslate"><span class="pre">married</span></code> indicator by evaluating whether or not another variable is equal to 1. We then restrict to rows with non-missing <code class="docutils literal notranslate"><span class="pre">mom_pik</span></code> or <code class="docutils literal notranslate"><span class="pre">dad_pik</span></code>. An <code class="docutils literal notranslate"><span class="pre">if</span></code> statement without a subsequent <code class="docutils literal notranslate"><span class="pre">then</span></code> statement drops any observations that do not meet that criteria specified by the <code class="docutils literal notranslate"><span class="pre">if</span></code> condition (more on this later).</p>
+<p>Then we create two versions of a parent income variable. <code class="docutils literal notranslate"><span class="pre">par_inc_2015_miss</span></code> will be missing if <code class="docutils literal notranslate"><span class="pre">mom_inc_2000</span></code> is missing or <code class="docutils literal notranslate"><span class="pre">dad_inc_2000</span></code> is missing or both. <code class="docutils literal notranslate"><span class="pre">par_inc_2015_nomiss</span></code> will never be missing, since the <code class="docutils literal notranslate"><span class="pre">sum()</span></code> function assigns missing arguments to zero. This is similar to the distinction between using <code class="docutils literal notranslate"><span class="pre">+</span></code> and <code class="docutils literal notranslate"><span class="pre">egen,</span> <span class="pre">rowtotal()</span></code> in Stata.</p>
 <p>The <code class="docutils literal notranslate"><span class="pre">keep</span></code> statement specifies which variables are to be kept and written to the output file. In SAS, <code class="docutils literal notranslate"><span class="pre">:</span></code> acts like a wildcard and is similar to the <code class="docutils literal notranslate"><span class="pre">*</span></code> in Stata, except it can only be used for variable name suffixes. Be mindful of this when naming variables.</p>
 <p>First let’s look at the input data set. Note that missing values here are displayed as <code class="docutils literal notranslate"><span class="pre">NaN</span></code> because we use Python to display the data. In SAS missing values are displayed as <code class="docutils literal notranslate"><span class="pre">.</span></code> similar to Stata.</p>
 <div class="cell tag_remove_input docutils container">
@@ -323,9 +352,12 @@
 </table>
 </div></div></div>
 </div>
+<div class="margin sidebar">
+<p class="sidebar-title"></p>
 <div class="tip admonition">
 <p class="admonition-title">Tip</p>
 <p>The <code class="docutils literal notranslate"><span class="pre">~</span></code> is the logical not symbol in SAS, you may be familiar with <code class="docutils literal notranslate"><span class="pre">!</span></code> as the logical not (as in Stata, although you can use <code class="docutils literal notranslate"><span class="pre">~</span></code> in Stata as well).</p>
+</div>
 </div>
 <div class="highlight-sas notranslate"><div class="highlight"><pre><span></span><span class="c">* Set the directory where the data is;</span> 
 <span class="k">libname</span> <span class="k">in</span> <span class="s">&quot;/media/sf_myfolders&quot;</span><span class="kr">;</span>

@@ -29,8 +29,10 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.13.0/dist/embed-amd.js"></script>
     <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="shortcut icon" href="../_static/favicon2.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="Exercise" href="../control-flow/exercise.html" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="docsearch:language" content="en">
@@ -90,21 +92,60 @@
       <a href="../basics/macro_variables.html">Macro Variables</a>
     </li>
     <li class="">
-      <a href="../basics/putting_together.html">Putting it all together</a>
+      <a href="../basics/putting_together.html">Putting It All Together</a>
     </li>
   </ul>
   </li>
   <li class="">
     <a href="../data_step/data_step.html">The DATA Step</a>
+  <ul class="nav sidenav_l2">
+    <li class="">
+      <a href="../data_step/structure.html">DATA Step Structure</a>
+    </li>
+    <li class="">
+      <a href="../data_step/example.html">DATA Step Example</a>
+    </li>
+    <li class="">
+      <a href="../data_step/options.html">DATA Step Options</a>
+    </li>
+    <li class="">
+      <a href="../data_step/length.html">Setting Variable Lengths</a>
+    </li>
+  </ul>
   </li>
   <li class="">
     <a href="../proc/proc.html">SAS Procedures</a>
+  <ul class="nav sidenav_l2">
+    <li class="">
+      <a href="../proc/sql.html">Merging Data with PROC SQL</a>
+    </li>
+    <li class="">
+      <a href="../proc/import_export.html">Importing and Exporting Data</a>
+    </li>
+    <li class="">
+      <a href="../proc/datasets.html">Deleting Data</a>
+    </li>
+  </ul>
   </li>
   <li class="">
     <a href="../macros/macros.html">SAS Macros</a>
   </li>
   <li class="">
     <a href="../control-flow/control_flow.html">Control Flow</a>
+  <ul class="nav sidenav_l2">
+    <li class="">
+      <a href="../control-flow/if_then_else.html">IF-THEN/ELSE Statements</a>
+    </li>
+    <li class="">
+      <a href="../control-flow/do_loops.html">DO Loops</a>
+    </li>
+    <li class="">
+      <a href="../control-flow/exercise.html">Exercise</a>
+    </li>
+  </ul>
+  </li>
+  <li class="active">
+    <a href="">Example SAS Script</a>
   </li>
 </ul>
 </nav>
@@ -151,7 +192,7 @@
         <div class="dropdown-buttons-trigger">
             <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
             <div class="dropdown-buttons sourcebuttons">
-                <a class="repository-button" href="https://github.com/onoratod/cen-sas-2"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left" title="Source repository"><i class="fab fa-github"></i>repository</button></a>
+                <a class="repository-button" href="https://github.com/onoratod/cen-sas-intro"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left" title="Source repository"><i class="fab fa-github"></i>repository</button></a>
                 
                 
             </div>
@@ -187,12 +228,76 @@
 <p class="sidebar-title"></p>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
-<p>We use the <code class="docutils literal notranslate"><span class="pre">in</span></code> operator to check where <code class="docutils literal notranslate"><span class="pre">yob</span></code> is between 1978 and 1983 inclusive.</p>
+<p>We use the <code class="docutils literal notranslate"><span class="pre">in</span></code> operator to check whether <code class="docutils literal notranslate"><span class="pre">yob</span></code> is between 1978 and 1983 inclusive.</p>
 </div>
 </div>
-<div class="highlight-sas notranslate"><div class="highlight"><pre><span></span><span class="cm">/***</span>
+<div class="highlight-sas notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="cm">/***</span>
 <span class="cm">Prepare raw tax records for analysis</span>
-<span class="cm">Created By: John Doe (2017-02-02)</span>
+<span class="cm">Created By: Census Predoc #2 (2017-02-02)</span>
 <span class="cm">***/</span>
 
 <span class="k">options</span> debug=<span class="s">&#39;CONNECT=00200000&#39;</span> mlogic mprint <span class="k">replace</span> errorabend obs=max threads cpucount=actual;
@@ -205,8 +310,8 @@
 <span class="c">* Useful SAS macros;</span>
 <span class="nf">%include</span> <span class="s">&quot;/XX/leap_macros.sas&quot;</span>;
 
-<span class="cm">* Macro to clean data</span>
-<span class="cm">%macro prep_raw_data(year);</span>
+<span class="c">* Macro to clean data;</span>
+<span class="nb">%macro</span> prep_raw_data(year);
 <span class="c">    </span>
 <span class="c">    * Clean the raw data, restrict to 1978 to 1983 cohorts;</span>
 <span class="kr">    data </span>dump<span class="m">.</span>pre_<span class="nv">&amp;year.</span>(<span class="k">keep</span> = pik yob income geoid <span class="k">where</span> = (yob <span class="k">in</span>(<span class="m">1978</span>:<span class="m">1983</span>)));
@@ -256,7 +361,7 @@
 <span class="c">* Loop over years;</span>
 <span class="nf">%loop</span>(<span class="m">2000</span>, <span class="m">2015</span>, prep_raw_data);
 </pre></div>
-</div>
+</td></tr></table></div>
 </div>
 
 
@@ -268,6 +373,7 @@
     
     <div class='prev-next-bottom'>
         
+    <a class='left-prev' id="prev-link" href="../control-flow/exercise.html" title="previous page">Exercise</a>
 
     </div>
     <footer class="footer mt-5 mt-md-0">
