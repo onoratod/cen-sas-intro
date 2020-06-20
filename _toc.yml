@@ -1,46 +1,46 @@
-- file: content/intro.md
+- file: intro.md
   title: Home
 
-- file: content/intro/why_sas.ipynb
+- file: intro/why_sas.ipynb
   title: Why SAS?
-- file: content/intro/short_history.ipynb
+- file: intro/short_history.ipynb
   title: Short History
 
 - file: basics/basics.ipynb
   expand_sections: true
   sections:
-      - file: content/basics/semicolons.ipynb
-      - file: content/basics/options.ipynb
-      - file: content/basics/include.ipynb
-      - file: content/basics/libname.ipynb
-      - file: content/basics/macro_variables.ipynb
-      - file: content/basics/putting_together.ipynb
+      - file: basics/semicolons.ipynb
+      - file: basics/options.ipynb
+      - file: basics/include.ipynb
+      - file: basics/libname.ipynb
+      - file: basics/macro_variables.ipynb
+      - file: basics/putting_together.ipynb
 
-- file: content/data_step/data_step.ipynb
+- file: data_step/data_step.ipynb
   expand_sections: true
   sections:
-      - file: content/data_step/structure.ipynb
-      - file: content/data_step/example.ipynb
-      - file: content/data_step/options.ipynb 
-      - file: content/data_step/length.ipynb
+      - file: data_step/structure.ipynb
+      - file: data_step/example.ipynb
+      - file: data_step/options.ipynb 
+      - file: data_step/length.ipynb
 
-- file: content/proc/proc.ipynb
+- file: proc/proc.ipynb
   expand_sections: true 
   sections:
-      - file: content/proc/sql.ipynb
-      - file: content/proc/import_export.ipynb
-      - file: content/proc/datasets.ipynb
+      - file: proc/sql.ipynb
+      - file: proc/import_export.ipynb
+      - file: proc/datasets.ipynb
 
-- file: content/macros/macros.ipynb
+- file: macros/macros.ipynb
 
-- file: content/control-flow/control_flow.ipynb
+- file: control-flow/control_flow.ipynb
   expand_sections: true
   sections:
-    - file: content/control-flow/if_then_else.ipynb
-    - file: content/control-flow/do_loops.ipynb
-    - file: content/control-flow/exercise.ipynb
+    - file: control-flow/if_then_else.ipynb
+    - file: control-flow/do_loops.ipynb
+    - file: control-flow/exercise.ipynb
 
-- file: content/example-script/example.ipynb
+- file: example-script/example.ipynb
 
 # Reading SAS logs
 
