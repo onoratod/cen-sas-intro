@@ -1,0 +1,17 @@
+# Book settings
+title: Introduction to SAS for Incoming Predocs
+author: Opportunity Insights Census Team
+logo: images/censas.png
+
+latex:
+  latex_documents:
+    targetname: book.tex
+
+html:
+  use_edit_page_button: false
+  use_repository_button: true 
+  favicon: images/favicon2.ico
+
+repository:
+  url: https://github.com/onoratod/cen-sas-intro
+  branch: master 

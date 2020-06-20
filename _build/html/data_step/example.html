@@ -1,0 +1,503 @@
+
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>DATA Step Example &#8212; Introduction to SAS for Incoming Predocs</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha384-KA6wR/X5RY4zFAHpv/CnoG2UW1uogYfdnP67Uv7eULvTveboZJg0qUpmJZb5VqzN" crossorigin="anonymous">
+    <link href="../_static/css/index.css" rel="stylesheet">
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/jupyter-sphinx.css" />
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/sphinx-book-theme.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/mystnb.js"></script>
+    <script src="../_static/sphinx-book-theme.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.13.0/dist/embed-amd.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="DATA Step Options" href="options.html" />
+    <link rel="prev" title="DATA Step Structure" href="structure.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="docsearch:language" content="en">
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="../index.html">
+  
+  <img src="../_static/censas.png" class="logo" alt="logo">
+  
+  
+  <h1 class="site-logo" id="site-title">Introduction to SAS for Incoming Predocs</h1>
+  
+</a>
+</div>
+
+<form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  
+  <ul class="nav sidenav_l1">
+  <li class="">
+    <a href="../intro/why_sas.html">Why SAS?</a>
+  </li>
+  <li class="">
+    <a href="../intro/short_history.html">Short History</a>
+  </li>
+  <li class="">
+    <a href="../basics/basics.html">Basics</a>
+  <ul class="nav sidenav_l2">
+    <li class="">
+      <a href="../basics/semicolons.html">Semicolons and Comments</a>
+    </li>
+    <li class="">
+      <a href="../basics/options.html">The OPTIONS Statement</a>
+    </li>
+    <li class="">
+      <a href="../basics/include.html">Including External Code</a>
+    </li>
+    <li class="">
+      <a href="../basics/libname.html">The LIBNAME Statement</a>
+    </li>
+    <li class="">
+      <a href="../basics/macro_variables.html">Macro Variables</a>
+    </li>
+    <li class="">
+      <a href="../basics/putting_together.html">Putting it all together</a>
+    </li>
+  </ul>
+  </li>
+  <li class="active">
+    <a href="data_step.html">The DATA Step</a>
+  <ul class="nav sidenav_l2">
+    <li class="">
+      <a href="structure.html">DATA Step Structure</a>
+    </li>
+    <li class="active">
+      <a href="">DATA Step Example</a>
+    </li>
+    <li class="">
+      <a href="options.html">DATA Step Options</a>
+    </li>
+  </ul>
+  </li>
+  <li class="">
+    <a href="../proc/proc.html">SAS Procedures</a>
+  </li>
+  <li class="">
+    <a href="../macros/macros.html">SAS Macros</a>
+  </li>
+  <li class="">
+    <a href="../control-flow/control_flow.html">Control Flow</a>
+  </li>
+</ul>
+</nav>
+
+ <!-- To handle the deprecated key -->
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse" data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu" aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation" title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        <div class="dropdown-buttons-trigger">
+            <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i class="fas fa-download"></i></button>
+
+            
+            <div class="dropdown-buttons">
+                <!-- ipynb file if we had a myst markdown file -->
+                
+                <!-- Download raw file -->
+                <a class="dropdown-buttons" href="../_sources/data_step/example.ipynb"><button type="button" class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip" data-placement="left">.ipynb</button></a>
+                <!-- Download PDF via print -->
+                <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF" onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+            </div>
+            
+        </div>
+
+        <!-- Source interaction buttons -->
+        
+        <div class="dropdown-buttons-trigger">
+            <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+            <div class="dropdown-buttons sourcebuttons">
+                <a class="repository-button" href="https://github.com/onoratod/cen-sas-2"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left" title="Source repository"><i class="fab fa-github"></i>repository</button></a>
+                
+                
+            </div>
+        </div>
+        
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="bottom" onclick="toggleFullScreen()" title="Fullscreen mode"><i class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+        
+    </div>
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+
+<nav id="bd-toc-nav">
+    <ul class="nav section-nav flex-column">
+    
+    </ul>
+</nav>
+
+
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="data-step-example">
+<h1>DATA Step Example<a class="headerlink" href="#data-step-example" title="Permalink to this headline">¶</a></h1>
+<p>In the below <code class="docutils literal notranslate"><span class="pre">DATA</span></code> step, we read in a file specified by the <code class="docutils literal notranslate"><span class="pre">set</span></code> statement, <code class="docutils literal notranslate"><span class="pre">in.fake_micro</span></code>, retaining only the first 100 observations <code class="docutils literal notranslate"><span class="pre">(obs</span> <span class="pre">=</span> <span class="pre">100)</span></code> using a data step option (we will discuss these in more detail later). We then create several new variables, subset the data, and save the result to the output dataset, <code class="docutils literal notranslate"><span class="pre">in.fake_micro_10</span></code>. The <code class="docutils literal notranslate"><span class="pre">length</span></code> statement sets the length of the new variable <code class="docutils literal notranslate"><span class="pre">married</span></code> to 3 - the shortest numeric length. SAS automatically sets new numeric variables to length 8, the largest possible numeric length. This is wasteful and you can save space by carefully setting all the lengths of your variables to the minimum required to store the data you need (although be careful to not lose information here by setting the variable length to be too small).</p>
+<p>We create a <code class="docutils literal notranslate"><span class="pre">married</span></code> indicator by evaluating whether or not another variable is equal to 1. We then restrict to rows with non-missing <code class="docutils literal notranslate"><span class="pre">mom_pik</span></code> or <code class="docutils literal notranslate"><span class="pre">dad_pik</span></code>. An <code class="docutils literal notranslate"><span class="pre">if</span></code> statement without a subsequent <code class="docutils literal notranslate"><span class="pre">then</span></code> statement drops any observations that do not meet that criteria specified by the <code class="docutils literal notranslate"><span class="pre">if</span></code> condition.</p>
+<p>Then we create two version of a parent income variable. <code class="docutils literal notranslate"><span class="pre">par_inc_2015_miss</span></code> will be missing if <code class="docutils literal notranslate"><span class="pre">mom_inc_2015</span></code> is missing or <code class="docutils literal notranslate"><span class="pre">dad_inc_2015</span></code> is missing or both. <code class="docutils literal notranslate"><span class="pre">par_inc_2012_nomiss</span></code> will never be missing, since the <code class="docutils literal notranslate"><span class="pre">sum()</span></code> function assigns missing arguments to zero. This is similar to the distinction between using <code class="docutils literal notranslate"><span class="pre">+</span></code> and <code class="docutils literal notranslate"><span class="pre">egen,</span> <span class="pre">rowtotal()</span></code> in Stata.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">keep</span></code> statement specifies which variables are to be kept and written to the output file. In SAS, <code class="docutils literal notranslate"><span class="pre">:</span></code> acts like a wildcard and is similar to the <code class="docutils literal notranslate"><span class="pre">*</span></code> in Stata, except it can only be used for variable name suffixes. Be mindful of this when naming variables.</p>
+<p>First let’s look at the input data set. Note that missing values here are displayed as <code class="docutils literal notranslate"><span class="pre">NaN</span></code> because we use Python to display the data. In SAS missing values are displayed as <code class="docutils literal notranslate"><span class="pre">.</span></code> similar to Stata.</p>
+<div class="cell tag_remove_input docutils container">
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>pik</th>
+      <th>mom_pik</th>
+      <th>dad_pik</th>
+      <th>kid_married_2015</th>
+      <th>mom_inc_2000</th>
+      <th>dad_inc_2000</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>141</td>
+      <td>173</td>
+      <td>NaN</td>
+      <td>1.0</td>
+      <td>16474.893</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>138</td>
+      <td>149</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>21689.520</td>
+      <td>37348.6450</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>177</td>
+      <td>NaN</td>
+      <td>003</td>
+      <td>0.0</td>
+      <td>11420.902</td>
+      <td>14666.4970</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>146</td>
+      <td>013</td>
+      <td>004</td>
+      <td>0.0</td>
+      <td>NaN</td>
+      <td>34485.8130</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>104</td>
+      <td>187</td>
+      <td>005</td>
+      <td>1.0</td>
+      <td>52476.680</td>
+      <td>6003.8027</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>144</td>
+      <td>NaN</td>
+      <td>006</td>
+      <td>1.0</td>
+      <td>13744.854</td>
+      <td>20464.3630</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>083</td>
+      <td>025</td>
+      <td>007</td>
+      <td>0.0</td>
+      <td>22038.420</td>
+      <td>17941.8010</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>115</td>
+      <td>NaN</td>
+      <td>008</td>
+      <td>1.0</td>
+      <td>16084.973</td>
+      <td>6875.2935</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>170</td>
+      <td>157</td>
+      <td>009</td>
+      <td>1.0</td>
+      <td>17766.367</td>
+      <td>31663.4510</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>118</td>
+      <td>NaN</td>
+      <td>010</td>
+      <td>1.0</td>
+      <td>29356.543</td>
+      <td>NaN</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="tip admonition">
+<p class="admonition-title">Tip</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">~</span></code> is the logical not symbol in SAS, you may be familiar with <code class="docutils literal notranslate"><span class="pre">!</span></code> as the logical not (as in Stata, although you can use <code class="docutils literal notranslate"><span class="pre">~</span></code> in Stata as well).</p>
+</div>
+<div class="highlight-sas notranslate"><div class="highlight"><pre><span></span><span class="c">* Set the directory where the data is;</span> 
+<span class="k">libname</span> <span class="k">in</span> <span class="s">&quot;/media/sf_myfolders&quot;</span><span class="kr">;</span>
+
+<span class="kr">data </span><span class="k">in</span><span class="m">.</span>fake_micro_10;
+    <span class="k">set</span> <span class="k">in</span><span class="m">.</span>fake_micro(obs=<span class="m">100</span>);
+<span class="c">    </span>
+<span class="c">    * Set length of the marriage variable;</span>
+    <span class="k">length</span> married <span class="m">3</span>; 
+<span class="c">    </span>
+<span class="c">    * Create married indicator;</span>
+    married = kid_married_2015=<span class="m">1</span>;
+<span class="c">    </span>
+<span class="c">    * Restrict to kids with a mom_pik or dad_pik;</span>
+    <span class="k">if</span> ~<span class="k">missing</span>(mom_pik) <span class="k">or</span> ~<span class="k">missing</span>(dad_pik);
+<span class="c">    </span>
+<span class="c">    * Combine parent income, this will be missing if either component is missing;</span>
+    par_inc_2015_miss = mom_inc_2000 + dad_inc_2000;
+<span class="c">    </span>
+<span class="c">    * Combine parent_income, this will treat missing values as zero and will never be missing;</span>
+    par_inc_2015_nomiss = <span class="nb">sum(</span>mom_inc_2000, dad_inc_2000);
+    
+    <span class="k">keep</span> pik mom_pik dad_pik par_inc_2015: <span class="kr">;</span>
+<span class="kr">    </span>
+<span class="kr">run;</span> 
+</pre></div>
+</div>
+<p>No we look at the output data set and we can see the difference between using <code class="docutils literal notranslate"><span class="pre">+</span></code> and <code class="docutils literal notranslate"><span class="pre">sum</span></code>.</p>
+<div class="cell tag_remove_input docutils container">
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>pik</th>
+      <th>mom_pik</th>
+      <th>dad_pik</th>
+      <th>par_inc_2015_miss</th>
+      <th>par_inc_2015_nomiss</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>141</td>
+      <td>173</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>16474.8930</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>138</td>
+      <td>149</td>
+      <td>NaN</td>
+      <td>59038.1650</td>
+      <td>59038.1650</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>177</td>
+      <td>NaN</td>
+      <td>003</td>
+      <td>26087.3990</td>
+      <td>26087.3990</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>146</td>
+      <td>013</td>
+      <td>004</td>
+      <td>NaN</td>
+      <td>34485.8130</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>104</td>
+      <td>187</td>
+      <td>005</td>
+      <td>58480.4827</td>
+      <td>58480.4827</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>144</td>
+      <td>NaN</td>
+      <td>006</td>
+      <td>34209.2170</td>
+      <td>34209.2170</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>083</td>
+      <td>025</td>
+      <td>007</td>
+      <td>39980.2210</td>
+      <td>39980.2210</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>115</td>
+      <td>NaN</td>
+      <td>008</td>
+      <td>22960.2665</td>
+      <td>22960.2665</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>170</td>
+      <td>157</td>
+      <td>009</td>
+      <td>49429.8180</td>
+      <td>49429.8180</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>118</td>
+      <td>NaN</td>
+      <td>010</td>
+      <td>NaN</td>
+      <td>29356.5430</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</div>
+
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+    <a class='left-prev' id="prev-link" href="structure.html" title="previous page">DATA Step Structure</a>
+    <a class='right-next' id="next-link" href="options.html" title="next page">DATA Step Options</a>
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Opportunity Insights Census Team<br/>
+        
+            &copy; Copyright 2020.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    <script src="../_static/js/index.js"></script>
+    
+  </body>
+</html>

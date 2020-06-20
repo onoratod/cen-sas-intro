@@ -1,0 +1,1 @@
+SAS uses `;` to delimit the end of a line of code (this is similar to Java and C languages). This means you need to include a `;` at the end of every line of code. This also means lines of code can span several lines (unlike Stata which requires a line break character `///`).

@@ -1,0 +1,51 @@
+- file: content/intro.md
+  title: Home
+
+- file: content/intro/why_sas.ipynb
+  title: Why SAS?
+- file: content/intro/short_history.ipynb
+  title: Short History
+
+- file: basics/basics.ipynb
+  expand_sections: true
+  sections:
+      - file: content/basics/semicolons.ipynb
+      - file: content/basics/options.ipynb
+      - file: content/basics/include.ipynb
+      - file: content/basics/libname.ipynb
+      - file: content/basics/macro_variables.ipynb
+      - file: content/basics/putting_together.ipynb
+
+- file: content/data_step/data_step.ipynb
+  expand_sections: true
+  sections:
+      - file: content/data_step/structure.ipynb
+      - file: content/data_step/example.ipynb
+      - file: content/data_step/options.ipynb 
+      - file: content/data_step/length.ipynb
+
+- file: content/proc/proc.ipynb
+  expand_sections: true 
+  sections:
+      - file: content/proc/sql.ipynb
+      - file: content/proc/import_export.ipynb
+      - file: content/proc/datasets.ipynb
+
+- file: content/macros/macros.ipynb
+
+- file: content/control-flow/control_flow.ipynb
+  expand_sections: true
+  sections:
+    - file: content/control-flow/if_then_else.ipynb
+    - file: content/control-flow/do_loops.ipynb
+    - file: content/control-flow/exercise.ipynb
+
+- file: content/example-script/example.ipynb
+
+# Reading SAS logs
+
+
+
+
+
+
