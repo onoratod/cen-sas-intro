@@ -1,6 +1,6 @@
 # Introduction to SAS for Incoming Predocs
 
-<img src="censas.png" alt="drawing" width="500"/>
+<img src="images/censas.png" alt="drawing" width="500"/>
 
 This is a simple website built to serve as a SAS guide for incoming predocs. It is built using [Jupyter Books](https://jupyterbook.org/intro.html) and hosted using [Netlify](https://www.netlify.com/). Jupyter Books turns [Jupyter Notebooks](https://jupyter.org/) (which rely on Python) and markdown files into websites that are structured as books. 
 
