@@ -1,0 +1,966 @@
+
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>DATA Step Options &#8212; Introduction to SAS for Incoming Predocs</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha384-KA6wR/X5RY4zFAHpv/CnoG2UW1uogYfdnP67Uv7eULvTveboZJg0qUpmJZb5VqzN" crossorigin="anonymous">
+    <link href="../../_static/css/index.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../_static/sphinx-book-theme.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/jupyter-sphinx.css" />
+    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/sphinx-book-theme.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/language_data.js"></script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/mystnb.js"></script>
+    <script src="../../_static/sphinx-book-theme.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.13.0/dist/embed-amd.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="shortcut icon" href="../../_static/favicon2.ico"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Setting Variable Lengths" href="length.html" />
+    <link rel="prev" title="DATA Step Example" href="example.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="docsearch:language" content="en">
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="../../index.html">
+  
+  <img src="../../_static/censas.png" class="logo" alt="logo">
+  
+  
+  <h1 class="site-logo" id="site-title">Introduction to SAS for Incoming Predocs</h1>
+  
+</a>
+</div>
+
+<form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  
+  <ul class="nav sidenav_l1">
+  <li class="">
+    <a href="../intro/why_sas.html">Why SAS?</a>
+  </li>
+  <li class="">
+    <a href="../intro/short_history.html">Short History</a>
+  </li>
+  <li class="active">
+    <a href="data_step.html">The DATA Step</a>
+  <ul class="nav sidenav_l2">
+    <li class="">
+      <a href="structure.html">DATA Step Structure</a>
+    </li>
+    <li class="">
+      <a href="example.html">DATA Step Example</a>
+    </li>
+    <li class="active">
+      <a href="">DATA Step Options</a>
+    </li>
+    <li class="">
+      <a href="length.html">Setting Variable Lengths</a>
+    </li>
+  </ul>
+  </li>
+  <li class="">
+    <a href="../proc/proc.html">SAS Procedures</a>
+  <ul class="nav sidenav_l2">
+    <li class="">
+      <a href="../proc/sql.html">Merging Data with PROC SQL</a>
+    </li>
+    <li class="">
+      <a href="../proc/import_export.html">Importing and Exporting Data</a>
+    </li>
+    <li class="">
+      <a href="../proc/datasets.html">Deleting Data</a>
+    </li>
+  </ul>
+  </li>
+  <li class="">
+    <a href="../macros/macros.html">SAS Macros</a>
+  </li>
+  <li class="">
+    <a href="../control-flow/control_flow.html">Control Flow</a>
+  <ul class="nav sidenav_l2">
+    <li class="">
+      <a href="../control-flow/if_then_else.html">IF-THEN/ELSE Statements</a>
+    </li>
+    <li class="">
+      <a href="../control-flow/do_loops.html">DO Loops</a>
+    </li>
+    <li class="">
+      <a href="../control-flow/exercise.html">Exercise</a>
+    </li>
+  </ul>
+  </li>
+  <li class="">
+    <a href="../example-script/example.html">Example SAS Script</a>
+  </li>
+</ul>
+</nav>
+
+ <!-- To handle the deprecated key -->
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse" data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu" aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation" title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        <div class="dropdown-buttons-trigger">
+            <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i class="fas fa-download"></i></button>
+
+            
+            <div class="dropdown-buttons">
+                <!-- ipynb file if we had a myst markdown file -->
+                
+                <!-- Download raw file -->
+                <a class="dropdown-buttons" href="../../_sources/content/data_step/options.ipynb"><button type="button" class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip" data-placement="left">.ipynb</button></a>
+                <!-- Download PDF via print -->
+                <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF" onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+            </div>
+            
+        </div>
+
+        <!-- Source interaction buttons -->
+        
+        <div class="dropdown-buttons-trigger">
+            <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+            <div class="dropdown-buttons sourcebuttons">
+                <a class="repository-button" href="https://github.com/onoratod/cen-sas-intro"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left" title="Source repository"><i class="fab fa-github"></i>repository</button></a>
+                
+                
+            </div>
+        </div>
+        
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="bottom" onclick="toggleFullScreen()" title="Fullscreen mode"><i class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+        
+    </div>
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+<div class="tocsection onthispage pt-5 pb-3">
+    <i class="fas fa-list"></i> On this page
+</div>
+
+<nav id="bd-toc-nav">
+    <ul class="nav section-nav flex-column">
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#important-data-step-options" class="nav-link">Important DATA Step Options</a><ul class="nav section-nav flex-column">
+                
+        <li class="nav-item toc-entry toc-h3">
+            <a href="#keep-and-drop-options" class="nav-link">KEEP and DROP Options</a><ul class="nav section-nav flex-column">
+                
+        <li class="nav-item toc-entry toc-h4">
+            <a href="#example" class="nav-link">Example</a>
+        </li>
+    
+            </ul>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h3">
+            <a href="#rename-option" class="nav-link">RENAME Option</a><ul class="nav section-nav flex-column">
+                
+        <li class="nav-item toc-entry toc-h4">
+            <a href="#id1" class="nav-link">Example</a>
+        </li>
+    
+            </ul>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h3">
+            <a href="#where-option" class="nav-link">WHERE Option</a><ul class="nav section-nav flex-column">
+                
+        <li class="nav-item toc-entry toc-h4">
+            <a href="#id2" class="nav-link">Example</a>
+        </li>
+    
+            </ul>
+        </li>
+    
+            </ul>
+        </li>
+    
+    </ul>
+</nav>
+
+
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="data-step-options">
+<h1>DATA Step Options<a class="headerlink" href="#data-step-options" title="Permalink to this headline">¶</a></h1>
+<p><code class="docutils literal notranslate"><span class="pre">DATA</span></code> step options provide a set of tools to interact with input and output datasets. They are declared in parentheses after the filenames in <code class="docutils literal notranslate"><span class="pre">data</span></code> or <code class="docutils literal notranslate"><span class="pre">set</span></code> statements:</p>
+<div class="highlight-sas notranslate"><div class="highlight"><pre><span></span><span class="kr">data </span>library<span class="m">.</span>out_filename ( <span class="c">/* data step options */</span> );
+    <span class="k">set</span> library<span class="m">.</span>in_filename ( <span class="c">/* data step options */</span> );
+        <span class="c">/* data step statements */</span>
+<span class="kr">run;</span>
+</pre></div>
+</div>
+<p>If a data set option follows the <code class="docutils literal notranslate"><span class="pre">set</span></code> statement, the options apply to the data being read in. If it follows the <code class="docutils literal notranslate"><span class="pre">data</span></code> statement, SAS applies the action to the output dataset. The general order of operations is:</p>
+<ol class="simple">
+<li><p>SAS applies <code class="docutils literal notranslate"><span class="pre">data</span></code> step options specified in the <code class="docutils literal notranslate"><span class="pre">set</span></code> statement to the input data</p></li>
+<li><p>SAS evaluates the programming statements in the <code class="docutils literal notranslate"><span class="pre">DATA</span></code> step</p></li>
+<li><p>SAS applies <code class="docutils literal notranslate"><span class="pre">data</span></code> step options specified in the <code class="docutils literal notranslate"><span class="pre">data</span></code> statement to the output data</p></li>
+</ol>
+<p>Last thing to keep in mind is that SAS always evaluates <code class="docutils literal notranslate"><span class="pre">keep</span></code>/<code class="docutils literal notranslate"><span class="pre">drop</span></code> options before <code class="docutils literal notranslate"><span class="pre">rename</span></code> options. This means you need to use the original variable names in the <code class="docutils literal notranslate"><span class="pre">keep</span></code>/<code class="docutils literal notranslate"><span class="pre">drop</span></code> options when using a <code class="docutils literal notranslate"><span class="pre">rename</span></code> option in the same statement.</p>
+<div class="section" id="important-data-step-options">
+<h2>Important <code class="docutils literal notranslate"><span class="pre">DATA</span></code> Step Options<a class="headerlink" href="#important-data-step-options" title="Permalink to this headline">¶</a></h2>
+<p>Below we summarize some of the most important data step options and give examples of their use. You can find a comprehensive list <a class="reference external" href="https://documentation.sas.com/?docsetId=ledsoptsref&amp;docsetTarget=p1mde8kd2by1sen1k3h2stj7kj69.htm&amp;docsetVersion=3.1&amp;locale=en">here</a>.</p>
+<div class="section" id="keep-and-drop-options">
+<h3><code class="docutils literal notranslate"><span class="pre">KEEP</span></code> and <code class="docutils literal notranslate"><span class="pre">DROP</span></code> Options<a class="headerlink" href="#keep-and-drop-options" title="Permalink to this headline">¶</a></h3>
+<p>The <code class="docutils literal notranslate"><span class="pre">keep</span></code> data step option allows us to only keep certain variables from the input or output dataset. Similarly, the <code class="docutils literal notranslate"><span class="pre">drop</span></code> data step option allows us to drop variables from the input or output dataset.</p>
+<p>To use the <code class="docutils literal notranslate"><span class="pre">keep</span></code>/<code class="docutils literal notranslate"><span class="pre">drop</span></code> options, write <code class="docutils literal notranslate"><span class="pre">keep</span> <span class="pre">=</span> </code> or <code class="docutils literal notranslate"><span class="pre">drop</span> <span class="pre">=</span> </code> followed by the list of variables you would like to keep or drop.</p>
+<div class="section" id="example">
+<h4>Example<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h4>
+<p>Below we drop the <code class="docutils literal notranslate"><span class="pre">kid_married_2015</span></code> variable from the <code class="docutils literal notranslate"><span class="pre">in.fake_micro</span></code> dataset using the <code class="docutils literal notranslate"><span class="pre">drop</span></code> option. Then we create <code class="docutils literal notranslate"><span class="pre">par_inc_2000</span></code> in the <code class="docutils literal notranslate"><span class="pre">data</span></code> step and only keep <code class="docutils literal notranslate"><span class="pre">pik</span></code>, <code class="docutils literal notranslate"><span class="pre">mom_pik</span></code>, <code class="docutils literal notranslate"><span class="pre">dad_pik</span></code>, and <code class="docutils literal notranslate"><span class="pre">par_inc_2000</span></code> in the <code class="docutils literal notranslate"><span class="pre">out.par_income</span></code> output dataset using the <code class="docutils literal notranslate"><span class="pre">keep</span></code> option.</p>
+<div class="highlight-sas notranslate"><div class="highlight"><pre><span></span><span class="kr">data </span><span class="k">out</span><span class="m">.</span>par_income(<span class="k">keep</span> = pik mom_pik dad_pik par_inc_2000);
+    <span class="k">set</span> <span class="k">in</span><span class="m">.</span>fake_micro(<span class="k">drop</span> = kid_married_2015); 
+        par_inc_2000 = <span class="nb">sum(</span>mom_inc_2000, dad_inc_2000)<span class="kr">; </span>
+<span class="kr">run;</span> 
+</pre></div>
+</div>
+<p>Here is the <code class="docutils literal notranslate"><span class="pre">in.fake_micro</span></code> data:</p>
+<div class="cell tag_remove_input tag_hide_output docutils container">
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>pik</th>
+      <th>mom_pik</th>
+      <th>dad_pik</th>
+      <th>kid_married_2015</th>
+      <th>mom_inc_2000</th>
+      <th>dad_inc_2000</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>141</td>
+      <td>173</td>
+      <td>NaN</td>
+      <td>1.0</td>
+      <td>16474.893</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>138</td>
+      <td>149</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>21689.520</td>
+      <td>37348.6450</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>177</td>
+      <td>NaN</td>
+      <td>003</td>
+      <td>0.0</td>
+      <td>11420.902</td>
+      <td>14666.4970</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>146</td>
+      <td>013</td>
+      <td>004</td>
+      <td>0.0</td>
+      <td>NaN</td>
+      <td>34485.8130</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>104</td>
+      <td>187</td>
+      <td>005</td>
+      <td>1.0</td>
+      <td>52476.680</td>
+      <td>6003.8027</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>144</td>
+      <td>NaN</td>
+      <td>006</td>
+      <td>1.0</td>
+      <td>13744.854</td>
+      <td>20464.3630</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>083</td>
+      <td>025</td>
+      <td>007</td>
+      <td>0.0</td>
+      <td>22038.420</td>
+      <td>17941.8010</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>115</td>
+      <td>NaN</td>
+      <td>008</td>
+      <td>1.0</td>
+      <td>16084.973</td>
+      <td>6875.2935</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>170</td>
+      <td>157</td>
+      <td>009</td>
+      <td>1.0</td>
+      <td>17766.367</td>
+      <td>31663.4510</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>118</td>
+      <td>NaN</td>
+      <td>010</td>
+      <td>1.0</td>
+      <td>29356.543</td>
+      <td>NaN</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>And the <code class="docutils literal notranslate"><span class="pre">out.par_income</span></code> dataset:</p>
+<div class="cell tag_remove_input tag_hide_output docutils container">
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>pik</th>
+      <th>mom_pik</th>
+      <th>dad_pik</th>
+      <th>par_inc_2000</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>141</td>
+      <td>173</td>
+      <td>NaN</td>
+      <td>16474.8930</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>138</td>
+      <td>149</td>
+      <td>NaN</td>
+      <td>59038.1650</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>177</td>
+      <td>NaN</td>
+      <td>003</td>
+      <td>26087.3990</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>146</td>
+      <td>013</td>
+      <td>004</td>
+      <td>34485.8130</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>104</td>
+      <td>187</td>
+      <td>005</td>
+      <td>58480.4827</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>144</td>
+      <td>NaN</td>
+      <td>006</td>
+      <td>34209.2170</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>083</td>
+      <td>025</td>
+      <td>007</td>
+      <td>39980.2210</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>115</td>
+      <td>NaN</td>
+      <td>008</td>
+      <td>22960.2665</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>170</td>
+      <td>157</td>
+      <td>009</td>
+      <td>49429.8180</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>118</td>
+      <td>NaN</td>
+      <td>010</td>
+      <td>29356.5430</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</div>
+</div>
+<div class="section" id="rename-option">
+<h3><code class="docutils literal notranslate"><span class="pre">RENAME</span></code> Option<a class="headerlink" href="#rename-option" title="Permalink to this headline">¶</a></h3>
+<p>The <code class="docutils literal notranslate"><span class="pre">rename</span></code> data step option allows us to change variable names from the input or output datasets. If you use <code class="docutils literal notranslate"><span class="pre">rename</span></code> in the <code class="docutils literal notranslate"><span class="pre">data</span></code> statement, the variable name is changed in the output data set. If you use <code class="docutils literal notranslate"><span class="pre">rename</span></code> in the <code class="docutils literal notranslate"><span class="pre">set</span></code> statement, the variable name is changed in the input data set and <strong>the new name is used for all the subsequent <code class="docutils literal notranslate"><span class="pre">DATA</span></code> step commands.</strong></p>
+<p>To use the <code class="docutils literal notranslate"><span class="pre">rename</span></code> option to rename <code class="docutils literal notranslate"><span class="pre">old_name</span></code> to <code class="docutils literal notranslate"><span class="pre">new_name</span></code> we would write <code class="docutils literal notranslate"><span class="pre">rename</span> <span class="pre">=</span> <span class="pre">(old_name</span> <span class="pre">=</span> <span class="pre">new_name)</span></code>.</p>
+<p>Don’t forget that the <code class="docutils literal notranslate"><span class="pre">rename</span></code> option is evaluated after <code class="docutils literal notranslate"><span class="pre">keep</span></code>/<code class="docutils literal notranslate"><span class="pre">drop</span></code> options!</p>
+<div class="section" id="id1">
+<h4>Example<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h4>
+<p>In the example below, we load in the <code class="docutils literal notranslate"><span class="pre">pik</span></code> variable from <code class="docutils literal notranslate"><span class="pre">in.fake_micro</span></code> and immediately rename it to <code class="docutils literal notranslate"><span class="pre">kid_pik</span></code> — this is the name that should be used in subsequent data step commands. Then we restrict the data set to rows where the last digit of <code class="docutils literal notranslate"><span class="pre">pik</span></code> is 4 using <code class="docutils literal notranslate"><span class="pre">substr</span></code> and an <code class="docutils literal notranslate"><span class="pre">if</span></code> statement (more on these later). Finally, we only keep the <code class="docutils literal notranslate"><span class="pre">kid_pik</span></code> variable and rename <code class="docutils literal notranslate"><span class="pre">kid_pik</span></code> to <code class="docutils literal notranslate"><span class="pre">pik</span></code>. Note that we reference <code class="docutils literal notranslate"><span class="pre">kid_pik</span></code> in the <code class="docutils literal notranslate"><span class="pre">keep</span></code> statement, this is because <code class="docutils literal notranslate"><span class="pre">keep</span></code> is evaluated before we rename <code class="docutils literal notranslate"><span class="pre">kid_pik</span></code> to <code class="docutils literal notranslate"><span class="pre">pik</span></code>.</p>
+<div class="highlight-sas notranslate"><div class="highlight"><pre><span></span><span class="kr">data </span><span class="k">out</span><span class="m">.</span>kid_piks(<span class="k">keep</span> = kid_pik <span class="k">rename</span> = (kid_pik = pik));
+    <span class="k">set</span> <span class="k">in</span><span class="m">.</span>fake_micro(<span class="k">keep</span> = pik <span class="k">rename</span> = (pik = kid_pik));
+<span class="c">    </span>
+<span class="c">        * Keep PIKs that end in a 4;</span>
+        <span class="k">if</span> <span class="nb">substr(</span>kid_pik, <span class="m">3</span>, <span class="m">1</span>) = <span class="s">&quot;4&quot;</span><span class="kr">; </span>
+<span class="kr">        </span>
+<span class="kr">run;</span> 
+</pre></div>
+</div>
+<p>Here is the input data <code class="docutils literal notranslate"><span class="pre">in.fake_micro</span></code>:</p>
+<div class="cell tag_remove_input tag_hide_output docutils container">
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>pik</th>
+      <th>mom_pik</th>
+      <th>dad_pik</th>
+      <th>kid_married_2015</th>
+      <th>mom_inc_2000</th>
+      <th>dad_inc_2000</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>141</td>
+      <td>173</td>
+      <td>NaN</td>
+      <td>1.0</td>
+      <td>16474.893</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>138</td>
+      <td>149</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>21689.520</td>
+      <td>37348.6450</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>177</td>
+      <td>NaN</td>
+      <td>003</td>
+      <td>0.0</td>
+      <td>11420.902</td>
+      <td>14666.4970</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>146</td>
+      <td>013</td>
+      <td>004</td>
+      <td>0.0</td>
+      <td>NaN</td>
+      <td>34485.8130</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>104</td>
+      <td>187</td>
+      <td>005</td>
+      <td>1.0</td>
+      <td>52476.680</td>
+      <td>6003.8027</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>144</td>
+      <td>NaN</td>
+      <td>006</td>
+      <td>1.0</td>
+      <td>13744.854</td>
+      <td>20464.3630</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>083</td>
+      <td>025</td>
+      <td>007</td>
+      <td>0.0</td>
+      <td>22038.420</td>
+      <td>17941.8010</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>115</td>
+      <td>NaN</td>
+      <td>008</td>
+      <td>1.0</td>
+      <td>16084.973</td>
+      <td>6875.2935</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>170</td>
+      <td>157</td>
+      <td>009</td>
+      <td>1.0</td>
+      <td>17766.367</td>
+      <td>31663.4510</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>118</td>
+      <td>NaN</td>
+      <td>010</td>
+      <td>1.0</td>
+      <td>29356.543</td>
+      <td>NaN</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>And the output data <code class="docutils literal notranslate"><span class="pre">out.kid_piks</span></code>:</p>
+<div class="cell tag_remove_input tag_hide_output docutils container">
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>pik</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>104</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>144</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>054</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>154</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>064</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>194</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>074</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>084</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>014</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>124</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</div>
+</div>
+<div class="section" id="where-option">
+<h3><code class="docutils literal notranslate"><span class="pre">WHERE</span></code> Option<a class="headerlink" href="#where-option" title="Permalink to this headline">¶</a></h3>
+<p>The <code class="docutils literal notranslate"><span class="pre">where</span></code> option lets us select observations from the input or output data sets by applying conditions to the data. This is similar to using a <code class="docutils literal notranslate"><span class="pre">use</span> <span class="pre">if</span></code> in Stata:</p>
+<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">use</span> file_name<span class="k"> if</span> x <span class="o">&gt;</span> <span class="m">100</span>,<span class="k"> clear</span> 
+</pre></div>
+</div>
+<p>To apply a condition using a <code class="docutils literal notranslate"><span class="pre">where</span></code> option we would write <code class="docutils literal notranslate"><span class="pre">where</span> <span class="pre">=</span> <span class="pre">(condition)</span></code>.</p>
+<div class="margin sidebar">
+<p class="sidebar-title">Note</p>
+<p>This could also be done with a <code class="docutils literal notranslate"><span class="pre">where</span></code> option in the <code class="docutils literal notranslate"><span class="pre">data</span></code> statement. In general,  selecting observations during input is more efficient than during output.</p>
+</div>
+<div class="section" id="id2">
+<h4>Example<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h4>
+<p>Recall that in the example above we used an <code class="docutils literal notranslate"><span class="pre">if</span></code> statement to restrict to rows where <code class="docutils literal notranslate"><span class="pre">kid_pik</span></code> ended in a 4. We make the same restriction below using a <code class="docutils literal notranslate"><span class="pre">where</span></code> option in the <code class="docutils literal notranslate"><span class="pre">set</span></code> statement.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">where</span></code> option is evaluated after the <code class="docutils literal notranslate"><span class="pre">rename</span></code> statement, so we use the name <code class="docutils literal notranslate"><span class="pre">kid_pik</span></code> in the <code class="docutils literal notranslate"><span class="pre">where</span></code> option.</p>
+</div>
+<div class="highlight-sas notranslate"><div class="highlight"><pre><span></span><span class="kr">data </span><span class="k">out</span><span class="m">.</span>kid_piks(<span class="k">keep</span> = kid_pik <span class="k">rename</span> = (kid_pik = pik));
+    <span class="k">set</span> <span class="k">in</span><span class="m">.</span>fake_micro(<span class="k">keep</span> = pik <span class="k">rename</span> = (pik = kid_pik) <span class="k">where</span> = (<span class="nb">substr(</span>kid_pik, <span class="m">3</span>, <span class="m">1</span>) = <span class="s">&quot;4&quot;</span>))<span class="kr">;</span>
+<span class="kr">run;</span> 
+</pre></div>
+</div>
+<p>Here is the input data <code class="docutils literal notranslate"><span class="pre">in.fake_micro</span></code>:</p>
+<div class="cell tag_remove_input tag_hide_output docutils container">
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>pik</th>
+      <th>mom_pik</th>
+      <th>dad_pik</th>
+      <th>kid_married_2015</th>
+      <th>mom_inc_2000</th>
+      <th>dad_inc_2000</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>141</td>
+      <td>173</td>
+      <td>NaN</td>
+      <td>1.0</td>
+      <td>16474.893</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>138</td>
+      <td>149</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>21689.520</td>
+      <td>37348.6450</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>177</td>
+      <td>NaN</td>
+      <td>003</td>
+      <td>0.0</td>
+      <td>11420.902</td>
+      <td>14666.4970</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>146</td>
+      <td>013</td>
+      <td>004</td>
+      <td>0.0</td>
+      <td>NaN</td>
+      <td>34485.8130</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>104</td>
+      <td>187</td>
+      <td>005</td>
+      <td>1.0</td>
+      <td>52476.680</td>
+      <td>6003.8027</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>144</td>
+      <td>NaN</td>
+      <td>006</td>
+      <td>1.0</td>
+      <td>13744.854</td>
+      <td>20464.3630</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>083</td>
+      <td>025</td>
+      <td>007</td>
+      <td>0.0</td>
+      <td>22038.420</td>
+      <td>17941.8010</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>115</td>
+      <td>NaN</td>
+      <td>008</td>
+      <td>1.0</td>
+      <td>16084.973</td>
+      <td>6875.2935</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>170</td>
+      <td>157</td>
+      <td>009</td>
+      <td>1.0</td>
+      <td>17766.367</td>
+      <td>31663.4510</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>118</td>
+      <td>NaN</td>
+      <td>010</td>
+      <td>1.0</td>
+      <td>29356.543</td>
+      <td>NaN</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>Here is the output data <code class="docutils literal notranslate"><span class="pre">out.kid_piks</span></code>:</p>
+<div class="cell tag_remove_input tag_hide_output docutils container">
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>pik</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>104</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>144</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>054</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>154</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>064</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>194</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>074</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>084</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>014</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>124</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+    <a class='left-prev' id="prev-link" href="example.html" title="previous page">DATA Step Example</a>
+    <a class='right-next' id="next-link" href="length.html" title="next page">Setting Variable Lengths</a>
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Opportunity Insights Census Team<br/>
+        
+            &copy; Copyright 2020.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    <script src="../../_static/js/index.js"></script>
+    
+  </body>
+</html>

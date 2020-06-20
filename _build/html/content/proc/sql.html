@@ -1,0 +1,932 @@
+
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>Merging Data with PROC SQL &#8212; Introduction to SAS for Incoming Predocs</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha384-KA6wR/X5RY4zFAHpv/CnoG2UW1uogYfdnP67Uv7eULvTveboZJg0qUpmJZb5VqzN" crossorigin="anonymous">
+    <link href="../../_static/css/index.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../_static/sphinx-book-theme.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/jupyter-sphinx.css" />
+    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/sphinx-book-theme.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/language_data.js"></script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/mystnb.js"></script>
+    <script src="../../_static/sphinx-book-theme.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.13.0/dist/embed-amd.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="shortcut icon" href="../../_static/favicon2.ico"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Importing and Exporting Data" href="import_export.html" />
+    <link rel="prev" title="SAS Procedures" href="proc.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="docsearch:language" content="en">
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="../../index.html">
+  
+  <img src="../../_static/censas.png" class="logo" alt="logo">
+  
+  
+  <h1 class="site-logo" id="site-title">Introduction to SAS for Incoming Predocs</h1>
+  
+</a>
+</div>
+
+<form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  
+  <ul class="nav sidenav_l1">
+  <li class="">
+    <a href="../intro/why_sas.html">Why SAS?</a>
+  </li>
+  <li class="">
+    <a href="../intro/short_history.html">Short History</a>
+  </li>
+  <li class="">
+    <a href="../data_step/data_step.html">The DATA Step</a>
+  <ul class="nav sidenav_l2">
+    <li class="">
+      <a href="../data_step/structure.html">DATA Step Structure</a>
+    </li>
+    <li class="">
+      <a href="../data_step/example.html">DATA Step Example</a>
+    </li>
+    <li class="">
+      <a href="../data_step/options.html">DATA Step Options</a>
+    </li>
+    <li class="">
+      <a href="../data_step/length.html">Setting Variable Lengths</a>
+    </li>
+  </ul>
+  </li>
+  <li class="active">
+    <a href="proc.html">SAS Procedures</a>
+  <ul class="nav sidenav_l2">
+    <li class="active">
+      <a href="">Merging Data with PROC SQL</a>
+    </li>
+    <li class="">
+      <a href="import_export.html">Importing and Exporting Data</a>
+    </li>
+    <li class="">
+      <a href="datasets.html">Deleting Data</a>
+    </li>
+  </ul>
+  </li>
+  <li class="">
+    <a href="../macros/macros.html">SAS Macros</a>
+  </li>
+  <li class="">
+    <a href="../control-flow/control_flow.html">Control Flow</a>
+  <ul class="nav sidenav_l2">
+    <li class="">
+      <a href="../control-flow/if_then_else.html">IF-THEN/ELSE Statements</a>
+    </li>
+    <li class="">
+      <a href="../control-flow/do_loops.html">DO Loops</a>
+    </li>
+    <li class="">
+      <a href="../control-flow/exercise.html">Exercise</a>
+    </li>
+  </ul>
+  </li>
+  <li class="">
+    <a href="../example-script/example.html">Example SAS Script</a>
+  </li>
+</ul>
+</nav>
+
+ <!-- To handle the deprecated key -->
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse" data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu" aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation" title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        <div class="dropdown-buttons-trigger">
+            <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i class="fas fa-download"></i></button>
+
+            
+            <div class="dropdown-buttons">
+                <!-- ipynb file if we had a myst markdown file -->
+                
+                <!-- Download raw file -->
+                <a class="dropdown-buttons" href="../../_sources/content/proc/sql.ipynb"><button type="button" class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip" data-placement="left">.ipynb</button></a>
+                <!-- Download PDF via print -->
+                <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF" onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+            </div>
+            
+        </div>
+
+        <!-- Source interaction buttons -->
+        
+        <div class="dropdown-buttons-trigger">
+            <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+            <div class="dropdown-buttons sourcebuttons">
+                <a class="repository-button" href="https://github.com/onoratod/cen-sas-intro"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left" title="Source repository"><i class="fab fa-github"></i>repository</button></a>
+                
+                
+            </div>
+        </div>
+        
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="bottom" onclick="toggleFullScreen()" title="Fullscreen mode"><i class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+        
+    </div>
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+<div class="tocsection onthispage pt-5 pb-3">
+    <i class="fas fa-list"></i> On this page
+</div>
+
+<nav id="bd-toc-nav">
+    <ul class="nav section-nav flex-column">
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#merging-data-in-sas-using-proc-sql-joins" class="nav-link">Merging data in SAS using PROC SQL JOINS</a><ul class="nav section-nav flex-column">
+                
+        <li class="nav-item toc-entry toc-h3">
+            <a href="#left-join" class="nav-link">LEFT JOIN</a><ul class="nav section-nav flex-column">
+                
+        <li class="nav-item toc-entry toc-h4">
+            <a href="#example" class="nav-link">Example</a>
+        </li>
+    
+            </ul>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h3">
+            <a href="#right-join" class="nav-link">RIGHT JOIN</a><ul class="nav section-nav flex-column">
+                
+        <li class="nav-item toc-entry toc-h4">
+            <a href="#id1" class="nav-link">Example</a>
+        </li>
+    
+            </ul>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h3">
+            <a href="#inner-join" class="nav-link">INNER JOIN</a><ul class="nav section-nav flex-column">
+                
+        <li class="nav-item toc-entry toc-h4">
+            <a href="#id2" class="nav-link">Example</a>
+        </li>
+    
+            </ul>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h3">
+            <a href="#full-join" class="nav-link">FULL JOIN</a><ul class="nav section-nav flex-column">
+                
+        <li class="nav-item toc-entry toc-h4">
+            <a href="#id3" class="nav-link">Example</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h4">
+            <a href="#reverse-example" class="nav-link">Reverse Example</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h4">
+            <a href="#references" class="nav-link">References</a>
+        </li>
+    
+            </ul>
+        </li>
+    
+            </ul>
+        </li>
+    
+    </ul>
+</nav>
+
+
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="merging-data-with-proc-sql">
+<h1>Merging Data with PROC SQL<a class="headerlink" href="#merging-data-with-proc-sql" title="Permalink to this headline">¶</a></h1>
+<p><code class="docutils literal notranslate"><span class="pre">PROC</span> <span class="pre">SQL</span></code> is the most useful and versatile SAS procedure. When you use <code class="docutils literal notranslate"><span class="pre">PROC</span> <span class="pre">SQL</span></code>, SAS can leverage some of the efficiencies of SQL processing, which can improve the processing time of your queries. The flexibility and specificity of SAS SQL statements are often preferable to the SAS provided alternatives.</p>
+<p><code class="docutils literal notranslate"><span class="pre">PROC</span> <span class="pre">SQL</span></code> steps are generally of the form:</p>
+<div class="highlight-sas notranslate"><div class="highlight"><pre><span></span><span class="kr">proc sql;</span> 
+    (<span class="k">create</span> <span class="k">table</span> NEW_TABLE <span class="k">as</span>)
+        <span class="k">select</span> VARIABLES
+        <span class="k">from</span> SOURCES 
+        (<span class="k">group</span> <span class="k">by</span> KEYS)
+        (<span class="k">order</span> <span class="k">by</span> KEYS)
+        (<span class="k">where</span>)<span class="kr">;</span>
+<span class="kr">quit;</span>
+</pre></div>
+</div>
+<p>The statements contained in parentheses are optional. When you write your <code class="docutils literal notranslate"><span class="pre">PROC</span> <span class="pre">SQL</span></code> statements, do not include the parentheses. If you omit the <code class="docutils literal notranslate"><span class="pre">create</span> <span class="pre">table</span></code> line, the result of you <code class="docutils literal notranslate"><span class="pre">PROC</span> <span class="pre">SQL</span></code> step will be written to the log but no data will be written to the disk. The optional <code class="docutils literal notranslate"><span class="pre">group</span> <span class="pre">by</span></code> and <code class="docutils literal notranslate"><span class="pre">order</span> <span class="pre">by</span></code> lines instruct SAS to collapse the data to a single row by the specified keys and sort the data by the specified keys, respectively.</p>
+<div class="section" id="merging-data-in-sas-using-proc-sql-joins">
+<h2>Merging data in SAS using <code class="docutils literal notranslate"><span class="pre">PROC</span> <span class="pre">SQL</span></code> <code class="docutils literal notranslate"><span class="pre">JOINS</span></code><a class="headerlink" href="#merging-data-in-sas-using-proc-sql-joins" title="Permalink to this headline">¶</a></h2>
+<p>Generally for our purposes, when we want to merge together two datasets in SAS we use <code class="docutils literal notranslate"><span class="pre">JOIN</span></code> commands in a <code class="docutils literal notranslate"><span class="pre">PROC</span> <span class="pre">SQL</span></code> step. All SQL joins are akin to many-to-many joins implemented by the <code class="docutils literal notranslate"><span class="pre">joinby</span></code> function in Stata — these joins are not on their face equivalent to <code class="docutils literal notranslate"><span class="pre">1:1</span></code>, <code class="docutils literal notranslate"><span class="pre">1:m</span></code>, or <code class="docutils literal notranslate"><span class="pre">m:1</span></code> joins unless you ensure that the tables you are joining are unique on the join variables yourself.</p>
+<p>Conceptually, SQL joins involve a “left” table and one or more “right” tables to be joined. All joins are <em>Cartesian products</em> made on the the specified merge key variables. This means if there are two duplicate matching keys in the left table and two duplicate matching keys in the right table, there will be four duplicate keys in the output dataset. Another way to phrase this is that each observation is assigned all of the rows that it matches to.</p>
+<p>The most common join we use is the <code class="docutils literal notranslate"><span class="pre">LEFT</span> <span class="pre">JOIN</span></code> but all types are outlined below</p>
+<div class="section" id="left-join">
+<h3>LEFT JOIN<a class="headerlink" href="#left-join" title="Permalink to this headline">¶</a></h3>
+<p><img alt="image" src="../../_images/left_join.png" /></p>
+<p>A <code class="docutils literal notranslate"><span class="pre">LEFT</span> <span class="pre">JOIN</span></code> selects all the obervations in the left table regardless of their key values but only selects observations with matching key values from the right table. Variables from the right table in rows where there is no match are assigned missing values. A <code class="docutils literal notranslate"><span class="pre">LEFT</span> <span class="pre">JOIN</span></code> is <strong>not</strong> commutative (i.e. reversing the order of the data sets can produce different results).</p>
+<div class="section" id="example">
+<h4>Example<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h4>
+<p>In this example, we merge on <code class="docutils literal notranslate"><span class="pre">state</span></code> from <code class="docutils literal notranslate"><span class="pre">out.kid_geos</span></code> using a <code class="docutils literal notranslate"><span class="pre">LEFT</span> <span class="pre">JOIN</span></code> onto <code class="docutils literal notranslate"><span class="pre">in.fake_micro</span></code> and save the resulting dataset in <code class="docutils literal notranslate"><span class="pre">out.left_join_example</span></code>.</p>
+<p>Here, we use the <code class="docutils literal notranslate"><span class="pre">select</span></code> statement to only keep certain variables from each dataset, labeled <code class="docutils literal notranslate"><span class="pre">A</span></code> or <code class="docutils literal notranslate"><span class="pre">B</span></code>. These labels are assignedbelow in the <code class="docutils literal notranslate"><span class="pre">from</span></code> and <code class="docutils literal notranslate"><span class="pre">left</span> <span class="pre">join</span></code> statements.</p>
+<p>The merge key here is <code class="docutils literal notranslate"><span class="pre">pik</span></code> and we require that <code class="docutils literal notranslate"><span class="pre">pik</span></code> is not null for the left table (<code class="docutils literal notranslate"><span class="pre">A</span></code>).</p>
+<div class="highlight-sas notranslate"><div class="highlight"><pre><span></span><span class="kr">proc sql;</span> 
+    <span class="k">create</span> <span class="k">table</span> <span class="k">out</span><span class="m">.</span>fake_micro_with_geo <span class="k">as</span>
+        <span class="k">select</span> A<span class="m">.</span>pik, A<span class="m">.</span>mom_pik, A<span class="m">.</span>dad_pik, B<span class="m">.</span>state
+            <span class="k">from</span> <span class="k">out</span><span class="m">.</span>fake_micro <span class="k">as</span> A
+            left join <span class="k">out</span><span class="m">.</span>kid_geos <span class="k">as</span> B
+                <span class="k">on</span> A<span class="m">.</span>pik = B<span class="m">.</span>pik <span class="k">and</span> A<span class="m">.</span>pik is <span class="k">not</span> <span class="k">null</span><span class="kr">;</span>
+<span class="kr">quit;</span>
+</pre></div>
+</div>
+<p>The output data set <code class="docutils literal notranslate"><span class="pre">out.left_join_example</span></code> is:</p>
+<div class="margin sidebar">
+<p class="sidebar-title">Note</p>
+<p>The rows with missing <code class="docutils literal notranslate"><span class="pre">state</span></code> are rows that did not match to the right data set, they remain in the output data set but are assigned missing values of <code class="docutils literal notranslate"><span class="pre">state</span></code>.</p>
+</div>
+<div class="cell tag_remove_input docutils container">
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>pik</th>
+      <th>mom_pik</th>
+      <th>dad_pik</th>
+      <th>state</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>001</td>
+      <td>NaN</td>
+      <td>034</td>
+      <td>24.0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>002</td>
+      <td>NaN</td>
+      <td>117</td>
+      <td>48.0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>003</td>
+      <td>001</td>
+      <td>NaN</td>
+      <td>81.0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>004</td>
+      <td>NaN</td>
+      <td>101</td>
+      <td>24.0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>005</td>
+      <td>NaN</td>
+      <td>058</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>006</td>
+      <td>010</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>007</td>
+      <td>172</td>
+      <td>NaN</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>008</td>
+      <td>NaN</td>
+      <td>017</td>
+      <td>37.0</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>009</td>
+      <td>NaN</td>
+      <td>029</td>
+      <td>2.0</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>010</td>
+      <td>NaN</td>
+      <td>142</td>
+      <td>38.0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</div>
+</div>
+<div class="section" id="right-join">
+<h3>RIGHT JOIN<a class="headerlink" href="#right-join" title="Permalink to this headline">¶</a></h3>
+<p><img alt="image" src="../../_images/right_join.png" /></p>
+<p>A <code class="docutils literal notranslate"><span class="pre">RIGHT</span> <span class="pre">JOIN</span></code> selects all the observations in the right table. When observations do not match to the left table the key values are set to missing. A <code class="docutils literal notranslate"><span class="pre">RIGHT</span> <span class="pre">JOIN</span></code>, like a <code class="docutils literal notranslate"><span class="pre">LEFT</span> <span class="pre">JOIN</span></code>, is not commutative and is <strong>not</strong> the same as reversing the datasets in a <code class="docutils literal notranslate"><span class="pre">LEFT</span> <span class="pre">JOIN</span></code>.</p>
+<div class="section" id="id1">
+<h4>Example<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h4>
+<p>In the example below, we have the same setup as in the <code class="docutils literal notranslate"><span class="pre">LEFT</span> <span class="pre">JOIN</span></code> example, except that we use a <code class="docutils literal notranslate"><span class="pre">RIGHT</span> <span class="pre">JOIN</span></code>.</p>
+<p><strong>Note:</strong> <code class="docutils literal notranslate"><span class="pre">out.kid_geos</span></code> is a subset of <code class="docutils literal notranslate"><span class="pre">out.fake_micro</span></code> so <code class="docutils literal notranslate"><span class="pre">pik</span></code> will never be missing in the output data set since all the keys in <code class="docutils literal notranslate"><span class="pre">out.kid_geos</span></code> appear in <code class="docutils literal notranslate"><span class="pre">out.fake_micro</span></code>.</p>
+<div class="highlight-sas notranslate"><div class="highlight"><pre><span></span><span class="kr">proc sql;</span> 
+    <span class="k">create</span> <span class="k">table</span> <span class="k">out</span><span class="m">.</span>fake_micro_with_geo <span class="k">as</span>
+        <span class="k">select</span> A<span class="m">.</span>pik, A<span class="m">.</span>mom_pik, A<span class="m">.</span>dad_pik, B<span class="m">.</span>state
+            <span class="k">from</span> <span class="k">out</span><span class="m">.</span>fake_micro <span class="k">as</span> A
+            right join <span class="k">out</span><span class="m">.</span>kid_geos <span class="k">as</span> B
+                <span class="k">on</span> A<span class="m">.</span>pik = B<span class="m">.</span>pik <span class="k">and</span> B<span class="m">.</span>pik is <span class="k">not</span> <span class="k">null</span><span class="kr">;</span>
+<span class="kr">quit;</span>
+</pre></div>
+</div>
+<div class="margin sidebar">
+<p class="sidebar-title">Note</p>
+<p>Unlike in the example above, <code class="docutils literal notranslate"><span class="pre">state</span></code> is never missing because the <code class="docutils literal notranslate"><span class="pre">RIGHT</span> <span class="pre">JOIN</span></code> restricts to observations that appear in <code class="docutils literal notranslate"><span class="pre">out.kid_geos</span></code>, where <code class="docutils literal notranslate"><span class="pre">state</span></code> is never missing. Note that <code class="docutils literal notranslate"><span class="pre">pik</span> <span class="pre">=</span> <span class="pre">005</span></code> and <code class="docutils literal notranslate"><span class="pre">pik</span> <span class="pre">=</span> <span class="pre">006</span></code> are missing now (see the <code class="docutils literal notranslate"><span class="pre">LEFT</span> <span class="pre">JOIN</span></code> output), this is because they do not appear in <code class="docutils literal notranslate"><span class="pre">out.kid_geos</span></code>.</p>
+</div>
+<div class="cell tag_remove_input docutils container">
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>pik</th>
+      <th>mom_pik</th>
+      <th>dad_pik</th>
+      <th>state</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>001</td>
+      <td>NaN</td>
+      <td>034</td>
+      <td>24.0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>002</td>
+      <td>NaN</td>
+      <td>117</td>
+      <td>48.0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>003</td>
+      <td>001</td>
+      <td>NaN</td>
+      <td>81.0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>004</td>
+      <td>NaN</td>
+      <td>101</td>
+      <td>24.0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>007</td>
+      <td>172</td>
+      <td>NaN</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>008</td>
+      <td>NaN</td>
+      <td>017</td>
+      <td>37.0</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>009</td>
+      <td>NaN</td>
+      <td>029</td>
+      <td>2.0</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>010</td>
+      <td>NaN</td>
+      <td>142</td>
+      <td>38.0</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>012</td>
+      <td>NaN</td>
+      <td>126</td>
+      <td>61.0</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>013</td>
+      <td>NaN</td>
+      <td>180</td>
+      <td>3.0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</div>
+</div>
+<div class="section" id="inner-join">
+<h3>INNER JOIN<a class="headerlink" href="#inner-join" title="Permalink to this headline">¶</a></h3>
+<p><img alt="image" src="../../_images/inner_join.png" /></p>
+<p>An <code class="docutils literal notranslate"><span class="pre">INNER</span> <span class="pre">JOIN</span></code> selects all the observations that have keys in <strong>both</strong> the left and the right data set.
+An <code class="docutils literal notranslate"><span class="pre">INNER</span> <span class="pre">JOIN</span></code> is a logical AND between the two tables. Unlike a <code class="docutils literal notranslate"><span class="pre">RIGHT</span> <span class="pre">JOIN</span></code> or a <code class="docutils literal notranslate"><span class="pre">LEFT</span> <span class="pre">JOIN</span></code>, an <code class="docutils literal notranslate"><span class="pre">INNER</span> <span class="pre">JOIN</span></code> is commutative
+so tables can be joined in either order.</p>
+<div class="section" id="id2">
+<h4>Example<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h4>
+<p>In the example below, we have the same setup as in the previous examples, except that we use an <code class="docutils literal notranslate"><span class="pre">INNER</span> <span class="pre">JOIN</span></code>.</p>
+<div class="highlight-sas notranslate"><div class="highlight"><pre><span></span><span class="kr">proc sql;</span> 
+    <span class="k">create</span> <span class="k">table</span> <span class="k">out</span><span class="m">.</span>fake_micro_with_geo <span class="k">as</span>
+        <span class="k">select</span> A<span class="m">.</span>pik, A<span class="m">.</span>mom_pik, A<span class="m">.</span>dad_pik, B<span class="m">.</span>state
+            <span class="k">from</span> <span class="k">out</span><span class="m">.</span>fake_micro <span class="k">as</span> A
+            inner join <span class="k">out</span><span class="m">.</span>kid_geos <span class="k">as</span> B
+                <span class="k">on</span> A<span class="m">.</span>pik = B<span class="m">.</span>pik <span class="k">and</span> B<span class="m">.</span>pik is <span class="k">not</span> <span class="k">null</span><span class="kr">;</span>
+<span class="kr">quit;</span>
+</pre></div>
+</div>
+<div class="cell tag_remove_input docutils container">
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>pik</th>
+      <th>mom_pik</th>
+      <th>dad_pik</th>
+      <th>state</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>138</td>
+      <td>149</td>
+      <td>NaN</td>
+      <td>2.0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>177</td>
+      <td>NaN</td>
+      <td>003</td>
+      <td>87.0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>146</td>
+      <td>013</td>
+      <td>004</td>
+      <td>71.0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>104</td>
+      <td>187</td>
+      <td>005</td>
+      <td>21.0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>083</td>
+      <td>025</td>
+      <td>007</td>
+      <td>13.0</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>115</td>
+      <td>NaN</td>
+      <td>008</td>
+      <td>28.0</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>170</td>
+      <td>157</td>
+      <td>009</td>
+      <td>65.0</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>051</td>
+      <td>058</td>
+      <td>NaN</td>
+      <td>35.0</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>054</td>
+      <td>034</td>
+      <td>NaN</td>
+      <td>99.0</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>111</td>
+      <td>004</td>
+      <td>NaN</td>
+      <td>2.0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</div>
+</div>
+<div class="section" id="full-join">
+<h3>FULL JOIN<a class="headerlink" href="#full-join" title="Permalink to this headline">¶</a></h3>
+<p><img alt="image" src="../../_images/full_join.png" /></p>
+<p>A <code class="docutils literal notranslate"><span class="pre">FULL</span> <span class="pre">JOIN</span></code> selects all observations from both datasets and sets missing key values for observations that only appear in the right dataset.
+A <code class="docutils literal notranslate"><span class="pre">FULL</span> <span class="pre">JOIN</span></code> is the logical OR between two datasets, but unlike an <code class="docutils literal notranslate"><span class="pre">INNER</span> <span class="pre">JOIN</span></code> it is not commutative because missing key values are
+set based on the right dataset. We illustrate this below.</p>
+<div class="section" id="id3">
+<h4>Example<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h4>
+<p>In the example below, we have the same setup as in the previous examples, except that we use a <code class="docutils literal notranslate"><span class="pre">FULL</span> <span class="pre">JOIN</span></code> with <code class="docutils literal notranslate"><span class="pre">out.kid_geos</span></code> as the right dataset.</p>
+<div class="highlight-sas notranslate"><div class="highlight"><pre><span></span><span class="kr">proc sql;</span> 
+    <span class="k">create</span> <span class="k">table</span> <span class="k">out</span><span class="m">.</span>fake_micro_with_geo <span class="k">as</span>
+        <span class="k">select</span> A<span class="m">.</span>pik, A<span class="m">.</span>mom_pik, A<span class="m">.</span>dad_pik, B<span class="m">.</span>state
+            <span class="k">from</span> <span class="k">out</span><span class="m">.</span>fake_micro <span class="k">as</span> A
+            inner join <span class="k">out</span><span class="m">.</span>kid_geos <span class="k">as</span> B
+                <span class="k">on</span> A<span class="m">.</span>pik = B<span class="m">.</span>pik <span class="k">and</span> B<span class="m">.</span>pik is <span class="k">not</span> <span class="k">null</span><span class="kr">;</span>
+<span class="kr">quit;</span>
+</pre></div>
+</div>
+<div class="margin sidebar">
+<p class="sidebar-title">Note</p>
+<p><code class="docutils literal notranslate"><span class="pre">out.kid_geos</span></code> is a subset of <code class="docutils literal notranslate"><span class="pre">out.fake_micro</span></code> so there will never be missing keys (<code class="docutils literal notranslate"><span class="pre">pik</span></code>). A <code class="docutils literal notranslate"><span class="pre">FULL</span> <span class="pre">JOIN</span></code> where the right dataset is a subset of the left dataset is equivalent to a <code class="docutils literal notranslate"><span class="pre">LEFT</span> <span class="pre">JOIN</span></code>.</p>
+</div>
+<div class="cell tag_remove_input docutils container">
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>pik</th>
+      <th>mom_pik</th>
+      <th>dad_pik</th>
+      <th>state</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>001</td>
+      <td>NaN</td>
+      <td>034</td>
+      <td>24.0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>002</td>
+      <td>NaN</td>
+      <td>117</td>
+      <td>48.0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>003</td>
+      <td>001</td>
+      <td>NaN</td>
+      <td>81.0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>004</td>
+      <td>NaN</td>
+      <td>101</td>
+      <td>24.0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>005</td>
+      <td>NaN</td>
+      <td>058</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>006</td>
+      <td>010</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>007</td>
+      <td>172</td>
+      <td>NaN</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>008</td>
+      <td>NaN</td>
+      <td>017</td>
+      <td>37.0</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>009</td>
+      <td>NaN</td>
+      <td>029</td>
+      <td>2.0</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>010</td>
+      <td>NaN</td>
+      <td>142</td>
+      <td>38.0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</div>
+<div class="section" id="reverse-example">
+<h4>Reverse Example<a class="headerlink" href="#reverse-example" title="Permalink to this headline">¶</a></h4>
+<p>Now lets reverse the datasets to illustrate why a <code class="docutils literal notranslate"><span class="pre">FULL</span> <span class="pre">JOIN</span></code> is not commutative.</p>
+<div class="highlight-sas notranslate"><div class="highlight"><pre><span></span><span class="kr">proc sql;</span> 
+    <span class="k">create</span> <span class="k">table</span> <span class="k">out</span><span class="m">.</span>full_join_example <span class="k">as</span>
+        <span class="k">select</span> A<span class="m">.</span>pik, A<span class="m">.</span>state, B<span class="m">.</span>mom_pik, B<span class="m">.</span>dad_pik
+            <span class="k">from</span> <span class="k">out</span><span class="m">.</span>kid_geos <span class="k">as</span> A
+            full join <span class="k">out</span><span class="m">.</span>fake_micro  <span class="k">as</span> B
+                <span class="k">on</span> A<span class="m">.</span>pik = B<span class="m">.</span>pik <span class="k">and</span> A<span class="m">.</span>pik is <span class="k">not</span> <span class="k">null</span><span class="kr">;</span>
+<span class="kr">quit;</span>
+</pre></div>
+</div>
+<div class="margin sidebar">
+<p class="sidebar-title">Note</p>
+<p>We can see that observations 4 and 5 are missing keys (<code class="docutils literal notranslate"><span class="pre">pik</span></code>) because these observations appear in <code class="docutils literal notranslate"><span class="pre">out.fake_micro</span></code> but do not appear in <code class="docutils literal notranslate"><span class="pre">out.kid_geos</span></code>. These are the same observations that are missing <code class="docutils literal notranslate"><span class="pre">state</span></code> above.</p>
+</div>
+<div class="cell tag_remove_input docutils container">
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>pik</th>
+      <th>state</th>
+      <th>mom_pik</th>
+      <th>dad_pik</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>001</td>
+      <td>24.0</td>
+      <td>NaN</td>
+      <td>034</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>002</td>
+      <td>48.0</td>
+      <td>NaN</td>
+      <td>117</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>003</td>
+      <td>81.0</td>
+      <td>001</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>004</td>
+      <td>24.0</td>
+      <td>NaN</td>
+      <td>101</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>058</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>010</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>007</td>
+      <td>1.0</td>
+      <td>172</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>008</td>
+      <td>37.0</td>
+      <td>NaN</td>
+      <td>017</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>009</td>
+      <td>2.0</td>
+      <td>NaN</td>
+      <td>029</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>010</td>
+      <td>38.0</td>
+      <td>NaN</td>
+      <td>142</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</div>
+<div class="section" id="references">
+<h4>References<a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h4>
+<p><a class="reference external" href="https://support.sas.com/resources/papers/proceedings/proceedings/sugi25/25/cc/25p109.pdf">This</a> file was referenced when creating this page.</p>
+</div>
+</div>
+</div>
+</div>
+
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+    <a class='left-prev' id="prev-link" href="proc.html" title="previous page">SAS Procedures</a>
+    <a class='right-next' id="next-link" href="import_export.html" title="next page">Importing and Exporting Data</a>
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Opportunity Insights Census Team<br/>
+        
+            &copy; Copyright 2020.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    <script src="../../_static/js/index.js"></script>
+    
+  </body>
+</html>

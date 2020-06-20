@@ -1,0 +1,604 @@
+
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>DO Loops &#8212; Introduction to SAS for Incoming Predocs</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha384-KA6wR/X5RY4zFAHpv/CnoG2UW1uogYfdnP67Uv7eULvTveboZJg0qUpmJZb5VqzN" crossorigin="anonymous">
+    <link href="../../_static/css/index.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../_static/sphinx-book-theme.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/jupyter-sphinx.css" />
+    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/sphinx-book-theme.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/language_data.js"></script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/mystnb.js"></script>
+    <script src="../../_static/sphinx-book-theme.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.13.0/dist/embed-amd.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="shortcut icon" href="../../_static/favicon2.ico"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Exercise" href="exercise.html" />
+    <link rel="prev" title="IF-THEN/ELSE Statements" href="if_then_else.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="docsearch:language" content="en">
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="../../index.html">
+  
+  <img src="../../_static/censas.png" class="logo" alt="logo">
+  
+  
+  <h1 class="site-logo" id="site-title">Introduction to SAS for Incoming Predocs</h1>
+  
+</a>
+</div>
+
+<form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  
+  <ul class="nav sidenav_l1">
+  <li class="">
+    <a href="../intro/why_sas.html">Why SAS?</a>
+  </li>
+  <li class="">
+    <a href="../intro/short_history.html">Short History</a>
+  </li>
+  <li class="">
+    <a href="../data_step/data_step.html">The DATA Step</a>
+  <ul class="nav sidenav_l2">
+    <li class="">
+      <a href="../data_step/structure.html">DATA Step Structure</a>
+    </li>
+    <li class="">
+      <a href="../data_step/example.html">DATA Step Example</a>
+    </li>
+    <li class="">
+      <a href="../data_step/options.html">DATA Step Options</a>
+    </li>
+    <li class="">
+      <a href="../data_step/length.html">Setting Variable Lengths</a>
+    </li>
+  </ul>
+  </li>
+  <li class="">
+    <a href="../proc/proc.html">SAS Procedures</a>
+  <ul class="nav sidenav_l2">
+    <li class="">
+      <a href="../proc/sql.html">Merging Data with PROC SQL</a>
+    </li>
+    <li class="">
+      <a href="../proc/import_export.html">Importing and Exporting Data</a>
+    </li>
+    <li class="">
+      <a href="../proc/datasets.html">Deleting Data</a>
+    </li>
+  </ul>
+  </li>
+  <li class="">
+    <a href="../macros/macros.html">SAS Macros</a>
+  </li>
+  <li class="active">
+    <a href="control_flow.html">Control Flow</a>
+  <ul class="nav sidenav_l2">
+    <li class="">
+      <a href="if_then_else.html">IF-THEN/ELSE Statements</a>
+    </li>
+    <li class="active">
+      <a href="">DO Loops</a>
+    </li>
+    <li class="">
+      <a href="exercise.html">Exercise</a>
+    </li>
+  </ul>
+  </li>
+  <li class="">
+    <a href="../example-script/example.html">Example SAS Script</a>
+  </li>
+</ul>
+</nav>
+
+ <!-- To handle the deprecated key -->
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse" data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu" aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation" title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        <div class="dropdown-buttons-trigger">
+            <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i class="fas fa-download"></i></button>
+
+            
+            <div class="dropdown-buttons">
+                <!-- ipynb file if we had a myst markdown file -->
+                
+                <!-- Download raw file -->
+                <a class="dropdown-buttons" href="../../_sources/content/control-flow/do_loops.ipynb"><button type="button" class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip" data-placement="left">.ipynb</button></a>
+                <!-- Download PDF via print -->
+                <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF" onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+            </div>
+            
+        </div>
+
+        <!-- Source interaction buttons -->
+        
+        <div class="dropdown-buttons-trigger">
+            <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+            <div class="dropdown-buttons sourcebuttons">
+                <a class="repository-button" href="https://github.com/onoratod/cen-sas-intro"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left" title="Source repository"><i class="fab fa-github"></i>repository</button></a>
+                
+                
+            </div>
+        </div>
+        
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="bottom" onclick="toggleFullScreen()" title="Fullscreen mode"><i class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+        
+    </div>
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+<div class="tocsection onthispage pt-5 pb-3">
+    <i class="fas fa-list"></i> On this page
+</div>
+
+<nav id="bd-toc-nav">
+    <ul class="nav section-nav flex-column">
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#do-while-loop" class="nav-link">DO-WHILE Loop</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#iterate-over-a-list-with-do-loop" class="nav-link">Iterate Over a List with DO Loop</a>
+        </li>
+    
+    </ul>
+</nav>
+
+
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="do-loops">
+<h1>DO Loops<a class="headerlink" href="#do-loops" title="Permalink to this headline">¶</a></h1>
+<p><code class="docutils literal notranslate"><span class="pre">DO</span></code> loops can be used to execute a set of code over a series of items. These can be used in both <code class="docutils literal notranslate"><span class="pre">DATA</span></code> steps and open code inside of a <code class="docutils literal notranslate"><span class="pre">%macro</span></code>, however, we tend to use them most often in open code.</p>
+<p>The basic <code class="docutils literal notranslate"><span class="pre">DO</span></code> loop syntax is</p>
+<div class="highlight-sas notranslate"><div class="highlight"><pre><span></span><span class="k">do</span> i = <span class="c">/* start */</span> to <span class="c">/* end */</span> (<span class="k">by</span> <span class="c">/* by value */</span>);
+    <span class="c">/* SAS statements */</span>
+<span class="k">end</span>;
+</pre></div>
+</div>
+<p>The default value of the counter is 1 but you can modify this with the <code class="docutils literal notranslate"><span class="pre">by</span></code> option. Also, the index value <code class="docutils literal notranslate"><span class="pre">i</span></code> can be called whatever you want (i.e. <code class="docutils literal notranslate"><span class="pre">opportunity</span></code> would also work). This is similar to a <code class="docutils literal notranslate"><span class="pre">forval</span></code> loop in Stata.</p>
+<div class="highlight-sas notranslate"><div class="highlight"><pre><span></span><span class="kr">data </span><span class="k">out</span><span class="m">.</span>A;
+    <span class="k">do</span> i = <span class="m">1</span> to <span class="m">5</span>;
+        y = i*<span class="m">2</span>;
+        <span class="k">output</span>;
+    <span class="k">end</span><span class="kr">;</span>
+<span class="kr">run;</span>
+</pre></div>
+</div>
+<div class="cell tag_output_scroll tag_remove_input docutils container">
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>i</th>
+      <th>y</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1.0</td>
+      <td>2.0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2.0</td>
+      <td>4.0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>3.0</td>
+      <td>6.0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>4.0</td>
+      <td>8.0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>5.0</td>
+      <td>10.0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="highlight-sas notranslate"><div class="highlight"><pre><span></span><span class="kr">data </span><span class="k">out</span><span class="m">.</span>A;
+    <span class="k">do</span> i = <span class="m">1</span> to <span class="m">100</span> <span class="k">by</span> <span class="m">20</span>;
+        y = i*<span class="m">2</span>;
+        <span class="k">output</span>;
+    <span class="k">end</span><span class="kr">;</span>
+<span class="kr">run;</span>
+</pre></div>
+</div>
+<div class="cell tag_output_scroll tag_remove_input docutils container">
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>i</th>
+      <th>y</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1.0</td>
+      <td>2.0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>21.0</td>
+      <td>42.0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>41.0</td>
+      <td>82.0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>61.0</td>
+      <td>122.0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>81.0</td>
+      <td>162.0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>Or in open code</p>
+<div class="highlight-sas notranslate"><div class="highlight"><pre><span></span>%macro doloop;
+    %do i = 1 %to 5;
+        %put &amp;i;
+    %end;
+%mend doloop;
+
+%doloop;
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">686</span>  <span class="o">%</span><span class="n">doloop</span><span class="p">;</span>
+<span class="mi">1</span>
+<span class="mi">2</span>
+<span class="mi">3</span>
+<span class="mi">4</span>
+<span class="mi">5</span>
+</pre></div>
+</div>
+<div class="highlight-sas notranslate"><div class="highlight"><pre><span></span>%macro doloop;
+    %do i = 1 %to 100 %by 20;
+        %put &amp;i;
+    %end;
+%mend doloop;
+
+%doloop;
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">699</span>  <span class="o">%</span><span class="n">doloop</span><span class="p">;</span>
+<span class="mi">1</span>
+<span class="mi">21</span>
+<span class="mi">41</span>
+<span class="mi">61</span>
+<span class="mi">81</span>
+</pre></div>
+</div>
+<div class="section" id="do-while-loop">
+<h2>DO-WHILE Loop<a class="headerlink" href="#do-while-loop" title="Permalink to this headline">¶</a></h2>
+<p>Sometimes it is useful to execute a set of commands while a condition is true. In these cases, we can use a <code class="docutils literal notranslate"><span class="pre">DO-WHILE</span></code> loop.</p>
+<div class="highlight-sas notranslate"><div class="highlight"><pre><span></span><span class="k">do</span> <span class="k">while</span> (cond);
+    <span class="c">/* SAS statements */</span>
+<span class="k">end</span>;
+</pre></div>
+</div>
+<p>The condition is evaluated at the top of the loop before statements in the <code class="docutils literal notranslate"><span class="pre">DO</span></code> loop are executed. This can be used in <code class="docutils literal notranslate"><span class="pre">DATA</span></code> steps or open code in a <code class="docutils literal notranslate"><span class="pre">%macro</span></code>. For the remainder of this page, we will only show examples in open code but syntax is very similar for <code class="docutils literal notranslate"><span class="pre">DATA</span></code> step.</p>
+<div class="margin sidebar">
+<p class="sidebar-title"></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Again we use <code class="docutils literal notranslate"><span class="pre">%sysfunc</span></code> to call the <code class="docutils literal notranslate"><span class="pre">sum</span></code> function to increment our counter.</p>
+</div>
+</div>
+<div class="highlight-sas notranslate"><div class="highlight"><pre><span></span>%macro dowhile(end);
+    %let i = 1;
+    %do %while(&amp;i &lt; &amp;end);
+        %put &amp;i;
+        %let i = %sysfunc(sum(&amp;i, 1));
+    %end;
+%mend dowhile;
+
+%dowhile(2);
+%dowhile(5);
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">762</span>  <span class="o">%</span><span class="n">dowhile</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
+<span class="mi">1</span>
+<span class="mi">763</span>  <span class="o">%</span><span class="n">dowhile</span><span class="p">(</span><span class="mi">5</span><span class="p">);</span>
+<span class="mi">1</span>
+<span class="mi">2</span>
+<span class="mi">3</span>
+<span class="mi">4</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="iterate-over-a-list-with-do-loop">
+<h2>Iterate Over a List with DO Loop<a class="headerlink" href="#iterate-over-a-list-with-do-loop" title="Permalink to this headline">¶</a></h2>
+<p>If we want to execute some code over a list of values then we need to be a little clever. To do this, we’re going to use a few helpful SAS functions. The code to loop over a list of items is below. The basic idea is we use a <code class="docutils literal notranslate"><span class="pre">DO-WHILE</span></code> loop to iteratively retrieve each element of our list until we reach the end of the list.</p>
+<div class="highlight-sas notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="nb">%macro</span> listloop(<span class="k">list</span>);
+
+    <span class="nb">%let</span> i = <span class="m">1</span>;
+    
+    <span class="nb">%do</span> <span class="nb">%while</span> (<span class="nb">%scan</span>(<span class="nv">&amp;list</span>, <span class="nv">&amp;i</span>, <span class="s">&quot; &quot;</span>) ~= );
+<span class="c">        * Get the value in the ith spot;</span>
+        <span class="nb">%let</span> value = <span class="nb">%scan</span>(<span class="nv">&amp;list</span>, <span class="nv">&amp;i</span>, <span class="s">&quot; &quot;</span>);
+<span class="c">        </span>
+<span class="c">        * Print to log;</span>
+        <span class="nb">%if</span> <span class="nb">%length</span>(<span class="nv">&amp;value</span>) ~= <span class="m">0</span> <span class="nb">%then</span> <span class="nb">%put</span> <span class="nv">&amp;value</span>;
+<span class="c">        </span>
+<span class="c">        *Increment counter;</span>
+        <span class="nb">%let</span> i = <span class="nb">%eval</span>(<span class="nv">&amp;i</span> + <span class="m">1</span>);
+        
+    <span class="nb">%end</span>;
+    
+<span class="nb">%mend</span> listloop;
+</pre></div>
+</td></tr></table></div>
+<p>Let’s discuss the helper functions we use in this code block. The first new function here is <code class="docutils literal notranslate"><span class="pre">%scan(list,</span> <span class="pre">i,</span> <span class="pre">delim)</span></code> which returns the <code class="docutils literal notranslate"><span class="pre">i</span></code>th item in the specified <code class="docutils literal notranslate"><span class="pre">list</span></code> that is delimited by <code class="docutils literal notranslate"><span class="pre">delim</span></code> (specifying the delimiter is optional). We use this in line <code class="docutils literal notranslate"><span class="pre">5</span></code> and <code class="docutils literal notranslate"><span class="pre">7</span></code></p>
+<div class="highlight-sas notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="nb">%macro</span> listloop(<span class="k">list</span>);
+
+    <span class="nb">%let</span> i = <span class="m">1</span>;
+    
+<span class="hll">    <span class="nb">%do</span> <span class="nb">%while</span> (<span class="nb">%scan</span>(<span class="nv">&amp;list</span>, <span class="nv">&amp;i</span>, <span class="s">&quot; &quot;</span>) ~= );
+</span><span class="c">        * Get the value in the ith spot;</span>
+<span class="hll">        <span class="nb">%let</span> value = <span class="nb">%scan</span>(<span class="nv">&amp;list</span>, <span class="nv">&amp;i</span>, <span class="s">&quot; &quot;</span>);
+</span><span class="c">        </span>
+<span class="c">        * Print to log;</span>
+        <span class="nb">%if</span> <span class="nb">%length</span>(<span class="nv">&amp;value</span>) ~= <span class="m">0</span> <span class="nb">%then</span> <span class="nb">%put</span> <span class="nv">&amp;value</span>;
+<span class="c">        </span>
+<span class="c">        *Increment counter;</span>
+        <span class="nb">%let</span> i = <span class="nb">%eval</span>(<span class="nv">&amp;i</span> + <span class="m">1</span>);
+        
+    <span class="nb">%end</span>;
+    
+<span class="nb">%mend</span> listloop;
+</pre></div>
+</td></tr></table></div>
+<p>We use <code class="docutils literal notranslate"><span class="pre">%scan</span></code> to parse through the elements of the list we are trying to loop over. We use this with a <code class="docutils literal notranslate"><span class="pre">DO-WHILE</span></code> loop to continue scanning elements from our list until the element we scan is empty i.e. we reached the end of the list. We use <code class="docutils literal notranslate"><span class="pre">%scan</span></code> again in line <code class="docutils literal notranslate"><span class="pre">7</span></code> to retrieve the ith element in our list.</p>
+<p>Another new function we use is <code class="docutils literal notranslate"><span class="pre">%length</span></code> which returns the length of the given argument. We use this in line <code class="docutils literal notranslate"><span class="pre">10</span></code></p>
+<div class="highlight-sas notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="nb">%macro</span> listloop(<span class="k">list</span>);
+
+    <span class="nb">%let</span> i = <span class="m">1</span>;
+    
+    <span class="nb">%do</span> <span class="nb">%while</span> (<span class="nb">%scan</span>(<span class="nv">&amp;list</span>, <span class="nv">&amp;i</span>, <span class="s">&quot; &quot;</span>) ~= );
+<span class="c">        * Get the value in the ith spot;</span>
+        <span class="nb">%let</span> value = <span class="nb">%scan</span>(<span class="nv">&amp;list</span>, <span class="nv">&amp;i</span>, <span class="s">&quot; &quot;</span>);
+<span class="c">        </span>
+<span class="c">        * Print to log;</span>
+<span class="hll">        <span class="nb">%if</span> <span class="nb">%length</span>(<span class="nv">&amp;value</span>) ~= <span class="m">0</span> <span class="nb">%then</span> <span class="nb">%put</span> <span class="nv">&amp;value</span>;
+</span><span class="c">        </span>
+<span class="c">        *Increment counter;</span>
+        <span class="nb">%let</span> i = <span class="nb">%eval</span>(<span class="nv">&amp;i</span> + <span class="m">1</span>);
+        
+    <span class="nb">%end</span>;
+    
+<span class="nb">%mend</span> listloop;
+</pre></div>
+</td></tr></table></div>
+<p>Here we use <code class="docutils literal notranslate"><span class="pre">%length</span></code> to check that the element we retrieved from our list is not empty i.e. has non-zero length. This is overkill since we already checked in line <code class="docutils literal notranslate"><span class="pre">5</span></code> that the element is not empty.</p>
+<p>The last new function we use here is <code class="docutils literal notranslate"><span class="pre">%eval</span></code> which allows us to evaluate expressions in open code. We use this in line <code class="docutils literal notranslate"><span class="pre">13</span></code></p>
+<div class="highlight-sas notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="nb">%macro</span> listloop(<span class="k">list</span>);
+
+    <span class="nb">%let</span> i = <span class="m">1</span>;
+    
+    <span class="nb">%do</span> <span class="nb">%while</span> (<span class="nb">%scan</span>(<span class="nv">&amp;list</span>, <span class="nv">&amp;i</span>, <span class="s">&quot; &quot;</span>) ~= );
+<span class="c">        * Get the value in the ith spot;</span>
+        <span class="nb">%let</span> value = <span class="nb">%scan</span>(<span class="nv">&amp;list</span>, <span class="nv">&amp;i</span>, <span class="s">&quot; &quot;</span>);
+<span class="c">        </span>
+<span class="c">        * Print to log;</span>
+        <span class="nb">%if</span> <span class="nb">%length</span>(<span class="nv">&amp;value</span>) ~= <span class="m">0</span> <span class="nb">%then</span> <span class="nb">%put</span> <span class="nv">&amp;value</span>;
+<span class="c">        </span>
+<span class="c">        *Increment counter;</span>
+<span class="hll">        <span class="nb">%let</span> i = <span class="nb">%eval</span>(<span class="nv">&amp;i</span> + <span class="m">1</span>);
+</span>        
+    <span class="nb">%end</span>;
+    
+<span class="nb">%mend</span> listloop;
+</pre></div>
+</td></tr></table></div>
+<p>We use <code class="docutils literal notranslate"><span class="pre">%eval</span></code> to increment our counter. Recall that in a previous section we used <code class="docutils literal notranslate"><span class="pre">%sysfunc</span></code> combined with <code class="docutils literal notranslate"><span class="pre">sum</span></code> to increment our counter.</p>
+</div>
+</div>
+
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+    <a class='left-prev' id="prev-link" href="if_then_else.html" title="previous page">IF-THEN/ELSE Statements</a>
+    <a class='right-next' id="next-link" href="exercise.html" title="next page">Exercise</a>
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Opportunity Insights Census Team<br/>
+        
+            &copy; Copyright 2020.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    <script src="../../_static/js/index.js"></script>
+    
+  </body>
+</html>

@@ -1,0 +1,708 @@
+
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>IF-THEN/ELSE Statements &#8212; Introduction to SAS for Incoming Predocs</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha384-KA6wR/X5RY4zFAHpv/CnoG2UW1uogYfdnP67Uv7eULvTveboZJg0qUpmJZb5VqzN" crossorigin="anonymous">
+    <link href="../../_static/css/index.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../_static/sphinx-book-theme.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/jupyter-sphinx.css" />
+    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/sphinx-book-theme.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/language_data.js"></script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/mystnb.js"></script>
+    <script src="../../_static/sphinx-book-theme.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.13.0/dist/embed-amd.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="shortcut icon" href="../../_static/favicon2.ico"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="DO Loops" href="do_loops.html" />
+    <link rel="prev" title="Control Flow" href="control_flow.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="docsearch:language" content="en">
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="../../index.html">
+  
+  <img src="../../_static/censas.png" class="logo" alt="logo">
+  
+  
+  <h1 class="site-logo" id="site-title">Introduction to SAS for Incoming Predocs</h1>
+  
+</a>
+</div>
+
+<form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  
+  <ul class="nav sidenav_l1">
+  <li class="">
+    <a href="../intro/why_sas.html">Why SAS?</a>
+  </li>
+  <li class="">
+    <a href="../intro/short_history.html">Short History</a>
+  </li>
+  <li class="">
+    <a href="../data_step/data_step.html">The DATA Step</a>
+  <ul class="nav sidenav_l2">
+    <li class="">
+      <a href="../data_step/structure.html">DATA Step Structure</a>
+    </li>
+    <li class="">
+      <a href="../data_step/example.html">DATA Step Example</a>
+    </li>
+    <li class="">
+      <a href="../data_step/options.html">DATA Step Options</a>
+    </li>
+    <li class="">
+      <a href="../data_step/length.html">Setting Variable Lengths</a>
+    </li>
+  </ul>
+  </li>
+  <li class="">
+    <a href="../proc/proc.html">SAS Procedures</a>
+  <ul class="nav sidenav_l2">
+    <li class="">
+      <a href="../proc/sql.html">Merging Data with PROC SQL</a>
+    </li>
+    <li class="">
+      <a href="../proc/import_export.html">Importing and Exporting Data</a>
+    </li>
+    <li class="">
+      <a href="../proc/datasets.html">Deleting Data</a>
+    </li>
+  </ul>
+  </li>
+  <li class="">
+    <a href="../macros/macros.html">SAS Macros</a>
+  </li>
+  <li class="active">
+    <a href="control_flow.html">Control Flow</a>
+  <ul class="nav sidenav_l2">
+    <li class="active">
+      <a href="">IF-THEN/ELSE Statements</a>
+    </li>
+    <li class="">
+      <a href="do_loops.html">DO Loops</a>
+    </li>
+    <li class="">
+      <a href="exercise.html">Exercise</a>
+    </li>
+  </ul>
+  </li>
+  <li class="">
+    <a href="../example-script/example.html">Example SAS Script</a>
+  </li>
+</ul>
+</nav>
+
+ <!-- To handle the deprecated key -->
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse" data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu" aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation" title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        <div class="dropdown-buttons-trigger">
+            <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i class="fas fa-download"></i></button>
+
+            
+            <div class="dropdown-buttons">
+                <!-- ipynb file if we had a myst markdown file -->
+                
+                <!-- Download raw file -->
+                <a class="dropdown-buttons" href="../../_sources/content/control-flow/if_then_else.ipynb"><button type="button" class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip" data-placement="left">.ipynb</button></a>
+                <!-- Download PDF via print -->
+                <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF" onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+            </div>
+            
+        </div>
+
+        <!-- Source interaction buttons -->
+        
+        <div class="dropdown-buttons-trigger">
+            <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+            <div class="dropdown-buttons sourcebuttons">
+                <a class="repository-button" href="https://github.com/onoratod/cen-sas-intro"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left" title="Source repository"><i class="fab fa-github"></i>repository</button></a>
+                
+                
+            </div>
+        </div>
+        
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="bottom" onclick="toggleFullScreen()" title="Fullscreen mode"><i class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+        
+    </div>
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+<div class="tocsection onthispage pt-5 pb-3">
+    <i class="fas fa-list"></i> On this page
+</div>
+
+<nav id="bd-toc-nav">
+    <ul class="nav section-nav flex-column">
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#if-then-else-do-statements" class="nav-link">IF-THEN/ELSE DO Statements</a>
+        </li>
+    
+    </ul>
+</nav>
+
+
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="if-then-else-statements">
+<h1>IF-THEN/ELSE Statements<a class="headerlink" href="#if-then-else-statements" title="Permalink to this headline">¶</a></h1>
+<p><code class="docutils literal notranslate"><span class="pre">IF-THEN</span></code> and <code class="docutils literal notranslate"><span class="pre">IF-THEN/ELSE</span></code> statements are conditional statements in SAS that we can use to control the execution of our code. These can be used in a <code class="docutils literal notranslate"><span class="pre">DATA</span></code> step or in open code in a <code class="docutils literal notranslate"><span class="pre">%macro</span></code> with a <code class="docutils literal notranslate"><span class="pre">%</span></code> preceding the key words as illustrated below.</p>
+<p>In a <code class="docutils literal notranslate"><span class="pre">DATA</span></code> step</p>
+<div class="margin sidebar">
+<p class="sidebar-title"></p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>If you want to combine conditional statements in SAS, you can use <code class="docutils literal notranslate"><span class="pre">and</span></code> and <code class="docutils literal notranslate"><span class="pre">or</span></code> to represent logical AND and logical OR. You can also use <code class="docutils literal notranslate"><span class="pre">&amp;</span></code> and <code class="docutils literal notranslate"><span class="pre">|</span></code> respectively, as in Stata. I prefer <code class="docutils literal notranslate"><span class="pre">and</span></code> and <code class="docutils literal notranslate"><span class="pre">or</span></code> because I feel they are more conversational and lead to more readable code.</p>
+</div>
+</div>
+<div class="highlight-sas notranslate"><div class="highlight"><pre><span></span><span class="kr">data </span><span class="k">out</span><span class="m">.</span>if_then_example;
+    <span class="k">set</span> <span class="k">out</span><span class="m">.</span>fake_micro(<span class="k">keep</span> = pik mom_pik dad_pik);
+<span class="c">    </span>
+<span class="c">        * Identify parent status;</span>
+        <span class="k">if</span> mom_pik ~= <span class="s">&quot;&quot;</span> <span class="k">and</span> dad_pik ~= <span class="s">&quot;&quot;</span> <span class="k">then</span> singleparent = <span class="m">0</span>;
+        <span class="k">else</span> singleparent = <span class="m">1</span><span class="kr">;  </span>
+<span class="kr">run;</span> 
+</pre></div>
+</div>
+<div class="cell tag_output_scroll tag_remove_input docutils container">
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>pik</th>
+      <th>mom_pik</th>
+      <th>dad_pik</th>
+      <th>singleparent</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>141</td>
+      <td>173</td>
+      <td>NaN</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>138</td>
+      <td>149</td>
+      <td>NaN</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>177</td>
+      <td>NaN</td>
+      <td>003</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>146</td>
+      <td>013</td>
+      <td>004</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>104</td>
+      <td>187</td>
+      <td>005</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>144</td>
+      <td>NaN</td>
+      <td>006</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>083</td>
+      <td>025</td>
+      <td>007</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>115</td>
+      <td>NaN</td>
+      <td>008</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>170</td>
+      <td>157</td>
+      <td>009</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>118</td>
+      <td>NaN</td>
+      <td>010</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>085</td>
+      <td>NaN</td>
+      <td>011</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>051</td>
+      <td>058</td>
+      <td>NaN</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>197</td>
+      <td>156</td>
+      <td>013</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>054</td>
+      <td>034</td>
+      <td>NaN</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>139</td>
+      <td>NaN</td>
+      <td>015</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td>111</td>
+      <td>004</td>
+      <td>NaN</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>16</th>
+      <td>008</td>
+      <td>NaN</td>
+      <td>017</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>17</th>
+      <td>055</td>
+      <td>NaN</td>
+      <td>018</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>18</th>
+      <td>167</td>
+      <td>072</td>
+      <td>NaN</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>19</th>
+      <td>160</td>
+      <td>NaN</td>
+      <td>020</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>20</th>
+      <td>163</td>
+      <td>112</td>
+      <td>NaN</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>21</th>
+      <td>030</td>
+      <td>NaN</td>
+      <td>022</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>22</th>
+      <td>097</td>
+      <td>NaN</td>
+      <td>023</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>23</th>
+      <td>026</td>
+      <td>NaN</td>
+      <td>024</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>24</th>
+      <td>039</td>
+      <td>NaN</td>
+      <td>025</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>25</th>
+      <td>179</td>
+      <td>NaN</td>
+      <td>026</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>26</th>
+      <td>154</td>
+      <td>NaN</td>
+      <td>027</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>27</th>
+      <td>047</td>
+      <td>NaN</td>
+      <td>028</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>28</th>
+      <td>009</td>
+      <td>NaN</td>
+      <td>029</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>29</th>
+      <td>103</td>
+      <td>NaN</td>
+      <td>030</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>30</th>
+      <td>188</td>
+      <td>NaN</td>
+      <td>031</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>31</th>
+      <td>028</td>
+      <td>NaN</td>
+      <td>032</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>32</th>
+      <td>041</td>
+      <td>NaN</td>
+      <td>033</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>33</th>
+      <td>001</td>
+      <td>NaN</td>
+      <td>034</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>34</th>
+      <td>162</td>
+      <td>NaN</td>
+      <td>035</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>35</th>
+      <td>064</td>
+      <td>136</td>
+      <td>036</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>36</th>
+      <td>175</td>
+      <td>NaN</td>
+      <td>037</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>37</th>
+      <td>183</td>
+      <td>NaN</td>
+      <td>038</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>38</th>
+      <td>093</td>
+      <td>NaN</td>
+      <td>039</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>39</th>
+      <td>136</td>
+      <td>NaN</td>
+      <td>040</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>40</th>
+      <td>140</td>
+      <td>191</td>
+      <td>041</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>41</th>
+      <td>003</td>
+      <td>001</td>
+      <td>NaN</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>42</th>
+      <td>176</td>
+      <td>NaN</td>
+      <td>043</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>43</th>
+      <td>108</td>
+      <td>090</td>
+      <td>044</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>44</th>
+      <td>194</td>
+      <td>NaN</td>
+      <td>045</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>45</th>
+      <td>187</td>
+      <td>055</td>
+      <td>046</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>46</th>
+      <td>015</td>
+      <td>161</td>
+      <td>047</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>47</th>
+      <td>062</td>
+      <td>NaN</td>
+      <td>048</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>48</th>
+      <td>130</td>
+      <td>NaN</td>
+      <td>049</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>49</th>
+      <td>029</td>
+      <td>NaN</td>
+      <td>050</td>
+      <td>1.0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>And in open code</p>
+<div class="margin sidebar">
+<p class="sidebar-title"></p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p><code class="docutils literal notranslate"><span class="pre">%sysfunc</span></code> lets you evaluate <code class="docutils literal notranslate"><span class="pre">DATA</span></code> step functions in open code. Here we use it to call the SAS modulo function <code class="docutils literal notranslate"><span class="pre">mod</span></code></p>
+</div>
+</div>
+<div class="highlight-sas notranslate"><div class="highlight"><pre><span></span><span class="nb">%macro</span> ifthen(year);
+
+    <span class="nb">%if</span> <span class="nb">%sysfunc</span>(<span class="nb">mod(</span><span class="nv">&amp;year</span>, <span class="m">2</span>)) = <span class="m">0</span> <span class="nb">%then</span> <span class="nb">%put</span> Even.;
+    <span class="nb">%else</span> <span class="nb">%put</span> Odd.;
+
+<span class="nb">%mend</span> ifthen;
+
+<span class="nf">%ifthen</span>(<span class="m">1</span>);
+<span class="nf">%ifthen</span>(<span class="m">2</span>);
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">581</span>  <span class="o">%</span><span class="n">ifthen</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+<span class="n">Odd</span><span class="o">.</span>
+<span class="mi">582</span>  <span class="o">%</span><span class="n">ifthen</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
+<span class="n">Even</span><span class="o">.</span>
+</pre></div>
+</div>
+<div class="section" id="if-then-else-do-statements">
+<h2>IF-THEN/ELSE DO Statements<a class="headerlink" href="#if-then-else-do-statements" title="Permalink to this headline">¶</a></h2>
+<p>Sometimes we want to execute a series of statements depending on a certain condition rather than just one statement. In these instances, we use <code class="docutils literal notranslate"><span class="pre">IF-THEN/ELSE</span> <span class="pre">DO</span></code> statements. The syntax for these statements in a <code class="docutils literal notranslate"><span class="pre">DATA</span></code> step is:</p>
+<div class="highlight-sas notranslate"><div class="highlight"><pre><span></span><span class="kr">data </span><span class="k">out</span><span class="m">.</span><span class="k">output</span>;
+    <span class="k">set</span> <span class="k">in</span><span class="m">.</span><span class="k">input</span>;
+<span class="c">    </span>
+<span class="c">    * IF-THEN DO;</span>
+    <span class="k">if</span> (cond) <span class="k">then</span> <span class="k">do</span>;
+        <span class="c">/* SAS statements if condition is met */</span>
+    <span class="k">end</span>;
+<span class="c">    </span>
+<span class="c">    * IF-THEN/ELSE DO;</span>
+    <span class="k">if</span> (cond) <span class="k">then</span> <span class="k">do</span>;
+        <span class="c">/* SAS statements if condition is met */</span>
+    <span class="k">end</span>;
+    <span class="k">else</span> <span class="k">do</span>;
+        <span class="c">/* SAS statements if condition is not met */</span>
+    <span class="k">end</span><span class="kr">;</span>
+<span class="kr">run;</span>
+</pre></div>
+</div>
+<p>Or in open code (wrapped in a <code class="docutils literal notranslate"><span class="pre">%macro</span></code>)</p>
+<div class="highlight-sas notranslate"><div class="highlight"><pre><span></span><span class="c">* IF-THEN DO;</span>
+<span class="nb">%macro</span> ifthendo;
+    <span class="nb">%if</span> (cond) <span class="nb">%then</span> <span class="nb">%do</span>;
+        <span class="c">/* SAS statements if condition is met */</span>
+    <span class="nb">%end</span>;
+
+<span class="c">    * IF-THEN/ELSE DO;</span>
+    <span class="nb">%if</span> (cond) <span class="nb">%then</span> <span class="nb">%do</span>;
+        <span class="c">/* SAS statements if condition is met */</span>
+    <span class="nb">%end</span>;
+    <span class="nb">%else</span> <span class="nb">%do</span>;
+        <span class="c">/* SAS statements if condition is not met */</span>
+    <span class="nb">%end</span>;
+<span class="nb">%mend</span> ifthendo;
+</pre></div>
+</div>
+</div>
+</div>
+
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+    <a class='left-prev' id="prev-link" href="control_flow.html" title="previous page">Control Flow</a>
+    <a class='right-next' id="next-link" href="do_loops.html" title="next page">DO Loops</a>
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Opportunity Insights Census Team<br/>
+        
+            &copy; Copyright 2020.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    <script src="../../_static/js/index.js"></script>
+    
+  </body>
+</html>

@@ -1,0 +1,361 @@
+
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>SAS Macros &#8212; Introduction to SAS for Incoming Predocs</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha384-KA6wR/X5RY4zFAHpv/CnoG2UW1uogYfdnP67Uv7eULvTveboZJg0qUpmJZb5VqzN" crossorigin="anonymous">
+    <link href="../../_static/css/index.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../_static/sphinx-book-theme.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/jupyter-sphinx.css" />
+    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/sphinx-book-theme.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/language_data.js"></script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/mystnb.js"></script>
+    <script src="../../_static/sphinx-book-theme.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.13.0/dist/embed-amd.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="shortcut icon" href="../../_static/favicon2.ico"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Control Flow" href="../control-flow/control_flow.html" />
+    <link rel="prev" title="Deleting Data" href="../proc/datasets.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="docsearch:language" content="en">
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="../../index.html">
+  
+  <img src="../../_static/censas.png" class="logo" alt="logo">
+  
+  
+  <h1 class="site-logo" id="site-title">Introduction to SAS for Incoming Predocs</h1>
+  
+</a>
+</div>
+
+<form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  
+  <ul class="nav sidenav_l1">
+  <li class="">
+    <a href="../intro/why_sas.html">Why SAS?</a>
+  </li>
+  <li class="">
+    <a href="../intro/short_history.html">Short History</a>
+  </li>
+  <li class="">
+    <a href="../data_step/data_step.html">The DATA Step</a>
+  <ul class="nav sidenav_l2">
+    <li class="">
+      <a href="../data_step/structure.html">DATA Step Structure</a>
+    </li>
+    <li class="">
+      <a href="../data_step/example.html">DATA Step Example</a>
+    </li>
+    <li class="">
+      <a href="../data_step/options.html">DATA Step Options</a>
+    </li>
+    <li class="">
+      <a href="../data_step/length.html">Setting Variable Lengths</a>
+    </li>
+  </ul>
+  </li>
+  <li class="">
+    <a href="../proc/proc.html">SAS Procedures</a>
+  <ul class="nav sidenav_l2">
+    <li class="">
+      <a href="../proc/sql.html">Merging Data with PROC SQL</a>
+    </li>
+    <li class="">
+      <a href="../proc/import_export.html">Importing and Exporting Data</a>
+    </li>
+    <li class="">
+      <a href="../proc/datasets.html">Deleting Data</a>
+    </li>
+  </ul>
+  </li>
+  <li class="active">
+    <a href="">SAS Macros</a>
+  </li>
+  <li class="">
+    <a href="../control-flow/control_flow.html">Control Flow</a>
+  <ul class="nav sidenav_l2">
+    <li class="">
+      <a href="../control-flow/if_then_else.html">IF-THEN/ELSE Statements</a>
+    </li>
+    <li class="">
+      <a href="../control-flow/do_loops.html">DO Loops</a>
+    </li>
+    <li class="">
+      <a href="../control-flow/exercise.html">Exercise</a>
+    </li>
+  </ul>
+  </li>
+  <li class="">
+    <a href="../example-script/example.html">Example SAS Script</a>
+  </li>
+</ul>
+</nav>
+
+ <!-- To handle the deprecated key -->
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse" data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu" aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation" title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        <div class="dropdown-buttons-trigger">
+            <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i class="fas fa-download"></i></button>
+
+            
+            <div class="dropdown-buttons">
+                <!-- ipynb file if we had a myst markdown file -->
+                
+                <!-- Download raw file -->
+                <a class="dropdown-buttons" href="../../_sources/content/macros/macros.ipynb"><button type="button" class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip" data-placement="left">.ipynb</button></a>
+                <!-- Download PDF via print -->
+                <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF" onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+            </div>
+            
+        </div>
+
+        <!-- Source interaction buttons -->
+        
+        <div class="dropdown-buttons-trigger">
+            <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+            <div class="dropdown-buttons sourcebuttons">
+                <a class="repository-button" href="https://github.com/onoratod/cen-sas-intro"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left" title="Source repository"><i class="fab fa-github"></i>repository</button></a>
+                
+                
+            </div>
+        </div>
+        
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="bottom" onclick="toggleFullScreen()" title="Fullscreen mode"><i class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+        
+    </div>
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+<div class="tocsection onthispage pt-5 pb-3">
+    <i class="fas fa-list"></i> On this page
+</div>
+
+<nav id="bd-toc-nav">
+    <ul class="nav section-nav flex-column">
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#arguments" class="nav-link">Arguments</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#example" class="nav-link">Example</a>
+        </li>
+    
+    </ul>
+</nav>
+
+
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="sas-macros">
+<h1>SAS Macros<a class="headerlink" href="#sas-macros" title="Permalink to this headline">¶</a></h1>
+<p>A SAS <code class="docutils literal notranslate"><span class="pre">%macro</span></code> is a discrete piece of code that can be accessed throughout the SAS script by keyword reference. A SAS <code class="docutils literal notranslate"><span class="pre">%macro</span></code> can take and use arguments. A SAS <code class="docutils literal notranslate"><span class="pre">%macro</span></code> is useful when you need to execute a similar set of tasks over and over again (for instance, over many years). This is similar to a <code class="docutils literal notranslate"><span class="pre">program</span></code> or <code class="docutils literal notranslate"><span class="pre">ado</span></code> in Stata or <code class="docutils literal notranslate"><span class="pre">functions</span></code> in R and Python. The general syntax is:</p>
+<div class="highlight-sas notranslate"><div class="highlight"><pre><span></span><span class="nb">%macro</span> name(<span class="c">/* Arguments go here */</span>);
+
+    <span class="c">/* SAS code goes here */</span>
+    
+<span class="nb">%mend</span> name;
+</pre></div>
+</div>
+<p>A SAS <code class="docutils literal notranslate"><span class="pre">%macro</span></code> is referenced elsewhere in a SAS script as <code class="docutils literal notranslate"><span class="pre">%name(...)</span></code>. You can think of a SAS <code class="docutils literal notranslate"><span class="pre">%macro</span></code> as inserting the contained text/statements into the SAS script whenever referenced.</p>
+<div class="section" id="arguments">
+<h2>Arguments<a class="headerlink" href="#arguments" title="Permalink to this headline">¶</a></h2>
+<p>A SAS <code class="docutils literal notranslate"><span class="pre">%macro</span></code> has two types of arguments (or none at all): positional and keyword. Keyword arguments are specified with a keyword, equals sign and a default value (which can be null)</p>
+<div class="highlight-sas notranslate"><div class="highlight"><pre><span></span><span class="nb">%macro</span> name(keyward_arg = <span class="m">1</span>); 
+<span class="nb">%mend</span> name;
+</pre></div>
+</div>
+<p>or with a null default value</p>
+<div class="highlight-sas notranslate"><div class="highlight"><pre><span></span><span class="nb">%macro</span> name(keyword_arg = );
+<span class="nb">%mend</span> name;
+</pre></div>
+</div>
+<p>To supply a custom value of <code class="docutils literal notranslate"><span class="pre">10</span></code> we we would would write</p>
+<div class="highlight-sas notranslate"><div class="highlight"><pre><span></span><span class="nf">%name</span>(keyword_arg = <span class="m">10</span>);
+</pre></div>
+</div>
+<p>Positional arguments are just listed and are assigned the value corresponding to their position in the argument list when the macro is defined:</p>
+<div class="highlight-sas notranslate"><div class="highlight"><pre><span></span><span class="nb">%macro</span> name(a, b, c);
+<span class="nb">%mend</span> name;
+</pre></div>
+</div>
+<p>If I called <code class="docutils literal notranslate"><span class="pre">%name(1,</span> <span class="pre">2,</span> <span class="pre">3)</span></code> then <code class="docutils literal notranslate"><span class="pre">a</span> <span class="pre">=</span> <span class="pre">1,</span> <span class="pre">b</span> <span class="pre">=</span> <span class="pre">2,</span> <span class="pre">c</span> <span class="pre">=</span> <span class="pre">3</span></code>. If no argument is specified in the corresponding position then the positional argument resolves to null.</p>
+<p>Arguments are referenced inside of a <code class="docutils literal notranslate"><span class="pre">%macro</span></code> as macro variables. These concepts are illustrated below.</p>
+<div class="highlight-sas notranslate"><div class="highlight"><pre><span></span>%macro hello_world;
+
+    %PUT Hello World!;
+    
+%mend hello_world;
+</pre></div>
+</div>
+<div class="highlight-sas notranslate"><div class="highlight"><pre><span></span>%macro hello_place(place);
+
+    %PUT Hello &amp;place.!;
+    
+%mend hello_place;
+</pre></div>
+</div>
+<div class="highlight-sas notranslate"><div class="highlight"><pre><span></span>%macro hello_there(place, name = John);
+
+    %PUT Hello &amp;place., my name is &amp;name.!;
+    
+%mend hello_there;
+</pre></div>
+</div>
+<div class="highlight-sas notranslate"><div class="highlight"><pre><span></span><span class="nf">%hello_world</span>;
+<span class="nf">%hello_place</span>(USA);
+<span class="nf">%hello_there</span>(USA);
+<span class="nf">%hello_there</span>();
+<span class="nf">%hello_there</span>(USA, name = Danny);
+</pre></div>
+</div>
+<p>These macro calls output</p>
+<div class="highlight-sas notranslate"><div class="highlight"><pre><span></span><span class="m">324</span>  <span class="nf">%hello_world</span>;
+Hello World!
+<span class="m">325</span>  <span class="nf">%hello_place</span>(USA);
+Hello USA!
+<span class="m">326</span>  <span class="nf">%hello_there</span>(USA);
+Hello USA, my name is John!
+<span class="m">327</span>  <span class="nf">%hello_there</span>();
+Hello , my name is John!
+<span class="m">328</span>  <span class="nf">%hello_there</span>(USA, name = Danny);
+Hello USA, my name is Danny!
+</pre></div>
+</div>
+</div>
+<div class="section" id="example">
+<h2>Example<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h2>
+<p>To motivate the use of <code class="docutils literal notranslate"><span class="pre">%macro</span></code> functions, suppose you needed to load in two years of data and generate a few variables. You could do something like:</p>
+<div class="highlight-sas notranslate"><div class="highlight"><pre><span></span><span class="kr">data </span><span class="k">out</span><span class="m">.</span>intergen_1999_clean;
+    <span class="k">set</span> <span class="k">in</span><span class="m">.</span>intergen_1999;
+        
+        year = <span class="m">1999</span>;
+        par_inc = mom_inc + dad_inc<span class="kr">;</span>
+<span class="kr">run;</span>
+
+<span class="kr">data </span><span class="k">out</span><span class="m">.</span>intergen_2000_clean;
+    <span class="k">set</span> <span class="k">in</span><span class="m">.</span>intergen_2000;
+        
+        year = <span class="m">2000</span>;
+        gen par_inc = mom_inc + dad_inc<span class="kr">;</span>
+<span class="kr">run;</span>
+</pre></div>
+</div>
+<p>However, you can also do this in a cleaner and more efficient way with a <code class="docutils literal notranslate"><span class="pre">%macro</span></code> function.</p>
+<div class="highlight-sas notranslate"><div class="highlight"><pre><span></span><span class="c">* Define our macro;</span>
+<span class="nb">%macro</span> clean_intergen(year)<span class="kr">;</span>
+
+<span class="kr">    data </span>intergen_<span class="nv">&amp;year.</span>_clean;
+        <span class="k">set</span> intergen_<span class="nv">&amp;year.</span>;
+        
+            year = <span class="nv">&amp;year.</span>;
+            par_inc = mom_inc + dad+inc<span class="kr">;</span>
+<span class="kr">    run;</span>
+    
+<span class="nb">%mend</span> clean_intergen;
+
+<span class="c">* Call the macro on each year;</span>
+<span class="nf">%clean_intergen</span>(<span class="m">1999</span>);
+<span class="nf">%clean_intergen</span>(<span class="m">2000</span>);
+</pre></div>
+</div>
+<p>This style of coding is preferred as it keeps our scripts concise, generally reduces errors and makes debugging easier.</p>
+</div>
+</div>
+
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+    <a class='left-prev' id="prev-link" href="../proc/datasets.html" title="previous page">Deleting Data</a>
+    <a class='right-next' id="next-link" href="../control-flow/control_flow.html" title="next page">Control Flow</a>
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Opportunity Insights Census Team<br/>
+        
+            &copy; Copyright 2020.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    <script src="../../_static/js/index.js"></script>
+    
+  </body>
+</html>

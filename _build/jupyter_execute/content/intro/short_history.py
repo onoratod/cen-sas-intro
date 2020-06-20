@@ -1,0 +1,8 @@
+# Short History
+
+Back in ancient times (i.e. 2016), they worked with two servers at IRS. A server that ran SAS, called THOR, and a separate server for Stata. The Stata server had 32GB of RAM split across all users (LOL). Many of the datasets we work with are hundreds (or thousands) of GBs, rendering it infeasible to run regressions or clean data on a server with only 32GB of RAM. This meant we needed to work mainly in SAS. As a result, our group has developed a set of handy SAS macros (functions) that help execute common operations. These are contained in the `leap_macros.sas` file.
+
+At Census, we work on the Integrated Research Environment (IRE) server that runs Stata, SAS, and other programs (R, Python, etc). The server allows users to easily request large amounts of RAM, allowing us to execute the majority of our jobs in Stata. Because of this improved setup, we mainly use SAS as a tool to clean and subset the raw data down to a size that is usable in Stata.
+
+The Databank contains tax records for the US population between 1969-2017. Together, these files are approximately 6TB — too large to use in Stata. That said, we are almost always interested in studying a small subset of the variables and population contained in the Databank. For example, we may want incomes and addresses of kids, and their parents, born between 1978-1991. We can make these restrictions on the Databank in SAS and output a relatively smaller Stata file containing the sample and variables we need.
+
