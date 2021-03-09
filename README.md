@@ -27,7 +27,7 @@ The first step is to simply save your markdown file or Jupyter Notebook in the r
 
 ### Incorporating the Changes
 
-Once you've added your markdown or Jupyter Notebook file updated the `_toc.yml` file you need to "re-build" the Jupyter Book to incorporate your changes into the website's html files. To do this simply run 
+Once you've added your markdown/Jupyter Notebook file and updated the `_toc.yml` file or modified an already existing markdown/Jupyter Notebook, you need to "re-build" the Jupyter Book to incorporate your changes into the website's html files. To do this simply run 
 
 ```
 jupyter-book build cen-sas-intro
